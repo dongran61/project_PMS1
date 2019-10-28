@@ -1,0 +1,19 @@
+
+
+/*****************/
+
+.room_num_panel span:first-child{margin-right: 10px;}
+
+.nightT_btn{width: 170px;height:60px; margin: 13px  0 13px 15px;color: #fff;
+    background:linear-gradient(180deg,rgba(57,67,118,1) 0%,rgba(44,54,104,1) 100%);
+    box-shadow:0px 3px 4px 0px rgba(0,0,0,0.16);
+    border-radius:3px;
+    border:1px solid rgba(28,31,39,1);cursor: pointer; }
+#left{overflow: hidden;}
+
+.layui-side-scroll{overflow-y: scroll;position: relative}
+.layui-side-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+

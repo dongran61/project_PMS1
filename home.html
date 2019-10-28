@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>主页</title>
+    <link rel="stylesheet" href="assets/layui/css/layui.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+
+            <div class="layui-logo">
+                <span class="icon_img logo_img"></span>
+
+            </div>
+            <div class="header_nav flex_row_l layui-row">
+                <div class="layui-form layui-col-sm3 layui-col-md3 layui-col-lg3 ddlShopName">
+                    <!--<select name="interest" lay-filter="shopName">
+                        <option value="0" selected>布丁酒店杭州西湖文化广场店1</option>
+                        <option value="1">布丁酒店杭州西湖文化广场店2</option>
+                        <option value="2">布丁酒店杭州西湖文化广场店3</option>
+                        <option value="3">布丁酒店杭州西湖文化广场店4</option>
+                    </select>-->
+                    <ul class="layui-nav">
+
+                        <li class="layui-nav-item layui-this">
+                            <a href="javascript:;" class="font_20">布丁酒店杭州西湖文化广场店1</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="">布丁酒店杭州西湖文化广场店2</a></dd>
+                                <dd><a href="">布丁酒店杭州西湖文化广场店3</a></dd>
+                                <dd><a href="">布丁酒店杭州西湖文化广场店4</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                <div class=" layui-col-sm4 layui-col-md4 layui-col-lg4">
+                    <div class="search flex_row_l">
+                        <em class="font_51566B font_12">搜索</em>
+                        <input type="text" placeholder="姓名/手机号/身份证号/预订号/房号/会员卡号"/>
+                        <span class="icon"></span>
+                    </div>
+                </div>
+
+                <ul class="layui-nav layui-layout-right">
+                    <li class="layui-nav-item banci">中班</li>
+                    <li class="layui-nav-item ">
+                        <a href="javascript:;">
+                            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                            贤心
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="">基本资料</a></dd>
+                            <dd><a href="">安全设置</a></dd>
+                        </dl>
+
+                    </li>
+                    <li class="layui-nav-item"><a href=""><span class="icon signOut"></span></a></li>
+                </ul>
+
+            </div>
+            <div class="header_menu flex_row_l ">
+                <div class="menu_header">
+                    <ul class="flex_row_l">
+                        <li><a href="#">预订</a></li>
+                        <li><a href="#">订单</a></li>
+                        <li><a href="#">房型</a></li>
+                        <li><a href="#">房态</a></li>
+                        <li><a href="#">夜审</a></li>
+                        <li><a href="#">报表</a></li>
+                        <li><a href="#">销售管理</a></li>
+                        <li><a href="#">财务</a></li>
+                        <li class="sz active"><a href="#">设置</a></li>
+
+                    </ul>
+                </div>
+                <div class="yytime"> 营业时间：2019-03-01</div>
+            </div>
+
+        <!--<iframe class="header_iframe" src="header.html" style="border: none"></iframe>&lt;!&ndash;&ndash;&gt;-->
+    </div>
+    <div id="left" class="layui-side layui-bg-black layui-anim layui-anim-upbit">
+        <!-- 左侧导航区域-->
+        <iframe class="" height="50%" src="setting/left.html"></iframe>
+    </div>
+
+
+    <!--无左边栏加入类名 layui-body2  -->
+    <div id="layui-body" class="layui-body" style="border: none">
+        <!-- 内容主体区域 -->
+        <iframe src="setting/userSettings.html"></iframe>
+    </div>
+</div>
+<!--隐藏左边栏按钮-->
+
+<!--
+<div class="menu_hide_panel show font_fff">
+    <div class="box"></div>
+    <i class="layui-icon layui-icon-triangle-r"></i>
+</div>-->
+
+<script src="assets/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    //JavaScript代码区域
+
+    layui.use('element', function(){
+        var element = layui.element,$ = layui.jquery;
+        $(".menu_hide_panel").on("click",function () {
+            if($(this).hasClass("show"))
+            {
+                $("#left").addClass("hide");
+                $(this).removeClass("show");
+                $("#layui-body").css("left","0")
+                $(this).css("left","0")
+            }
+            else {
+                $("#left").removeClass("hide");
+                $(this).addClass("show");
+                $("#layui-body").css("left","200px")
+                $(this).css("left","200px")
+            }
+        })
+        $(".nav_child_2").bind("click",function () {
+
+            if($(this).parents().find("ul.ul_nav_3").hasClass("hide")){
+                $(this).parents().find("ul.ul_nav_3").removeClass("hide");}
+            else{
+                $(this).parents().find("ul.ul_nav_3").addClass("hide");}
+        })
+
+    });
+
+</script>
+</body>
+</html>

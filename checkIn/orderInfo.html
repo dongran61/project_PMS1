@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登记单信息</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/order.css">
+</head>
+<body>
+<div class="nav_10"></div>
+<div class="layui-row flex_row_l">
+    <button class="btn_base btn_black flex_row" onclick="tzr_add_row(this)">
+        <span class="icon icon_tzr"></span>
+        添加同住人
+    </button>
+    <input type="hidden" id="txtTzr_rowIndex" value="0">
+    <input type="hidden" id="txtTzr_searchIndex" value="tzr_row_0">
+</div>
+<div class="nav_10"></div>
+<form class="layui-form" action="" lay-filter="submitForm">
+    <!--
+     <div id="tzr_row_0" class="ctrl_panel">
+         <div class="layui-row flex_row_l">
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3  layui-form-item">
+
+                 <label class="layui-form-label">预约人<em class="font_FF0023">*</em></label>
+                 <div class="layui-input-block">
+                     <input type="text" name="" lay-verify="required" class="layui-input">
+                 </div>
+
+             </div>
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                 <label class="layui-form-label">联系电话<em class="font_FF0023">*</em></label>
+                 <div class="layui-input-block">
+                     <input type="text" name="" lay-verify="required|phone" class="layui-input">
+                 </div>
+
+             </div>
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                 <label class="layui-form-label">客源类型<em class="font_FF0023">*</em></label>
+                 <div class="layui-input-block"  lay-filter="ddl_MemberType_0">
+                     <select name="" lay-verify="required" class="layui-input ddl_MemberType">
+                         <option value="">请选择</option>
+                         <option value="0">上门</option>
+                         <option value="会员">会员</option>
+                         <option value="2">协议</option>
+                         <option value="">中介</option>
+                         <option value="">免费</option>
+                         <option value="">自用</option>
+                         <option value="">长包</option>
+                         <option value="">时租</option>
+                     </select>
+                 </div>
+             </div>
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                 <label class="layui-form-label">搜索</label>
+                 <div class="layui-input-block search_panel" lay-filter="ddl_MemberType_0">
+                     <input id="txtSearch_0" type="text" placeholder="手机号/身份证号/会员" class="layui-input ">
+                     <span id="btnMemberType_0" class="layui-icon layui-icon-search"></span>
+                 </div>
+             </div>
+         </div>
+         <div class="layui-row flex_row_l">
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+                 <label class="layui-form-label">证件类型</label>
+                 <div class="layui-input-block" lay-filter="ddl_IDType_0">
+                     <select name="IDType" class="layui-input ddl_IDType">
+                         <option value="">请选择</option>
+                         <option value="身份证">身份证</option>
+                         <option value="护照">护照</option>
+                     </select>
+                 </div>
+             </div>
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item ">
+
+                 <label class="layui-form-label">证件号码</label>
+                 <div class="layui-input-block">
+                     <input type="text" name="IDNumber" lay-verify="identity" class="layui-input">
+                 </div>
+
+             </div>
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item ">
+
+                 <label class="layui-form-label">性别</label>
+                 <div class="layui-input-block " lay-filter="ddl_sex_0">
+                     <select name="sex" class="layui-input ddl_sex">
+                         <option value="">请选择</option>
+                         <option value="男">男</option>
+                         <option value="女">女</option>
+                     </select>
+                 </div>
+
+             </div>
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                 <label class="layui-form-label">生日</label>
+                 <div class="layui-input-block">
+                     <input type="text" name="birthday"
+                            class="layui-input">
+                 </div>
+
+             </div>
+         </div>
+         <div class="layui-row flex_row_l">
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                 <label class="layui-form-label">国籍</label>
+                 <div class="layui-input-block">
+                     <input type="text" name="nationality"
+                            autocomplete="off"
+                            class="layui-input">
+                 </div>
+
+             </div>
+             <div class="layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 ">
+
+                 <label class="layui-form-label">地址</label>
+                 <div class="layui-input-block">
+                     <input type="text" name="address" class="layui-input">
+                 </div>
+
+             </div>
+
+             <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+
+             </div>
+
+         </div>
+     </div>
+ -->
+    <div class="tzr_panel">
+        <div id="tzr_info">
+            <div id="tzr_row_0" class="ctrl_panel">
+                <div class="layui-row flex_row_l">
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3  layui-form-item">
+
+                        <label class="layui-form-label">人住人<em class="font_FF0023">*</em></label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" lay-verify="required" class="layui-input">
+                        </div>
+
+                    </div>
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                        <label class="layui-form-label">联系电话<em class="font_FF0023">*</em></label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" lay-verify="required|phone" class="layui-input">
+                        </div>
+
+                    </div>
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                        <label class="layui-form-label">客源类型<em class="font_FF0023">*</em></label>
+                        <div class="layui-input-block layui-form ddl_MemberType" lay-filter="ddl_MemberType_0">
+                            <select name="" lay-verify="required" class="layui-input memberType">
+                                <option value="">请选择</option>
+                                <option value="0">上门</option>
+                                <option value="会员">会员</option>
+                                <option value="2">协议</option>
+                                <option value="">中介</option>
+                                <option value="">免费</option>
+                                <option value="">自用</option>
+                                <option value="">长包</option>
+                                <option value="">时租</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                        <label class="layui-form-label">搜索</label>
+                        <div class="layui-input-block search_panel" >
+                            <input id="txtSearch_0" type="text" placeholder="手机号/身份证号/会员" class="layui-input ">
+                            <span onclick="memberType(this)" class="layui-icon layui-icon-search"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row flex_row_l">
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+                        <label class="layui-form-label">证件类型</label>
+                        <div class="layui-input-block layui-form ddl_IDType " lay-filter="ddl_IDType_0">
+                            <select name="IDType" class="layui-input IDType">
+                                <option value="">请选择</option>
+                                <option value="身份证">身份证</option>
+                                <option value="护照">护照</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item ">
+
+                        <label class="layui-form-label">证件号码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="IDNumber" lay-verify="identity" class="layui-input IDNumber">
+                        </div>
+
+                    </div>
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item ">
+
+                        <label class="layui-form-label">性别</label>
+                        <div class="layui-input-block layui-form ddl_sex" lay-filter="ddl_sex_0">
+                            <select name="sex" class="layui-input sex">
+                                <option value="">请选择</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                        <label class="layui-form-label">生日</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="birthday"
+                                   class="layui-input">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="layui-row flex_row_l">
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                        <label class="layui-form-label">国籍</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="nationality"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                    </div>
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 ">
+
+                        <label class="layui-form-label">地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="address" class="layui-input address">
+                        </div>
+
+                    </div>
+
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+
+                    </div>
+
+                </div>
+                <span class="icon icon_delete" onclick="tzr_delete_row(this)"></span>
+            </div>
+        </div>
+        <div class="layui-row flex_row div_tzr_hide ">
+            <div id="btn_hide_tzr" class="btn_hide hide">
+                <span><i class="layui-icon layui-icon-next font_fff"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ctrl_panel">
+        <div class="layui-row flex_row_l">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg3 ">
+                <label class="layui-form-label">抵离日期<i class="font_FF0023">*</i></label>
+                <div class="layui-input-block">
+                    <input id="dataFw" type="text" class="layui-input" placeholder="开始日期 - 结束日期">
+                </div>
+            </div>
+
+            <!--
+            <div class="layui-form-item ">
+                <label class="layui-form-label">离店日期<i class="font_FF0023">*</i></label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input date_item" name="starDate"
+                           placeholder="请选择">
+                </div>
+            </div>
+            -->
+            <div class="layui-col-xs2 layui-col-sm2 layui-col-md2 layui-col-lg2 layui-form-item">
+                <label class="layui-form-label">入住天数</label>
+
+                <!--客源类型选择时租是显示-->
+                <!--<label class="layui-form-label">入住小时</label>-->
+                <div class="layui-input-block">
+                    <input type="number" class="layui-input" name="" value="0">
+                </div>
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+                <label class="layui-form-label">保留时间<i class="font_FF0023">*</i></label>
+
+                <!--客源类型选择时租是显示-->
+                <!--<label class="layui-form-label">到店时间<i class="font_FF0023">*</i></label>-->
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input date_item_time" id="blTime" placeholder="HH:mm">
+                </div>
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+                <label class="layui-form-label">渠道来源</label>
+                <div class="layui-input-block">
+                    <select name="">
+                        <option value="">请选择</option>
+                        <option value="">门店预订</option>
+                        <option value="">400预订</option>
+                        <option value="">CRS直连</option>
+                        <option value="">中介直连</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ctrl_panel order_room_panel">
+        <div id="order_room_table">
+
+
+            <div id="0" class="layui-row flex_row_l order_room_list ">
+
+                <div class="layui-col-sm3  layui-col-md3 layui-col-lg3 layui-form-item">
+                    <label class="layui-form-label">房型<em class="font_FF0023">*</em></label>
+                    <div class="layui-input-block ddlHouseType" onclick="houseType(this)">
+                        <input type="text" disabled placeholder="请选择房型" lay-verify="required"
+                               class=" layui-input houseType"/>
+                    </div>
+
+                </div>
+                <div class="layui-col-sm2  layui-col-md2 layui-col-lg2 flex_row_l layui-form-item">
+
+                    <label class="layui-form-label">房数<em class="font_FF0023">*</em></label>
+                    <!--
+                     <div class="layui-input-group flex_row_l layui-form">
+                         <button type="button" class="layui-btn layui-btn-primary layui-btn-sm"><i
+                                 class="layui-icon"></i></button>
+                         <input type="" name="" lay-verify="required|number"
+                                class="layui-input room_qty">
+                         <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">━
+                         </button>
+                     </div>
+                     -->
+                    <div class="layui-input-group  layui-form">
+                        <input type="number" class="layui-input" name="" value="0">
+                    </div>
+
+
+                </div>
+                <div class="layui-col-sm2  layui-col-md2 layui-col-lg2 layui-form-item">
+
+                    <label class="layui-form-label">房价类型</label>
+                    <div class="layui-input-block layui-form ddlMemberType">
+                        <select name="" lay-verify="required" class="layui-input ">
+                            <option value="">请选择</option>
+                            <option value="">门市价</option>
+                            <option value="">乐卡会员</option>
+                            <option value="">亿卡会员</option>
+                            <option value="">中介类</option>
+                            <option value="">协议类</option>
+                            <option value="">团队价</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="layui-col-sm2  layui-col-md2 layui-col-lg2 layui-form-item">
+                    <label class="layui-form-label">房价<em class="font_FF0023">*</em></label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input">
+                    </div>
+                </div>
+
+                <div class=" layui-col-sm2  layui-col-md2 layui-col-lg2 layui-form-item">
+                    <label class="layui-form-label">房号</label>
+                    <div class="layui-input-block roomNum_panel">
+                        <input id="roomNum_0" type="text" class="layui-input roomNum">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="nav_20"></div>
+    <hr class="layui-bg-gray">
+    <div class="nav_20"></div>
+    <div class="layui-row">
+        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">
+            <div class="ctrl_panel">
+
+
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" maxlength="150" placeholder="最多输入150个字符">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_r">
+            <div class="ctrl_panel textarea_panel">
+
+                <div class="layui-input-block">
+                                    <textarea name="desc" placeholder="设置内容显示处详见入住登记（订单信息）页面"
+                                              class="layui-textarea"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav_40"></div>
+    <div class="layui-row flex_row ">
+        <button type="submit" lay-submit="" lay-filter="btn_submit" class="btn_base2 btn_blue">保存
+        </button>
+        <button class="btn_base2 btn_fff_blue">关闭</button>
+
+
+        <!--预订单点击入住后按钮切换为取消入住按钮-->
+        <button class="btn_base2 btn_green">入住</button>
+        <button type="button" id="btn_cancel" class="btn_base2 btn_fff_blue" lay-filter="btn_cancel">
+            取消入住
+        </button>  <!---->
+
+        <span class="span_line"></span>
+        <button type="button" class="btn_base2  btn_blue" onclick="popup(1,'popup_zzdf','转钟点房')">转钟点房</button>
+        <button type="button" class="btn_base2  btn_blue" onclick="popup(1,'popup_zzdf','转全天房')">转全天房</button>
+        <button type="button" class="btn_base2  btn_blue" onclick="popup(1,'popup_hf','换房')">换房</button>
+        <button type="button" class="btn_base2  btn_blue" onclick="popup(1,'popup_wpzl','物品租赁')">物品租赁</button>
+        <button type="button" id="btn_print" lay-filter="btn_print" class="btn_base2  btn_blue">打印</button>
+        <button type="button" id="btn_setting" lay-filter="btn_setting" class="btn_base2 btn_blue">设置</button>
+        <button type="button" id="btn_log" lay-filter="btn_log" class="btn_base2 btn_blue">日志</button>
+    </div>
+    <div class="nav_20"></div>
+</form>
+
+
+<div class="popup_box_1">
+    <!---------搜索会员弹框------------>
+    <div id="popup_mem" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row flex_row_r"><a href="#" class="font_FF653B a_underline">注册新会员</a></div>
+
+            <div class="layui-row memberInfo">
+
+                <div class="layui-col-sm6 layui-col-md6 layui-col-lg6">
+
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">姓名：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblName">李丽丽</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">性别：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblSex">女</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">证件类型：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblIDType">身份证</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">证件号：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label
+                                id="lblIDNumber">3199923445233422</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">地址：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblAddress">杭州市下城区朝晖7小区91幢
+                            1单元231室</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6 layui-col-lg6 memberInfo_right">
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">手机号：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">138456374384</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">会员卡号：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">2736453</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">会员类型：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">乐卡</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">会员积分：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">32344</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">储值余额：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">3234.35</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">制卡酒店：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">杭州西湖文化广场布丁臻选酒店</div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav_20"></div>
+            <div class="layui-row flex_row">
+
+                <button type="button" class="btn_base2 btn_fff_blue">非本人消费</button>
+                <button id="btn_sear_getVal" type="submit" class="btn_base2 btn_blue">本人消费</button>
+                <!--<button type="submit" lay-submit="" lay-filter="btn_search_ok" class="btn_base2 btn_blue">本人消费</button>-->
+            </div>
+            <div class="nav_10"></div>
+        </div>
+    </div>
+
+    <!---------搜索协议/中介/团队  等弹框------------>
+    <div id="popup_other" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="searchList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'roomNum'}">公司编号</th>
+                        <th lay-data="{field:'daima'}">公司名称</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!---------会员信息------------>
+
+    <div id="popup_house" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="houseTypeList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'roomNum'}">房型</th>
+                        <th lay-data="{field:'daima'}">可售</th>
+                        <th lay-data="{field:'roomNum'}">VC</th>
+                        <th lay-data="{field:'daima'}">VD</th>
+                        <th lay-data="{field:'roomNum'}">门市价</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!---------打印------------>
+    <div id="popup_print" class="popup" style="display: none">
+        <iframe class="iframe_print" src="print.html"></iframe>
+
+    </div>
+
+    <!---------日志弹框------------>
+    <div id="popup_log" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="searchList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'yingyeTime'}">时间</th>
+                        <th lay-data="{field:'price'}">项目</th>
+                        <th lay-data="{field:'roomNum'}">旧值</th>
+                        <th lay-data="{field:'daima'}">新值</th>
+                        <th lay-data="{field:'banci'}">操作人</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup_box_2">
+    <!---------取消入住弹框------------>
+    <div id="popup_cancel" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popupCancel">
+            <div class="layui-form-item">
+                <label class="layui-form-label">取消理由</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">行程改变</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+
+    <!---------转钟点房------------>
+    <div id="popup_zzdf" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_zzdf">
+
+
+            <!--全天转钟点房 0--->
+            <input id="txt_zf_val" type="hidden" value="0"/>
+            <!--转全天房 1--->
+            <div class="layui-form-item">
+                <label class="layui-form-label">入住时间</label>
+                <div class="layui-input-block flex_row_l">
+                    <input type="text" class="layui-input date_item" id="zdf_date_1" placeholder="yyyy-MM-dd">
+                    <input type="text" class="layui-input date_item_time zdf_time" id="zdf_time_1" placeholder="HH:mm">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">离店时间</label>
+                <div class="layui-input-block flex_row_l">
+                    <input type="text" class="layui-input date_item" id="zdf_date_2" placeholder="yyyy-MM-dd">
+                    <input type="text" class="layui-input date_item_time zdf_time" id="zdf_time_2" placeholder="HH:mm">
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" id="lbl_zdf_zh_title">入住小时</label>
+                <div class="layui-input-block flex_row_l">
+                    <label id="lbl_zdf_zh_date">1</label>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">房价类型</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction">
+                        <option value="">请选择</option>
+                        <option value="行程改变">行程改变</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">房价</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------换房---------->
+    <div id="popup_hf" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_hf">
+            <div class="layui-form-item">
+                <label class="layui-form-label">房型</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">行程改变</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">免费升级</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">房号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">房价</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">换房理由</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">行程改变</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="nav_20"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+
+
+</div>
+<div class="popup_box_3">
+    <!---------物品租赁------------>
+    <div id="popup_wpzl" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_wpzl">
+            <div class="layui-row popup_wpzl_title">
+
+                <div class=" layui-col-sm7 layui-col-md7 layui-col-lg7 flex_row">
+                    租赁物品
+                </div>
+                <div class=" layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">
+                    数量
+                </div>
+                <div class=" layui-col-sm2 layui-col-md2 layui-col-lg2 flex_row">
+                    操作
+                </div>
+            </div>
+            <div id="wpzl_box">
+                <input type="hidden" id="txtRowIndex" value="0">
+                <div class="layui-row popup_wpzl_list">
+
+                    <div class="layui-col-sm7 layui-col-md7 layui-col-lg7 layui-form ddl_wp" lay-filter="ddl_wp_0">
+                        <select name="" lay-verify="required">
+                            <option value="">名称/可租数量/价格</option>
+                            <option value="行程改变">充电器/10/¥10</option>
+                            <option value="行程改变">网线/10/¥5</option>
+                            <option value="行程改变2">雨伞/21/¥5</option>
+                            <option value="行程改变3">电脑/10/¥35</option>
+                        </select>
+                    </div>
+                    <div class=" layui-col-sm3 layui-col-md3 layui-col-lg3">
+                        <input type="number" class="layui-input" value="1"/>
+                    </div>
+                    <div class=" layui-col-sm2 layui-col-md2 layui-col-lg2">
+                        <!--已有借出数据时显示归还按钮，删除按钮隐藏-->
+                        <!--<button class="btn_base3 btn_orange">归还</button>-->
+                        <button type="button" onclick="delete_row(this)" class="btn_base3 btn_blue">删除</button>
+                    </div>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button id="btn_add" type="button" class="layui-btn  btn_orange">增加</button>
+
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                </div>
+            </div>
+
+
+            <div class="nav_10"></div>
+        </form>
+    </div>
+
+    <!---------设置------------>
+    <div id="popup_setting" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_setting">
+            <div class="">
+                <div class="layui-row flex_row_l">
+                    <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                        <label class="layui-form-label">电话叫醒</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-filter="cbo_phoneJX" lay-skin="switch"
+                                   lay-text="ON|OFF">
+                        </div>
+                    </div>
+                    <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 flex_row phoneJX_child hide">
+                        <input type="text" class="layui-input date_item_time" id="time_setting" style="width: 90px"
+                               placeholder="叫醒时间">
+                    </div>
+                </div>
+                <div class="layui-row flex_row_l phoneJX_child hide">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block flex_row_l" style="width: 330px;">
+                            <input type="radio" name="rdoDate" lay-filter="rdoDate" value="每天" title="每天" checked="">
+                            <input type="radio" name="rdoDate" lay-filter="rdoDate" value="指定日期" title="指定日期">
+                            <input type="text" class="layui-input dtae_item hide" id="dateSetting" placeholder="选择日期"
+                                   style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">免打扰</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">保密</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="nav_20"></div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_20"></div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="../assets/jquery/jquery-2.1.1.min.js"></script>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //引入自定义插件
+    layui.config({
+        base: '../assets/layui/yutons_sug/' //设置自定义插件路径:根据实际路径进行设置
+    });
+    layui.use(['element', 'laydate', 'form', 'layer', 'table', 'yutons_sug'], function () {
+        var element = layui.element, $ = layui.jquery, form = layui.form, table = layui.table, laydate = layui.laydate,
+            yutons_sug = layui.yutons_sug;
+        //日期范围
+        laydate.render({
+            elem: '#dataFw'
+            , range: true
+            , trigger: 'click'
+            ,format: 'yyyy/MM/dd'
+
+        });
+        //时间选择器
+        laydate.render({
+            elem: '#time_setting'
+            ,type: 'time'
+            , trigger: 'click'
+            ,format: 'HH:mm'
+        });
+        //日期选择器
+        lay('.date_item_time').each(function () {
+            var id = $(this).attr("id")
+
+            laydate.render({
+                elem: this
+                , type: 'time'
+                , min: '00:00:00'
+                , max: '23:59:00'
+                , btns: ['clear', 'confirm']
+                , format: 'HH:mm'
+                , trigger: 'click'
+                , done: function (value, date, endDate) {
+                    //   alert(id)
+                    if (id == "zdf_time_1") {
+                        var starTime = $("#zdf_date_1").val() + " " + value
+                        var endTime = $("#zdf_date_2").val() + " " + $("#zdf_time_2").val()
+                        $("#lbl_zdf_zh_date").text(getHours(starTime, endTime))
+                    }
+                    else if (id == "zdf_time_2") {
+                        var starTime = $("#zdf_date_1").val() + " " + $("#zdf_time_1").val()
+                        var endTime = $("#zdf_date_2").val() + " " + value
+                        $("#lbl_zdf_zh_date").text(getHours(starTime, endTime))
+                    }
+                    // ins1.hint(value); //在控件上弹出value值
+                }
+            });
+        });
+        lay('.date_item').each(function () {
+            var id = $(this).attr("id")
+            laydate.render({
+                elem: this
+                , trigger: 'click'
+                , done: function (value, date, endDate) {
+                    //   alert(id)
+                    if ($("#txt_zf_val").val() == "1") {
+                        var days = -1;
+                        if (id == "zdf_date_1") {
+                            var starDate = value
+                            var endDate = $("#zdf_date_2").val()
+                        }
+                        else if (id == "zdf_date_2") {
+                            var starDate = $("#zdf_date_1").val()
+                            var endDate = value
+                        }
+                        days = getDays(starDate, endDate)
+                        if (days >= 0)
+                            $("#lbl_zdf_zh_date").text(days)
+                        else
+                            lay.msg("离店日期不能小于入住日期")
+                    }
+                    // ins1.hint(value); //在控件上弹出value值
+                }
+            });
+        });
+        /*  laydate.render({
+              elem: '#dateSetting'
+              ,trigger: 'click'
+          });*/
+        //日期时间选择器
+
+        //初始化房号号输入提示框
+        sessionStorage.setItem("url", "../json/financialProcessing.json");
+        yutons_sug.render({
+            id: "roomNum_0", //设置容器唯一id
+            height: "167",
+            cols: [
+                [{
+                    field: 'project',
+                    title: '房型'
+                }, {
+                    field: 'roomNum',
+                    title: '房号'
+                }, {
+                    field: 'caozuoyuan',
+                    title: '状态'
+                }, {
+                    field: 'banci',
+                    title: '特征'
+                }]
+            ], //设置表头
+            page: false,
+            type: 'sugTable', //设置输入框提示类型：sug-下拉框，sugTable-下拉表格
+            url: sessionStorage.getItem("url") + "?params=" //设置异步数据接口,url为必填项
+
+
+        });
+        var active = {
+            search: function () { //获取搜索数据
+                $("#btnStatus").val("0")
+            }
+
+        }
+        $('.ddlitem').on('click', function () {
+            var type = $(this).data('type');
+            $(".form_left").addClass("hide")
+            $(".ddlitem").removeClass("active")
+            active[type] ? active[type].call(this) : '';
+            $(this).addClass("active")
+            $(".ddlSelected label").html($(this).html());
+            $(".itemed").addClass("hide")
+
+            $(this).removeClass("active")
+
+        });
+        table.on('row(searchList)', function (obj) {
+
+            console.log(obj.data) //得到当前行数据
+            form.val('submitForm', {
+                //按照用户设置页面数据行双击赋值 方式进行数据赋值
+            });
+        });
+
+        table.on('row(houseTypeList)', function (obj) {
+
+            //console.log(obj.data) //得到当前行数据
+            var id = $("#txtHouseTypeVal").val();//获取当前行div ID
+            //   console.log("id："+id)
+            //   console.log("roomNum："+obj.data.roomNum)
+            $("#" + id + " .ddlHouseType").find("input").val(obj.data.roomNum)
+            // console.log($("#"+id+" .ddlHouseType").html())
+            layer.close(layer.index);
+        });
+        //监听提交
+
+        form.on('submit(btn_submit)', function (data) {
+            layer.alert(JSON.stringify(data.field), {
+                title: '提交'
+            })
+            return false;
+        });
+
+        //搜索赋值
+
+        $("#btn_sear_getVal").on("click",function () {
+            var pId=$("#txtTzr_searchIndex").val();
+            console.log($("#"+pId).find(".IDType").html())
+            $("#"+pId).find(".IDType").next().find("input[type=text]").val($("#lblIDType").text())
+            $("#"+pId).find(".IDType").val($("#lblIDType").text())
+            $("#"+pId).find(".address").val($("#lblAddress").text())
+            $("#"+pId).find(".IDNumber").val($("#lblIDNumber").text())
+            $("#"+pId).find(".sex").val($("#lblSex").text())
+            $("#"+pId).find(".sex").next().find("input[type=text]").val($("#lblIDType").text())
+      //      $(pId).find(".address").val($("#lblName").text())
+         //   lblAddress  lblIDType  lblIDNumber  lblSex  lblName
+            layer.closeAll();
+        })
+        
+        //添加入住人 隐藏按钮
+        $("#btn_hide_tzr").on("click",function () {
+            if($(this).hasClass("btn_hide_click"))
+            {
+                console.log("显示")
+                $("#tzr_info .ctrl_panel").not(':first').removeClass("hide")
+            //    $("#tzr_info .ctrl_panel:not(:first)").addClass("hide")
+
+              //    $("ul.nav3 li").not(':last');
+                $(this).removeClass("btn_hide_click")
+            }
+            else
+            {
+                console.log("隐藏")
+                $("#tzr_info .ctrl_panel").not(':first').addClass("hide")
+               // $("#tzr_info .ctrl_panel:not(:first)").removeClass("hide")
+                $(this).addClass("btn_hide_click")
+            }
+        })
+        /*
+        form.on('submit(btn_search_ok)', function (data) {
+
+            //给表单赋值
+            form.val("submitForm", {
+                "IDType": $("#lblIDType").text()
+                , "sex": $("#lblSex").text()
+                //  ,"birthday":  ""
+                , "IDNumber": $("#lblIDNumber").text()
+                , "address": $("#lblAddress").text()
+//                ,"nationality":  $("#lblAddress").text()
+            });
+            return false;
+        });
+        */
+        //叫醒开关
+        form.on('switch(cbo_phoneJX)', function (data) {
+
+            if (data.elem.checked)
+                $(".phoneJX_child").removeClass("hide")
+            else
+                $(".phoneJX_child").addClass("hide")
+        });
+        form.on('radio(rdoDate)', function (data) {
+
+            if (data.value == "指定日期")
+                $("#dateSetting").removeClass("hide")
+            else
+                $("#dateSetting").addClass("hide")
+        });
+        //新增物品租赁行
+        $('#btn_add').on('click', function () {
+            var $row = $("#wpzl_box").find(".popup_wpzl_list").eq(0).clone();
+            $("#wpzl_box").append($row);
+            var row_id = parseInt($("#txtRowIndex").val()) + 1
+            var rowCount = $("#wpzl_box .popup_wpzl_list").length
+            $("#wpzl_box .popup_wpzl_list").eq(rowCount - 1).attr("id", "list_wp_" + row_id);
+            $("#wpzl_box .popup_wpzl_list").eq(rowCount - 1).find(".ddl_wp").attr("lay-filter", "ddl_wp_" + row_id);
+            //  form.render('select', 'ddl_wp_'+ row_id);//重新加载下拉框
+            //   form.render('select');
+            form.render('select', 'ddl_wp_' + row_id);//重新加载下拉框
+        });
+        //移除物品租赁行
+        window.delete_row = function (e) {
+            var count = $("#wpzl_box .popup_wpzl_list").length
+            if (count > 1)
+                $(e).parent().parent().remove()
+            else
+                layer.msg('初始行不能删除');
+        }
+        //取消弹框
+        $('#btn_cancel').on('click', function () {
+            layer.open({
+                type: 1,
+                content: $('#popup_cancel') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+        //打印弹框
+        $('#btn_print').on('click', function () {
+            layer.open({
+                type: 1,
+                title: "杭州西湖文化广场地铁站店",
+                content: $('#popup_print') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+        //设置弹框
+        $('#btn_setting').on('click', function () {
+            layer.open({
+                type: 1,
+                title: "设置",
+                content: $('#popup_setting') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+        //日志弹框
+        $('#btn_log').on('click', function () {
+            layer.open({
+                type: 1,
+                title: "日志",
+                content: $('#popup_log') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+//打印
+        $('#btn_print_ok').on('click', function () {
+            //   document.body.innerHTML=document.getElementById('popup_print').innerHTML
+            //    window.print();
+
+            //   layer.close(index);
+        });
+        window.popup = function (type, content, title) {
+
+            layer.open({
+                type: type,
+                content: $('#' + content),
+                title: title
+            });
+            if (title == "转全天房") {
+                $(".zdf_time").addClass("hide")
+                // lbl_zdf_zh_date
+                $("#lbl_zdf_zh_title").text("入住天数")
+                $("#txt_zf_val").val("1")
+            }
+            else if (title == "转钟点房") {
+                $("#txt_zf_val").val("0")
+                $(".zdf_time").removeClass("hide")
+                $("#lbl_zdf_zh_title").text("入住小时")
+            }
+
+
+        }
+;
+        window.memberType=function (e) {
+           // if ($.trim($(e).prev().val()) != "") {
+            var prID=$(e).parent().parent().parent();
+            console.log(prID.parent().attr("id"));
+
+
+            $("#txtTzr_searchIndex").val(prID.parent().attr("id"))
+                if (prID.find(".memberType").val() == "会员") {
+                    layer.open({
+                        type: 1,
+                        title: " ",
+                        content: $('#popup_mem') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    });
+                }
+                else {
+                    layer.open({
+                        type: 1,
+                        title: " ",
+                        content: $('#popup_other')
+                    });
+                }
+          //  }
+        }
+
+        //钟点房到时弹框
+       /*
+        layer.open({
+            type: 1,
+            content: "<div style='padding: 10px 20px'>201房爱新觉罗.雍正钟点房时间到</div>",
+            tittle: "钟点房到时",
+            btn: ['再提醒', '已完成']
+            , btnAlign: 'c' //按钮居中
+            , yes: function () {
+                // 再提醒
+                alert('再提醒')
+            }
+            , btn2: function () {
+                layer.closeAll();
+            }
+            , zIndex: layer.zIndex //重点1
+            , success: function (layero) {
+                layer.setTop(layero); //重点2
+            }
+        });
+*/
+        window.checkEndTime = function (startTime, endTime) {
+            //   var startTime = $("#startTime").val(); //  var endTime = $("#endTime").val();
+            var start = new Date(startTime.replace("-", "/").replace("-", "/"));
+
+            var end = new Date(endTime.replace("-", "/").replace("-", "/"));
+            if (end < start) {
+                return false;
+            }
+            return true;
+        }
+        window.getDays = function (startDate, endDate) {
+            var start = new Date(startDate.replace("-", "/").replace("-", "/"));
+            var end = new Date(endDate.replace("-", "/").replace("-", "/"));
+            return Math.floor((end - start) / (24 * 3600 * 1000))
+            //   alert(Math.floor((ed-st)/(24*3600*1000)))
+        }
+        window.getHours = function (startTime, endTime) {
+            var start = new Date(startTime.replace("-", "/").replace("-", "/"));
+            var end = new Date(endTime.replace("-", "/").replace("-", "/"));
+            var leave1 = (end - start) % (24 * 3600 * 1000) //计算天数后剩余的毫秒数
+            var hours = Math.floor(leave1 / (3600 * 1000))
+            return hours
+        }
+        window.houseType = function (e) {
+            $("#txtHouseTypeVal").val($(e).parents().parents().attr("id"))
+            //  console.log("rowIndex："+$(this).parents().parents().attr("id"));
+            layer.open({
+                type: 1,
+                title: "房型",
+                content: $('#popup_house')
+            });
+        }
+        //移除同住人行
+        window.tzr_delete_row = function (e) {
+            var count = $("#tzr_info .ctrl_panel").length
+            alert(count)
+            if (count > 1)
+            {
+                $(e).parent().remove()
+                if(count == 2){
+                    $("#btn_hide_tzr").addClass("hide")
+                }
+            }
+            else
+                layer.msg('初始行不能删除');
+        }
+        //新增同住人
+        window.tzr_add_row = function (e) {
+            var $row = $("#tzr_info").find(".ctrl_panel").eq(0).clone();
+            $("#tzr_info").append($row);
+            var row_id = parseInt($("#txtTzr_rowIndex").val()) + 1
+            console.log("row_id：" + row_id)
+            $("#txtTzr_rowIndex").val(row_id);
+            console.log("txtRowIndex：" + $("#txtTzr_rowIndex").val())
+            $("#tzr_info").find("input.layui-input").val('');
+            var rowCount = $("#tzr_info .ctrl_panel").length
+            if(rowCount>1)
+                $("#btn_hide_tzr").removeClass("hide")
+            console.log("rowCount：" + rowCount)
+            $("#tzr_info .ctrl_panel").eq(rowCount-1).find(".ddl_MemberType").attr("lay-filter", "ddl_MemberType_" + row_id);
+            $("#tzr_info .ctrl_panel").eq(rowCount-1).find(".ddl_sex").attr("lay-filter", "ddl_sex_" + row_id);
+            $("#tzr_info .ctrl_panel").eq(rowCount-1).find(".ddl_IDType").attr("lay-filter", "ddl_IDType_" + row_id);
+            $("#tzr_info .ctrl_panel").eq(rowCount-1).attr("id", "tzr_row_" + row_id);
+            form.render('select', 'ddl_sex_' + row_id);
+            form.render('select', 'ddl_IDType_' + row_id);
+           form.render('select', 'ddl_MemberType_' + row_id);
+        }
+    });
+
+</script>
+
+</body>
+</html>

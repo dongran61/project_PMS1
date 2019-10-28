@@ -1,0 +1,42 @@
+{
+  "code": 0
+,"msg": ""
+,"count": 3000000
+,"data": [{
+  "id": "10001"
+,"name": "杜甫"
+,"jyName": "徐三"
+,"jyRoomNumber":102.00
+,"qty": 2
+,"roomStatus": 10
+,"phone": "15384080002"
+,"department": "前台"
+},{
+  "id": "10002"
+,"name": "李白"
+,"jyName": "温庭钧"
+,"jyRoomNumber":112.00
+,"qty": 5
+,"roomStatus": 10
+,"phone": "13284082100"
+,"department": "客房"
+},{
+  "id": "10003"
+,"name": "王安石"
+,"jyName": "杜甫"
+,"jyRoomNumber":102.00
+,"qty": 2
+,"roomStatus": 10
+,"phone": "17284023362"
+,"department": "客房"
+},{
+  "account": "10004"
+,"name": "杜甫"
+,"jyName": "李丽丽"
+,"jyRoomNumber":99.00
+,"qty": 1
+,"roomStatus": 10
+,"phone": "15350689563"
+,"department": "前台"
+}
+]}

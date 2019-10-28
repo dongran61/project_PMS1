@@ -1,0 +1,33 @@
+.page_panel{position: relative;height: calc(100% - 25px);padding-bottom: 0;}
+
+.btn_base{padding: 4px 14px;border:1px solid rgba(201,206,210,1); color: #fff;border-radius:3px;}
+.btn_base1{padding: 2px 16px 2px 4px; margin:0 15px 0 20px;border-radius:3px;color: #fff;text-align: center;}
+.btn_base .layui-icon{margin-left: 5px;}
+.btn_search_poup{position: absolute;
+    margin-top:6px;z-index: 1111}
+.layui-tab-title li:first-child{margin-left: 140px;}
+
+.layui-tab{height: calc(100% - 30px); margin-bottom: 0}
+.layui-tab-content{height: calc(100% - 40px);padding-top: 30px;}
+
+.layui-tab-content iframe{height:calc(100% - 20px);}
+.layui-tab-item{height:calc(100% - 10px);}
+.table_panel{height:calc(50% - 20px); }
+/*.layui-tab-item.layui-show{height:calc(100% - 20px);}*/
+.table_total_row{background-color: #252834;height: 50px;border-top-left-radius: 8px;border-top-right-radius: 8px;}
+.tab_border_radius{height:calc(100% - 150px) !important;}
+
+.icon_jryd{width: 30px; height: 30px;  margin-left: 10px;background-position: -107px -575px;}
+.icon_download{width: 22px; height: 20px;  margin-left: 10px;background-position: -140px -582px;}
+.icon_jrqx{width: 30px; height: 30px;  margin-left: 10px;background-position: -107px -603px;}
+.tab_border_radius.layui-table th:first-child {
+    border-top-left-radius: 0px;
+}
+.tab_border_radius.layui-table th:last-child {
+    border-top-right-radius: 0px;
+}
+
+
+.layui-form-item {
+    margin-bottom: 5px;
+}

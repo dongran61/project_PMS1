@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>财务处理</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/order.css">
+</head>
+<body>
+
+<div class="page_panel2">
+    <div class="layui-row">
+        <div class="fp_panel_left">
+            <div class="layui-row layui-form flex_row_l fp_search_panel">
+                <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 flex_row_l">
+
+                    <!--<label class="layui-form-label">日期范围</label>-->
+                    <!--<div class="layui-input-block">-->
+                    <!--<input type="text" class="layui-input" id="date" placeholder=" - ">-->
+                    <!--</div>-->
+                    <div class="layui-form-item fp_dateFz">
+                        <label class="layui-form-label">日期范围</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" id="date" placeholder="开始日期 - 截止日期">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm2 layui-col-md2 layui-col-lg2 flex_row_l">
+                    <select name="" lay-verify="required" class="layui-input">
+                        <option value="">全部</option>
+                        <option value="">现金收款</option>
+                        <option value="">房费</option>
+                        <option value="">会议费</option>
+                    </select>
+
+                </div>
+                <div class="layui-col-sm2 layui-col-md2 layui-col-lg2    flex_row">
+
+                    <button type="button" class="btn_base2 btn_blue"> 查询</button>
+                </div>
+                <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row_r">
+                    <input type="radio" name="sex" value="0" title="未结账" checked="">
+                    <input type="radio" name="sex" value="1" title="已结账">
+                </div>
+
+            </div>
+            <div class="layui-row tab_border_radius">
+
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="order">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type: 'checkbox'}">房号</th>
+                        <th lay-data="{field:'roomNum',sort: true}">房号</th>
+                        <th lay-data="{field:'daima',sort: true}">代码</th>
+                        <th lay-data="{field:'project',sort: true}">营业项目</th>
+                        <th lay-data="{field:'price',sort: true, templet: '#statusTpl'}">金额</th>
+                        <th lay-data="{field:'yingyeTime',sort: true}">营业时间</th>
+                        <th lay-data="{field:'yewuTime',sort: true}">业务时间</th>
+                        <th lay-data="{field:'caozuoyuan',style:'color:#858DA2'}">操作员</th>
+                        <th lay-data="{field:'banci'}">班次</th>
+                        <th lay-data="{field:'biaoji',style:'color:#858DA2'}">账务标记</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="layui-row table_total_panel">
+                <div class="table_total flex_row">
+                    <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">记录：1</div>
+                    <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">消费：<em class="font_FF653B">300</em>
+                    </div>
+                    <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">付款：<em class="font_FF653B">-200</em>
+                    </div>
+                    <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">余额：<em class="font_FF653B">-100</em>
+                    </div>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+            <div class="layui-row opbtn_panel">
+                <button class="btn_base2 btn_blue">保存</button>
+                <button class="btn_base2 btn_fff_blue">关闭</button>
+                <button class="btn_base2 btn_green">入住</button>
+                <button class="btn_base2 btn_fff_blue">取消</button>
+                <span class="span_line"></span>
+                <button class="btn_base2 btn_blue" onclick="popup(1,'popup_print','打印')">打印</button>
+                <button class="btn_base2 btn_blue" onclick="popup(1,'popup_setting','设置')">设置</button>
+                <button class="btn_base2 btn_blue" onclick="popup(1,'popup_log','日志')">日志</button>
+                <button class="btn_base2 btn_blue">复制预订</button>
+            </div>
+        </div>
+        <div class="fp_btn_panel">
+            <p>
+                <button type="button" onclick="popup(1,'popup_smzf','扫码支付')" class="btn_base ">扫码支付</button>
+                <button class="btn_base" onclick="popup(1,'popup_cz','冲账')">冲账</button>
+            </p>
+            <p>
+                <button type="button" onclick="popup(1,'popup_yfk','预付款')" class="btn_base">预付款</button>
+                <button class="btn_base" onclick="popup(1,'popup_tz','调整')">调整</button>
+            </p>
+            <p>
+                <button class="btn_base" onclick="popup(1,'popup_rz','入账')">入账</button>
+                <button class="btn_base" onclick="popup(1,'popup_fz','分账')">分账</button>
+            </p>
+            <p>
+                <button class="btn_base" onclick="popup(1,'popup_jz1','结账')">结账</button>
+                <!--<button class="btn_base" onclick="popup(1,'popup_jz2','结账')">结账</button>-->
+                <button class="btn_base" onclick="popup(1,'popup_zz','转账')">转账</button>
+            </p>
+            <p>
+                <button class="btn_base" onclick="popup(1,'popup_zxjz','撤销结账')">撤销结账</button>
+                <button class="btn_base" onclick="popup(1,'popup_fpgl','发票管理')">发票管理</button>
+            </p>
+        </div>
+    </div>
+    <div class="nav_40"></div>
+
+</div>
+<div class="popup_box_1">
+    <!---------扫码支付------------>
+    <div id="popup_smzf" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm3 layui-col-md3 layui-col-lg3">
+                    <label class="layui-form-label">房号：</label>
+                    <div class="layui-input-block flex_row_l">302</div>
+                </div>
+                <div class="layui-form-item layui-col-sm3 layui-col-md3 layui-col-lg3">
+                    <label class="layui-form-label">姓名：</label>
+                    <div class="layui-input-block flex_row_l">丽丽</div>
+                </div>
+
+            </div>
+            <div class="layui-row flex_row_l layui-row_item">
+                <label>付款方式：</label>
+                <select name="dataJurisdiction" lay-verify="required">
+                    <option value="">请选择</option>
+                    <option value="行程改变">行程改变</option>
+                    <option value="行程改变2">行程改变2</option>
+                    <option value="行程改变3">行程改变3</option>
+                </select>
+                <label class="layui-form-label">授权码：</label>
+                <input type="text" name="" value="丽丽" class="layui-input lg">
+                <label class="layui-form-label">金额：</label>
+                <input type="text" name="" value="233.00" class="layui-input">
+                <button type="button" class="btn_base2 btn_orange">入账</button>
+            </div>
+            <div class="nav_10"></div>
+            <div class="layui-row layui-row_item flex_row_r">
+                <label class="layui-form-label">退款金额：</label>
+                <input type="text" name="" value="-233.33" class="layui-input">
+                <button type="button" class="btn_base2 btn_orange">退款</button>
+
+            </div>
+            <div class="nav_10"></div>
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="searchList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'roomNum'}">代码</th>
+                        <th lay-data="{field:'project'}">营业项目</th>
+                        <th lay-data="{field:'price'}">金额</th>
+                        <th lay-data="{field:'yingyeTime'}">营业时间</th>
+                        <th lay-data="{field:'yewuTime'}">业务时间</th>
+                        <th lay-data="{field:'caozuoyuan'}">操作员</th>
+                        <th lay-data="{field:'banci'}">班次</th>
+                        <th lay-data="{field:'daima'}">账务标记</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-----------发票管理弹框---------->
+    <div id="popup_fpgl" class="popup" style="display: none">
+        <div class="layui-row orderInfo">
+            <table class=" layui-table"
+                   lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                   lay-filter="searchList">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'roomNum',style:'color:#858DA2'}">结账单号</th>
+                    <th lay-data="{field:'price',style:'color:#858DA2'}">消费金额</th>
+                    <th lay-data="{field:'yingyeTime',style:'color:#858DA2'}">开票时间</th>
+                    <th lay-data="{field:'yewuTime',style:'color:#858DA2'}">业务时间</th>
+                    <th lay-data="{field:'caozuoyuan'}">开票人</th>
+                    <th lay-data="{field:'banci'}">发票抬头</th>
+                    <th lay-data="{field:'daima'}">公司税号</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="nav_20"></div>
+        <form class="layui-form" action="" lay-filter="popup_rz">
+
+            <div class="layui-row">
+                <label class="layui-form-label">发票抬头</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+
+            <div class="layui-row">
+                <label class="layui-form-label">公司税号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------打印弹框---------->
+    <div id="popup_print" class="popup" style="display: none">
+        <iframe class="iframe_printlf" src="print_lf.html" style="height: 400px"></iframe>
+
+    </div>
+    <!---------日志弹框------------>
+    <div id="popup_log" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="searchList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'yingyeTime'}">时间</th>
+                        <th lay-data="{field:'price'}">项目</th>
+                        <th lay-data="{field:'roomNum'}">旧值</th>
+                        <th lay-data="{field:'daima'}">新值</th>
+                        <th lay-data="{field:'banci'}">操作人</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup_box_2">
+    <!-----------预付款弹框---------->
+    <div id="popup_yfk" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_yfk">
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款方式</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">现金</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款人</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">打印</label>
+                <div class="layui-input-block">
+                    <input type="number" class="layui-input" value="1"/>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消
+                    </button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------入账弹框---------->
+    <div id="popup_rz" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_rz">
+            <div class="layui-form-item">
+                <label class="layui-form-label">营业项目</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">现金</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款人</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value=""/>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------结账弹框1---------->
+    <div id="popup_jz1" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_jz">
+            <div id="jz_popup_1">
+                <div class="flex_col_l" style="margin-left:60px">
+                    <input type="radio" name="jz" value="加收全天房费" title="加收全天房费" checked="">
+                    <input type="radio" name="jz" value="加收半天房费" title="加收半天房费" checked="">
+                    <input type="radio" name="jz" value="加收终点房费" title="加收终点房费" checked="">
+                    <input type="radio" name="jz" value="加收全天房费" title="加收全天房费" checked="">
+                    <input type="radio" name="jz" value="不加收" title="不加收" checked="">
+                </div>
+            </div>
+            <div class="nav_20"></div>
+            <div class="layui-form-item flex_row">
+                <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary">取消</button>
+                <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------结账弹框2---------->
+    <div id="popup_jz2" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_jz">
+            <div id="jz_popup_2">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">收退款</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" value="-233.00"/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">付款人</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" value="莉莉娅"/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"></label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="" lay-skin="primary" title="开发票" checked="">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">结账类型</label>
+                    <div class="layui-input-block">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="">现金</option>
+                            <option value="">汇款</option>
+                            <option value="">信用卡</option>
+                            <option value="">储值卡</option>
+                            <option value="">挂S帐</option>
+                            <option value="">挂AR帐</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发票抬头</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" value=""/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">公司税号</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" value=""/>
+                    </div>
+                </div>
+                <div class="nav_30"></div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------撤销结账---------->
+    <div id="popup_zxjz" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_jz">
+            <div class="layui-form-item">
+                <label class="layui-form-label">结帐单号</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="1322133" selected>1322133</option>
+                        <option value="1322134">1322134</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">营业项目</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="莉莉娅"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">时间</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="cxhzTime" placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">操作员</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="李丽丽"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">班别</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="早班" selected>早班</option>
+                        <option value="中班">中班</option>
+                        <option value="晚班">晚班</option>
+                        <option value="夜班">夜班</option>
+                    </select>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+
+    <!-----------冲账弹框---------->
+    <div id="popup_cz" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_cz">
+            <div class="layui-form-item">
+                <label class="layui-form-label">营业项目</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="-210.00"/>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">理由</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">现金</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+
+                    <textarea type="text" placeholder="请输入"  class="layui-textarea">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenean euismod bibendum laoreet. Proin gravida dolor</textarea>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------调整弹框---------->
+    <div id="popup_tz" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_tz">
+            <div class="layui-form-item">
+                <label class="layui-form-label">营业项目</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="-210.00"/>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">理由</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">现金</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+
+                    <textarea type="text" placeholder="请输入"  class="layui-textarea">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenean euismod bibendum laoreet. Proin gravida dolor</textarea>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------分账弹框---------->
+    <div id="popup_fz" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_fz">
+            <div class="layui-form-item">
+                <label class="layui-form-label">项目</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">拆分金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <!-----------转账弹框---------->
+    <div id="popup_zz" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_zz">
+       <!--     <div class="layui-form-item">
+                <label class="layui-form-label">营业项目</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <div class="layui-input-block flex_row_l">
+                    <input type="radio" name="type" class="layui-input" value="在住" title="在住"/>
+                    <input type="radio" name="type" class="layui-input" value="S账户" title="S账户"/>
+                    <input type="radio" name="type" class="layui-input" value="消费账户" title="消费账户"/>
+                </div>
+            </div>
+            <div class="nav_10"></div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">转至</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-search lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="830002">830002</option>
+                        <option value="83103">83103</option>
+                        <option value="83112">83112</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="nav_20"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+
+</div>
+<div class="popup_box_3">
+    <!---------设置------------>
+    <div id="popup_setting" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_setting">
+            <div class="">
+                <div class="layui-row flex_row_l">
+                    <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                        <label class="layui-form-label">电话叫醒</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-filter="cbo_phoneJX" lay-skin="switch" lay-text="ON|OFF">
+                        </div>
+                    </div>
+                    <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 flex_row phoneJX_child hide">
+                        <input type="text" class="layui-input" id="time_setting" style="width: 90px" placeholder="叫醒时间">
+                    </div>
+                </div>
+                <div class="layui-row flex_row_l phoneJX_child hide">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block flex_row_l" style="width: 330px;">
+                            <input type="radio" name="rdoDate" lay-filter="rdoDate" value="每天" title="每天" checked="">
+                            <input type="radio" name="rdoDate" lay-filter="rdoDate" value="指定日期" title="指定日期">
+                            <input type="text" class="layui-input hide" id="dateSetting" placeholder="选择日期" style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">免打扰</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">保密</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="nav_20"></div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_20"></div>
+        </form>
+    </div>
+</div>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>  //初始赋值
+layui.use(['element', 'laydate', 'form', 'layer', 'table'], function () {
+    var table = layui.table, $ = layui.jquery, laydate = layui.laydate, form = layui.form;
+    //日期范围
+    laydate.render({
+        elem: '#date'
+        , range: true
+        , trigger: 'click'
+        ,format: 'yyyy/MM/dd'
+    });
+    //日期时间选择器
+    laydate.render({
+        elem: '#cxhzTime'
+        ,type: 'datetime'
+        , trigger: 'click'
+    });
+    $(".btn_close").on("click", function () {
+        layer.closeAll();
+    })
+    //时间选择器
+    laydate.render({
+        elem: '#time_setting'
+        ,type: 'time'
+        , trigger: 'click'
+        ,format: 'HH:mm'
+    });
+    //日期选择器
+    laydate.render({
+        elem: '#dateSetting'
+        ,trigger: 'click'
+        ,format: 'yyyy/MM/dd'
+    });
+    //叫醒开关
+    form.on('switch(cbo_phoneJX)', function(data){
+
+        if(data.elem.checked)
+            $(".phoneJX_child").removeClass("hide")
+        else
+            $(".phoneJX_child").addClass("hide")
+    });
+    form.on('radio(rdoDate)', function(data){
+
+        if(data.value=="指定日期")
+            $("#dateSetting").removeClass("hide")
+        else
+            $("#dateSetting").addClass("hide")
+    });
+    window.popup = function (type, content, title) {
+        layer.open({
+            type: type,
+            content: $('#' + content),
+            title: title
+        });
+    }
+
+});
+
+</script>
+</body>
+</html>

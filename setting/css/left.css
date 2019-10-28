@@ -1,0 +1,39 @@
+
+.layui-nav .banci{margin-right: 30px}
+.layui-nav-item>a .icon{width: 22px; height: 22px;   margin-right: 15px;}
+.layui-nav-item>a .icon.yy{background-position:-78px -386px;}
+.layui-nav-item>a .icon.jd{background-position:-33px -386px;}
+.layui-nav-item>a .icon.xt{background-position:-122px -386px;}
+.layui-nav-item>a .icon.zh{background-position:-78px -386px;}
+.layui-nav-item>a:hover .icon.yy,.layui-nav-itemed>a .icon.yy{background-position:-40px -502px;}
+.layui-nav-item>a:hover .icon.jd,.layui-nav-itemed>a .icon.jd{background-position:-118px -502px;}
+.layui-nav-item>a:hover .icon.xt,.layui-nav-itemed>a .icon.xt{background-position:-207px -502px;}
+.layui-nav-item>a:hover .icon.zh,.layui-nav-itemed>a .icon.zh{background-position:-40px -502px;}
+.layui-nav-tree .layui-nav-item>a{position: relative; height: 51px; line-height: 51px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+
+.layui-nav-child{margin-left: 30px !important;width:170px !important; min-width: 100px !important;}
+.shop_name .layui-nav-child{min-width:170px !important; width: auto !important;}
+ul.layui-nav-child{ border-left:none !important;margin-left:0px !important;}
+.page_panel{padding: 15px;}
+.nav_2{margin: 0; border-left: 1px dotted #505158 !important;padding: 0 !important;position: relative}
+.nav_2>span.font{margin-left: 10px !important; }
+.nav_2>span.layui-icon{margin: 0 0 0 0px; position: absolute;
+    left:-5px;}
+.nav_2.show{color: #FF6D2D !important;background-color: #1C1F27}
+
+.ul_nav_3{ border-left: 1px dotted #505158 !important;}
+.nav_2 span.line{width: 18px; display: inline-block; height: 6px; border-top: 1px dotted #505158 ;padding-left: 0px }
+.nav_2.show span.line{border: none;}
+.ul_nav_3 li .nav_3{padding-left: 45px !important;width: 100%}
+.dl_nav_2{background-color:#1C1F27; padding: 0 }
+.nav_2:hover,.nav_3:hover{background-color: #303542 !important; color: #8EA1B5 !important;}
+
+
+/**/
+
+.layui-side-scroll{background-color:#20242E }
+.layui-nav-tree{overflow: hidden}
+.layui-nav-bar{display: none}
+.layui-nav-tree .layui-nav-item{width: 98%}
+
+

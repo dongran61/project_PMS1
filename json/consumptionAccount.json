@@ -1,0 +1,71 @@
+{
+  "code": 0
+,"msg": ""
+,"count": 3000000
+,"data": [{
+  "id": "10001"
+,"accountName": "杜甫"
+,"roomType": "雅放"
+,"roomNumber":"0001"
+,"status":1
+,"permanentStatus":"是"
+,"starDate": "2019-08-01"
+,"endDate": "2019-08-04"
+,"passengerSourcesType":"客源类型"
+,"balance":"0.00"
+,"credit":"0.00"
+,"desc": "描述描述"
+},{
+  "id": "10002"
+,"accountName": "杜牧"
+,"roomType": "雅放2"
+,"roomNumber":"0002"
+,"status":1
+,"permanentStatus":"是"
+,"starDate": "2019-08-11"
+,"endDate": "2019-08-14"
+,"passengerSourcesType":"客源类型"
+,"balance":"0.00"
+,"credit":"0.00"
+,"desc": "描述描述"
+},{
+  "id": "10004"
+,"accountName": "刘禹锡"
+,"roomType": "雅放4"
+,"roomNumber":"0004"
+,"status":1
+,"permanentStatus":"否"
+,"starDate": "2019-08-21"
+,"endDate": "2019-08-24"
+,"passengerSourcesType":"客源类型"
+,"balance":"0.00"
+,"credit":"0.00"
+,"desc": "描述描述"
+},{
+  "id": "10003"
+,"accountName": "温庭筠"
+,"roomType": "雅放3"
+,"roomNumber":"0003"
+,"status":1
+,"permanentStatus":"否"
+,"starDate": "2019-08-07"
+,"endDate": "2019-08-14"
+,"passengerSourcesType":"客源类型"
+,"balance":"0.00"
+,"credit":"0.00"
+,"desc": "描述描述"
+},{
+  "id": "10005"
+,"accountName": "温庭筠"
+,"roomType": "雅放5"
+,"roomNumber":"0005"
+,"status":1
+,"permanentStatus":"是"
+,"starDate": "2019-08-10"
+,"endDate": "2019-08-21"
+,"passengerSourcesType":"客源类型"
+,"balance":"0.00"
+,"credit":"0.00"
+,"desc": "描述描述"
+}
+]}

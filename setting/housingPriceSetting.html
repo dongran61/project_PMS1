@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>房价码设置</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">房价设置</li>
+            <li>阶段调整</li>
+        </ul>
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 ">
+            <div class="layui-row operation">
+                <div class="ddl_panel">
+                    <div class="ddlSelected" data-type="ddl">
+                        <label><i class="layui-icon layui-icon-log"></i>
+                            终点房价设置</label>
+                        <span>
+                        <i class="layui-icon layui-icon-down"></i></span>
+                    </div>
+                    <ul class="itemed layui-anim layui-anim-upbit  hide">
+                        <li class="ddlitem " data-type="ddlAdd">
+                            <i class="layui-icon layui-icon-add-1"></i>新增房价码
+                        </li>
+                        <li class="ddlitem" data-type="ddlEdit">
+                            <i class="layui-icon layui-icon-edit"></i>修改价码
+                        </li>
+                        <li class="ddlitem" data-type="ddlfjSetting">
+                            <i class="layui-icon layui-icon-align-center" ></i>房价设置
+                        </li>
+                        <li class="ddlitem active" data-type="ddlzdSetting">
+                            <i class="layui-icon layui-icon-log"></i>终点房价设置
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+            <div class="layui-row setting_left">
+                <!--新增/修改房价码-->
+                <form id="from_fjm" class="layui-form form_left hide" action="" lay-filter="setting">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">房价码</label>
+                        <div class="layui-input-block">
+                            <input type="hidden" class="getVal" />
+                            <select multiple="multiple" lay-filter="fjm_ddl">
+                                <option value="">请选择</option>
+                                <option value="0" selected>房价码1</option>
+                                <option value="1">房价码2</option>
+                                <option value="2">房价码3</option>
+                                <option value="3" selected>房价码4</option>
+                                <option value="4">房价码5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">类别</label>
+                        <div class="layui-input-block">
+                            <select name="department" lay-verify="required">
+                                <option value="">请选择所属部门</option>
+                                <option value="前台(系统预设)">前台(系统预设)</option>
+                                <option value="客房">客房</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入房型"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">市场</label>
+                        <div class="layui-input-block">
+                            <select name="department" lay-verify="required">
+                                <option value="">请选择所属部门</option>
+                                <option value="前台(系统预设)">前台(系统预设)</option>
+                                <option value="客房">客房</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input date_item"  name="starDate"
+                                   placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">截止时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input date_item" name="endDate" placeholder="请选择">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="rdo_ok" value="0" lay-skin="primary" title="私有"
+                                   checked>
+                            <input type="radio" name="rdo_ok" value="1" lay-skin="primary" title="停用">
+                        </div>
+                    </div>
+                    <div id="record" class="layui-row hide">
+                        <table class="table_edit">
+                            <tr>
+                                <td>创建</td>
+                                <td>admin</td>
+                                <td>2019-01-04 12:50</td>
+                            </tr>
+                            <tr>
+                                <td>修改</td>
+                                <td>admin</td>
+                                <td>2019-08-04 02:50</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn layui-btn-primary btn_clear">清空</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                        </div>
+                    </div>
+                </form>
+
+                <!--钟点房设置房价-->
+                <form id="from_fj" class="layui-form form_left hide" action="" lay-filter="setting_fj">
+                    sss
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">房价码</label>
+                        <div class="layui-input-block">
+                            <input type="hidden" class="getVal"/>
+                            <select multiple="multiple" lay-filter="zdf_ddl">
+                                <option value="">请选择</option>
+                                <option value="0" >房价码1</option>
+                                <option value="1">房价码2</option>
+                                <option value="2">房价码3</option>
+                                <option value="3">房价码4</option>
+                                <option value="4">房价码5</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">起步时长</label>
+                        <div class="layui-input-block">
+                            <input name="" type="text" required
+                                   lay-verify="required" placeholder="请输入房型"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">起步价</label>
+                        <div class="layui-input-block">
+                            <input name="" type="text" required
+                                   lay-verify="required" placeholder="请输入房号"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">单位时长</label>
+                        <div class="layui-input-block">
+                            <input name="" type="text" required
+                                   lay-verify="required" placeholder="请输入房号"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">最大时长</label>
+                        <div class="layui-input-block">
+                            <input name="" type="text" required
+                                   lay-verify="required" placeholder="请输入房号"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">开放时间段</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" id="datafw" placeholder="开始 - 结束">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                            <input type="radio" id="" name="" value="0" lay-skin="primary" title="停用"
+                                   checked>
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn layui-btn-primary btn_clear">清空</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                        </div>
+                    </div>
+                </form>
+
+                <!--终点房设置-->
+                <form id="from_zdf" class="layui-form form_left " action="" lay-filter="setting_zdf">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">房价码</label>
+                        <div class="layui-input-block">
+                            <input type="hidden" class="getVal" />
+                            <select multiple="multiple" lay-filter="fj_ddl">
+                                <option value="">请选择</option>
+                                <option value="0" >房价码1</option>
+                                <option value="1">房价码2</option>
+                                <option value="2">房价码3</option>
+                                <option value="3" >房价码4</option>
+                                <option value="4">房价码5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input date_item"  name="starDate"
+                                   placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">截止时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input date_item" name="endDate" placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">房型</label>
+                        <div class="layui-input-block">
+                            <select name="department" lay-verify="required">
+                                <option value="">请选择所属部门</option>
+                                <option value="前台(系统预设)">前台(系统预设)</option>
+                                <option value="客房">客房</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-form-label">
+
+                            <input type="checkbox" name="week[1]" lay-skin="primary" title="星期一" checked=""></div>
+                        <div class="layui-input-block flex_row_l">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入价格"
+                                   autocomplete="off" class="layui-input">
+                            <span class="icon icon_copy"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-form-label">
+                            <input type="checkbox" name="week[2]" lay-skin="primary" title="星期二" checked=""></div>
+                        <div class="layui-input-block flex_row_l">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入价格"
+                                   autocomplete="off" class="layui-input">
+                            <span class="icon icon_copy"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-form-label">
+                            <input type="checkbox" name="week[2]" lay-skin="primary" title="星期三"></div>
+                        <div class="layui-input-block flex_row_l">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入价格"
+                                   autocomplete="off" class="layui-input">
+                            <span class="icon icon_copy"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-form-label">
+                            <input type="checkbox" name="week[4]" lay-skin="primary" title="星期四" ></div>
+                        <div class="layui-input-block flex_row_l">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入价格"
+                                   autocomplete="off" class="layui-input">
+                            <span class="icon icon_copy"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-form-label">
+                            <input type="checkbox" name="week[5]" lay-skin="primary" title="星期五"></div>
+                        <div class="layui-input-block flex_row_l">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入价格"
+                                   autocomplete="off" class="layui-input">
+                            <span class="icon icon_copy"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-form-label">
+                            <input type="checkbox" name="week[6]" lay-skin="primary" title="星期六" ></div>
+                        <div class="layui-input-block flex_row_l">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入价格"
+                                   autocomplete="off" class="layui-input">
+                            <span class="icon icon_copy"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-form-label">
+                            <input type="checkbox" name="week[7]" lay-skin="primary" title="星期日"></div>
+                        <div class="layui-input-block flex_row_l">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入价格"
+                                   autocomplete="off" class="layui-input">
+                            <span class="icon icon_copy"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn layui-btn-primary btn_clear">清空</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 ">
+            <div class="setting_right ">
+                <div id="div_ceshi"></div>
+                <div class="layui-row operation layui-form">
+                    <div class="layui-form-item layui-col-sm2">
+
+                        <select name="role" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="协议价">协议价</option>
+                            <option value="中介价">中介价</option>
+                            <option value="团队价">团队价</option>
+                            <option value="终点价">终点价</option>
+                            <option value="长包价">长包价</option>
+                        </select>
+
+                    </div>
+                </div>
+              <!--  <table class="layui-table table_fjm" lay-data="{ url:'../json/consumptionAccount.json', page:false}"
+                       lay-filter="account">
+                    <thead>
+                    <tr>
+                        <th class="th_1 th_fjm" lay-data="{field:'accountName',style:'font-weight:500;'}"></th>
+                        <th class="th_2 th_fjm" lay-data="{field:'starDate'}">门市价</th>
+                        <th class="th_3 th_fjm" lay-data="{field:'endDate'}">协议价</th>
+                        <th class="th_4 th_fjm" lay-data="{field:'passengerSourcesType'}">中介价</th>
+                        <th class="th_5 th_fjm" lay-data="{field:'roomType'}">团队价</th>
+                        <th class="th_6 th_fjm" lay-data="{field:'roomNumber'}">终点价</th>
+                        <th class="th_7 th_fjm" lay-data="{field:'status'}">长包价</th>
+                        <th class="th_8 th_fjm" lay-data="{field:'permanentStatus'}">会员金卡价</th>
+                    </tr>
+                    </thead>
+                </table>-->
+
+                <table id="tab_fjm" class="layui-table  table_hps" lay-filter="account">
+                    <thead>
+                    <tr>
+                        <th class="th_2 th_fjm" lay-data="{field:'starDate',width:140}">门市价<input type="hidden" value="1"/></th>
+                        <th class="th_3 th_fjm" lay-data="{field:'endDate',width:140}">协议价<input type="hidden" value="2"/></th>
+                        <th class="th_4 th_fjm" lay-data="{field:'passengerSourcesType',width:140}">中介价<input type="hidden" value="3"/></th>
+                        <th class="th_5 th_fjm" lay-data="{field:'roomType',width:140}">团队价<input type="hidden" value="4"/></th>
+                        <th class="th_6 th_fjm" lay-data="{field:'roomNumber',width:140}">终点价<input type="hidden" value="5"/></th>
+                        <th class="th_7 th_fjm" lay-data="{field:'status',width:140}">长包价</th>
+                        <th class="th_8 th_fjm" lay-data="{field:'permanentStatus',width:140}">会员金卡价</th>
+                        <th class="th_9 th_fjm" lay-data="{field:'status2',width:140}">长包价1</th>
+                        <th class="th_10 th_fjm" lay-data="{field:'status3',width:140}">长包价2</th>
+                        <th class="th_11 th_fjm" lay-data="{field:'status4',width:140}">长包价3</th>
+                        <th class="th_12 th_fjm" lay-data="{field:'status5',width:140}">长包价4</th>
+                        <th class="th_13 th_fjm" lay-data="{field:'status6',width:140}">长包价5</th>
+                        <th class="th_14 th_fjm" lay-data="{field:'status14',width:140}">长包价6</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="th_2 th_fjm" >门市价</td>
+                        <td class="th_3 th_fjm">协议价</td>
+                        <td class="th_4 th_fjm">中介价</td>
+                        <td class="th_5 th_fjm">团队价</td>
+                        <td class="th_6 th_fjm">终点价</td>
+                        <td class="th_7 th_fjm">长包价</td>
+                        <td class="th_8 th_fjm">会员金卡价</td>
+                        <td class="th_9 th_fjm">长包价1</td>
+                        <td class="th_10 th_fjm">长包价2</td>
+                        <td class="th_11 th_fjm">长包价3</td>
+                        <td class="th_12 th_fjm">长包价4</td>
+                        <td class="th_11 th_fjm">长包价5</td>
+                        <td class="th_12 th_fjm">长包价6</td>
+                    </tr>
+                    <tr>
+
+                        <td class="th_2 th_fjm" >门市价</td>
+                        <td class="th_3 th_fjm">协议价</td>
+                        <td class="th_4 th_fjm">中介价</td>
+                        <td class="th_5 th_fjm">团队价</td>
+                        <td class="th_6 th_fjm">终点价</td>
+                        <td class="th_7 th_fjm">长包价</td>
+                        <td class="th_8 th_fjm">会员金卡价</td>
+                        <td class="th_9 th_fjm">长包价</td>
+                        <td class="th_10 th_fjm">长包价</td>
+                        <td class="th_11 th_fjm">长包价</td>
+                        <td class="th_12 th_fjm">长包价</td>
+                        <td class="th_11 th_fjm">长包价</td>
+                        <td class="th_12 th_fjm">长包价</td>
+                    </tr>
+                    <tr>
+                        <td class="th_2 th_fjm" >门市价</td>
+                        <td class="th_3 th_fjm">协议价</td>
+                        <td class="th_4 th_fjm">中介价</td>
+                        <td class="th_5 th_fjm">团队价</td>
+                        <td class="th_6 th_fjm">终点价</td>
+                        <td class="th_7 th_fjm">长包价</td>
+                        <td class="th_8 th_fjm">会员金卡价</td>
+                        <td class="th_9 th_fjm">长包价</td>
+                        <td class="th_10 th_fjm">长包价</td>
+                        <td class="th_11 th_fjm">长包价</td>
+                        <td class="th_12 th_fjm">长包价</td>
+                        <td class="th_11 th_fjm">长包价</td>
+                        <td class="th_12 th_fjm">长包价</td>
+                    </tr><tr>
+                        <td class="th_2 th_fjm" >门市价</td>
+                        <td class="th_3 th_fjm">协议价</td>
+                        <td class="th_4 th_fjm">中介价</td>
+                        <td class="th_5 th_fjm">团队价</td>
+                        <td class="th_6 th_fjm">终点价</td>
+                        <td class="th_7 th_fjm">长包价</td>
+                        <td class="th_8 th_fjm">会员金卡价</td>
+                        <td class="th_9 th_fjm">长包价</td>
+                        <td class="th_10 th_fjm">长包价</td>
+                        <td class="th_11 th_fjm">长包价</td>
+                        <td class="th_12 th_fjm">长包价</td>
+                        <td class="th_11 th_fjm">长包价</td>
+                        <td class="th_12 th_fjm">长包价</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+                <div class="nav_30"></div>
+                <div class="layui-row  layui-form flex_row_l">
+                    <div class="layui-form-item layui-col-sm2">
+                        <select name="role" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="双床房">双床房</option>
+                            <option value="大床房">大床房</option>
+                            <option value="家庭房">家庭房</option>
+                        </select>
+                    </div>
+                    <div class="layui-form-item layui-col-sm2 padding_l">
+
+                        <input type="text" autocomplete="off" class="layui-input date_item" id="txtStarDateSear" placeholder="开始时间">
+                    </div>
+                    <div class="layui-form-item layui-col-sm2 padding_l flex_row_l">
+                        <em class="padding_r">━</em>
+                        <input type="text" autocomplete="off" class="layui-input  date_item" id="txtEndDateSear" name="endDateSear"
+                               placeholder="结束时间">
+                    </div>
+
+                </div>
+                <div class="table_height">
+                    <table id="tab_zz" class="layui-table " lay-data="{ url:'../json/consumptionAccount.json', page:false}"
+                           lay-filter="account">
+                        <thead>
+                        <tr>
+
+                            <th lay-data="{field:'accountName',width:140}"></th>
+                            <th lay-data="{field:'starDate',width:140}">星期一<br/>2019/08/12</th>
+                            <th lay-data="{field:'endDate',width:140}">星期二<br/>2019/08/13</th>
+                            <th lay-data="{field:'passengerSourcesType',width:140}">星期三<br/>2019/08/14</th>
+                            <th lay-data="{field:'roomType',width:140}">星期四<br/>2019/08/15</th>
+                            <th lay-data="{field:'roomNumber',width:140}">星期五<br/>2019/08/16</th>
+                            <th lay-data="{field:'status',width:140}">星期六<br/>2019/08/17</th>
+                            <th lay-data="{field:'permanentStatus',width:140}">星期日<br/>2019/08/18</th>
+                            <!--
+                            <th lay-data="{field:'accountName',width:140}"></th>
+                            <th lay-data="{field:'starDate',width:140}">星期一</th>
+                            <th lay-data="{field:'endDate',width:140}">星期二</th>
+                            <th lay-data="{field:'passengerSourcesType',width:140}">星期三</th>
+                            <th lay-data="{field:'roomType',width:140}">星期四</th>
+                            <th lay-data="{field:'roomNumber',width:140}">星期五</th>
+                            <th lay-data="{field:'status',width:140}">星期六</th>
+                            <th lay-data="{field:'permanentStatus',width:140}">星期日</th>-->
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>  //初始赋值
+layui.use(['element', 'laydate', 'form', 'table'], function () {
+    var element = layui.element, $ = layui.jquery, form = layui.form, table = layui.table, laydate = layui.laydate;
+    //同时绑定多个
+    lay('.date_item').each(function () {
+        laydate.render({
+            elem: this
+            , trigger: 'click'
+        });
+    });
+
+    laydate.render({
+        elem: '#datafw'
+        ,range: true
+    });
+
+    var active = {
+        search: function () { //获取搜索数据
+            $("#btnStatus").val("0")
+
+        }
+        , ddlAdd: function () {
+            $("#record").addClass("hide")
+            $("#from_fjm").removeClass("hide")
+        }
+        , ddlEdit: function () {
+
+            $("#record").addClass("hide")
+            $("#from_fjm").removeClass("hide")
+        }
+        , ddlfjSetting: function () {
+            $("#from_zdf").removeClass("hide")
+        }
+        , ddlzdSetting: function () {
+            $("#from_fj").removeClass("hide")
+        }
+    };
+    $('.ddlSelected').on('click', function () {
+        if ($(".itemed").hasClass("hide"))
+            $(".itemed").removeClass("hide")
+        else
+            $(".itemed").addClass("hide")
+    });
+    $('.ddlitem').on('click', function () {
+        var type = $(this).data('type');
+        $(".form_left").addClass("hide")
+        $(".ddlitem").removeClass("active")
+        active[type] ? active[type].call(this) : '';
+        $(this).addClass("active")
+        $(".ddlSelected label").html($(this).html());
+        $(".itemed").addClass("hide")
+
+        $(this).removeClass("active")
+
+    });
+
+    //转换静态表格  js加入到你循环结束以后
+    table.init('account', {
+        height: 'full -450' //设置高度
+    });
+ //   $("#tab_fjm").next().find(".layui-table-box .layui-table-header .layui-table .layui-table-cell").css("cursor","pointer")
+    $("#tab_fjm").next().find(".layui-table-box .layui-table-header .layui-table .layui-table-cell").each(function (i) {
+        $(this).css("cursor","pointer")
+        $(this).on("click",function () {
+           alert($("#tab_fjm tr th").eq(i).find("input").val())
+
+        })
+    })
+    $("#tab_zz").next().find(".layui-table-box .layui-table-header .layui-table th").each(function (i) {
+        $(this).find("div").html($("#tab_zz tr th").eq(i).html())
+
+    })
+
+});
+</script>
+<script type="text/javascript">
+    layui.config({
+        base: '../assets/layui/',
+    })
+    layui.use(['multiSelect','table'],function() {
+        var $ = layui.jquery,form = layui.form,multiSelect = layui.multiSelect,table=layui.table;
+        $('#get-val').click(function() {
+
+            var vals = [],
+                texts = [];
+            $('select[multiple] option:selected').each(function() {
+                vals.push($(this).val());
+
+                texts.push($(this).text());
+            })
+            multiSelect.render();
+        })
+        form.on('select(test)',function(data){
+            console.dir(data);
+        })
+        $(".btn_clear").on("click",function () {
+            $(".layui-input").val("");
+            $('input[type=checkbox]').prop('checked', false);
+            form.render('checkbox')
+            $(this).parent().parent().parent().find(".getVal").val("clear")
+        })
+/*
+        $(document).on("click","th",function(){
+
+
+        })
+
+        $(".table_fjm").next().find("th").on("click",function () {
+            $(".table_fjm").next().find("th").css("cursor","pointer")
+            alert($(this).text());
+        })
+        */
+    });
+</script>
+</body>
+</html>

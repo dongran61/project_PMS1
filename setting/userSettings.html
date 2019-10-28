@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>用户设置</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-row">
+        <div class="layui-row">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 btn_panel flex_row">
+            <button class="btn_base btn_search flex_row active"  data-type="search"><i class="icon"></i>查询</button>
+            <button class="btn_base btn_edit flex_row" data-type="edit"><i class="icon"></i>修改</button>
+            <button class="btn_base btn_add flex_row" data-type="add"><i class="icon"></i>新增</button>
+            <input id="btnStatus" type="hidden" value="0"/>
+
+            <!--0为查询-->
+            <!--1为修改-->
+            <!--2为新增-->
+        </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left">
+                <form class="layui-form" action="" lay-filter="setting">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账户登录</label>
+                        <div class="layui-input-block">
+                            <input id="txtAccount" name="account" type="text" required
+                                   lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-block">
+                            <input id="txtName" name="name" type="text" required lay-verify="required"
+                                   placeholder="请输入姓名"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">部门</label>
+                        <div class="layui-input-block">
+                            <input id="txtDepartment" name="department" type="text" required
+                                   lay-verify="required" placeholder="请输入部门"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">岗位</label>
+                        <div class="layui-input-block">
+                            <input id="txtGangWei" name="gangwei" type="text" required
+                                   lay-verify="required" placeholder="请输入岗位"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">联系电话</label>
+                        <div class="layui-input-block">
+                            <input id="txtPhone" name="phone" type="text" required lay-verify="required"
+                                   placeholder="请输入联系电话"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">角色</label>
+                        <div class="layui-input-block">
+                            <select id="ddlRole" name="role" lay-verify="required">
+                                <option value="">请选择角色</option>
+                                <option value="管理员">管理员</option>
+                                <option value="值班经理">值班经理</option>
+                                <option value="前台接待">前台接待</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+
+                            <input type="radio" id="rdo_ok_1" name="rdo_ok" value="0" lay-skin="primary" title="启用">
+                            <input type="radio" id="rdo_ok_2" name="rdo_ok" value="1" lay-skin="primary" title="停用">
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 " style="padding: 0">
+                <div class="setting_right">
+                    <table class="layui-table" lay-data="{height: 'full-100', url:'../json/userSettings.json', page:false}"
+                           lay-filter="user">
+                        <thead>
+
+                        <tr>
+                            <th lay-data="{field:'account'}">账户</th>
+                            <th lay-data="{field:'name'}">姓名</th>
+                            <th lay-data="{field:'status', templet: '#statusTpl'}">状态</th>
+                            <th lay-data="{field:'department',style:'color:#858DA2'}">部门</th>
+                            <th lay-data="{field:'gangwei',style:'color:#858DA2'}">岗位</th>
+                            <th lay-data="{field:'role',style:'color:#858DA2'}">角色</th>
+                            <th lay-data="{field:'phone',style:'color:#858DA2'}">联系电话</th>
+                            <th lay-data="{fixed: 'right',align:'center', toolbar: '#barOperation'}"></th>
+                        </tr>
+
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barOperation">
+    <a class="layui-btn  layui-btn-xs btn_orange" lay-event="reset">重置密码</a>
+</script>
+<script type="text/html" id="statusTpl">
+    {{#  if(d.status == '启用'){ }}
+    <em class="font_0DEBAA">{{d.status}}</em>
+    {{#  } else { }}
+    <em class="font_FD6736">{{d.status}}</em>
+    {{#  } }}
+</script>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    //JavaScript代码区域
+    layui.use(['element','form','table'], function () {
+        var element = layui.element,form = layui.form,$=layui.jquery, table=layui.table;
+        var $ = layui.$, active = {
+            search: function(){ //获取搜索数据
+                $("#btnStatus").val("0")
+            }
+            ,edit: function(){ //编辑
+                $("#btnStatus").val("1")
+            }
+            ,add: function(){ //新增
+                $("#btnStatus").val("2")
+            }
+        };
+
+        $('.btn_base').on('click', function(){
+            var type = $(this).data('type');
+            $(".btn_base").removeClass("active")
+            active[type] ? active[type].call(this) : '';
+            $(this).addClass("active")
+        });
+
+        //监听提交
+        form.on('submit(setting)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+
+
+        //监听工具条
+        table.on('tool(user)', function (obj) {
+            var data = obj.data;
+            layer.msg('obj.event:' + obj.event);
+            if (obj.event === 'reset') {
+                layer.msg('ID：' + data.name + ' 的重置密码操作');
+            }
+        });
+
+
+        table.on('rowDouble(user)', function (obj) {
+            if($("#btnStatus").val()=="1") {
+                console.log(obj.data) //得到当前行数据
+                form.val('setting', {
+                    "account": obj.data.account
+                    ,
+                    "name": obj.data.name
+                    ,
+                    "department": obj.data.department // "name": "value"
+                    ,
+                    "gangwei": obj.data.gangwei
+                    ,
+                    "phone": obj.data.phone
+                    ,
+                    "rdo_ok": $("input[name='rdo_ok'][value='0']").attr("checked", obj.data.status == "启用" ? true : false)
+                    ,
+                    "rdo_ok": $("input[name='rdo_ok'][value='1']").attr("checked", obj.data.status == "停用" ? true : false)
+                    ,
+                    "role": obj.data.role
+                });
+              $("input[name='rdo_ok']").each(function (i) {
+                    if($(this).attr("checked"))
+                    {
+                        $(this).next().addClass("layui-form-radioed")
+                        $(this).next().html('<i class="layui-anim layui-icon layui-anim-scaleSpring"></i><div>'+$(this).attr("title")+'</div>')
+                    }
+                }) /* */
+               // form.render(); //更新全部
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+            }
+        });
+    });
+</script>
+</body>
+</html>

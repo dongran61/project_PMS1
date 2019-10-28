@@ -1,0 +1,23 @@
+body{height: calc(100% - 100px)}
+.room_status{width: 170px;height: 60px; margin: 10px auto;background:rgba(48,53,66,1);
+    border-radius:3px;
+    border:1px solid rgba(28,31,39,1);}
+.order_num{padding: 0 30px;
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:3px;color: #20242E;
+    border:1px solid rgba(223,241,255,1);position: absolute; right: 40px;}
+.left_panel{ margin: 0 auto; width: 165px;}
+.left_panel>div{padding: 14px 0;border-bottom: 1px solid #CBD1DB;padding-left: 15px}
+.left_panel>div:last-child{border: none;}
+.layui-form-checkbox[lay-skin="primary"]{padding-left: 20px;}
+.left_btn_lf{bottom: 50px; position: fixed;left:50px;}
+
+.search_panel_lf{width: 200px;border: 1px solid #e6e6e6;padding-right:15px; }
+.search_panel_lf input{border: none}
+.search_panel_lf label{display: inline-block;width: 60px; text-align: right;}
+#sugItem{width: 350px !important;right:20px !important;top:50px; }
+.layui-table-view .layui-form-checkbox {
+     top: 0px !important;
+}
+.layui-table-view .layui-form-checkbox

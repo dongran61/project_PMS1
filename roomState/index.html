@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link href="css/left.css" rel="stylesheet"/>
+    <title>房态</title>
+</head>
+<body>
+<div id="left" class="layui-side layui-bg-black layui-anim layui-anim-upbit layui-form">
+
+    <div class="layui-side-scroll">
+        <!-- 左侧导航区域 -->
+        <div class="room_num_panel flex_row">
+            <span>总房数</span><span>120</span>
+        </div>
+
+
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <li class="layui-nav-item ">
+
+                <a class="flex_row_l" href="javascript:;"><span class="icon icon_1"></span>房态筛选</a>
+                <dl class="layui-nav-child dl_nav_2 dl_nav_ddl">
+                    <dd class="layui-form flex_col_l">
+                        <div class="flex_row_l ddl_panel">
+                            <label>楼座</label>
+                            <select id="lz" lay-filter="lz">
+                                <option value="">请选择</option>
+                                <option value="0">A座</option>
+                                <option value="1">B座</option>
+                                <option value="2">C座</option>
+                            </select>
+                        </div>
+                        <div class="flex_row_l ddl_panel">
+                            <label>楼层</label>
+                            <select lay-filter="lc">
+                                <option value="">请选择</option>
+                                <option value="0">2楼</option>
+                                <option value="1">3楼</option>
+                                <option value="2">4楼</option>
+                            </select>
+                        </div>
+                        <div class="flex_row_l ddl_panel">
+                            <label>房型</label>
+                            <select>
+                                <option value="">请选择</option>
+                                <option value="0">标准大床房A</option>
+                                <option value="1">标准大床房B</option>
+                                <option value="2">豪华大床房A</option>
+                            </select>
+                        </div>
+                        <div class="flex_row_l ddl_panel">
+                            <label>特征</label>
+                            <select>
+                                <option value="">请选择</option>
+                                <option value="0">靠窗</option>
+                                <option value="1">无烟</option>
+                            </select>
+                        </div>
+                        <div class="flex_row_l ddl_panel">
+                            <label>状态</label>
+                            <select>
+                                <option value="">请选择</option>
+                                <option value="0">R</option>
+                                <option value="1">I</option>
+                                <option value="2">L</option>
+                            </select>
+                        </div>
+                        <div class="nav_10"></div>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="flex_row_l" href="javascript:;"><span class="icon icon_1"></span>房态修改</a>
+                <dl class="layui-nav-child dl_nav_2 ">
+                    <input type="hidden" id="txt_ftsx"/>
+                    <dd>
+                        <a class="nav_2 nav_ftsx" href="javascript:void(0)">
+                            <span class="line"></span>
+                            <span class="icon icon_1_1"></span>
+                            <span class="font">置脏房</span></a>
+                    </dd>
+                    <dd>
+                        <a class="nav_2 nav_ftsx" href="javascript:void(0)"><span class="line"></span><span
+                                class="icon icon_1_2"></span><span
+                                class="font">维修房</span></a>
+                    </dd>
+                    <dd>
+                        <a class="nav_2 nav_ftsx" href="javascript:void(0)"><span class="line"></span><span
+                                class="icon icon_1_3"></span><span
+                                class="font">解除维修</span></a>
+                    </dd>
+                    <dd>
+                        <a class="nav_2 nav_ftsx" href="javascript:void(0)"><span class="line"></span><span
+                                class="icon icon_1_4"></span><span
+                                class="font">锁房</span></a>
+                    </dd>
+                    <dd>
+                        <a class="nav_2 nav_ftsx" href="javascript:void(0)"><span class="line"></span><span
+                                class="icon icon_1_5"></span><span
+                                class="font">解除锁房</span></a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="flex_row_l" href="javascript:;"><span class="icon icon_2"></span>特殊关注</a>
+                <dl class="layui-nav-child dl_nav_2">
+                    <dd>
+                        <a class="nav_2 " href="">
+                            <span class="line"></span>
+                            <span class="icon icon_lian2"></span>
+                            <span class="font">联房</span>
+
+                        </a>
+                    </dd>
+                    <dd><a class="nav_2 " href=""><span class="line"></span> <span class="icon icon_tuan2"></span><span
+                            class="font">团队</span></a></dd>
+                    <dd><a class="nav_2 " href=""><span class="line"></span> <span class="icon icon_lease2"></span><span
+                            class="font">租赁</span></a></dd>
+                    <dd><a class="nav_2 " href=""><span class="line"></span> <span
+                            class="icon icon_warning2"></span><span class="font">保密</span></a></dd>
+                    <dd><a class="nav_2 " href=""><span class="line"></span> <span
+                            class="icon icon_birthday2"></span><span class="font">生日</span></a></dd>
+                    <dd><a class="nav_2 " href=""><span class="line"></span> <span class="icon icon_phone2"></span><span
+                            class="font">叫醒</span></a></dd>
+                    <dd><a class="nav_2 " href=""><span class="line"></span> <span
+                            class="icon icon_remarks2"></span><span class="font">备注</span></a></dd>
+                    <dd><a class="nav_2 " href=""><span class="line"></span> <span
+                            class="icon icon_miandarao2"></span><span class="font">免打扰</span></a></dd>
+
+                </dl>
+            </li>
+            <li class="layui-nav-item ">
+                <a class="flex_row_l " href="javascript:void(0);"
+                   onclick="popup(1,'#popup_ft_set','房态设置',this,0.5)"><span
+                        class="icon icon_3"></span>房态设置</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div id="layui-body" class="layui-body" style="border: none">
+
+    <div class="page_panel relative">
+
+        <div class="tips_panel flex_row_l">
+            <!--房态颜色提示-->
+            <ul class="flex_row_l">
+                <li>
+                    <span class="color room_bgcolor_1"></span>
+                    <span class="font"><em>4</em><em>空净房</em></span>
+
+                </li>
+                <li>
+                    <span class="color room_bgcolor_2"></span>
+                    <span class="font"><em>12</em><em>住净房</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_3"></span>
+                    <span class="font"><em>8</em><em>住脏房</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_4"></span>
+                    <span class="font"><em>23</em><em>空脏房</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_5"><i class="icon icon_status icon_repair_small"></i></span>
+                    <span class="font"><em>16</em><em>维修房</em></span>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <span class="color room_bgcolor_6"><i class="font_fff font_9">欠</i></span>
+                    <span class="font"><em>1</em><em>欠费</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_7"><i class="icon icon_status icon_lock_small"></i></span>
+                    <span class="font"><em>4</em><em>锁房</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_7"><i class="font_fff font_9">订</i></span>
+                    <span class="font"><em>3</em><em>将到</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_7"><i class="font_fff font_9">离</i></span>
+                    <span class="font"><em>8</em><em>将离</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_7"><i class="icon icon_status icon_hourRoom"></i></span>
+                    <span class="font"><em>2</em><em>钟点房</em></span>
+                </li>
+                <li>
+                    <span class="color room_bgcolor_7"><i class="font_fff font_9">续</i></span>
+                    <span class="font"><em>1</em><em>续住</em></span>
+                </li>
+            </ul>
+
+            <div class="tips_info flex_col">
+                <span class="font_20242E font_bold">当前出租率:35.22%</span>
+                <span class="font_7D889E font_10">(当前在住/可售房)</span>
+            </div>
+        </div>
+
+        <div class="room_status_box">
+            <div class="room_status_list room_bgcolor_3">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">101<i class="icon icon_hourRoom"></i></span><span
+                            class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张立坤/张珊珊/杨力</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+                        <span class="icon icon_status icon_birthday"></span>
+                        <span class="icon icon_status icon_lian"></span>
+                        <span class="icon icon_status icon_jie"></span>
+                        <span class="icon icon_status icon_tuan"></span>
+                        <span class="icon icon_status icon_xu"></span>
+                        <span class="icon icon_status icon_li"></span>
+                        <span class="icon icon_status icon_ding"></span>
+                        <span class="icon icon_status icon_qian"></span>
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="101">
+            </div>
+            <div class="room_status_list room_bgcolor_5">
+                <div class="room_status_list_content">
+                    <p><span class="room_num">102</span><span class="room_type">大床房B</span></p>
+
+                    <p class="p_icon_big"><span class="icon icon_status icon_repair"></span></p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="102">
+            </div>
+            <div class="room_status_list room_bgcolor_1">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">103</span><span class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张珊珊</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="103">
+            </div>
+            <div class="room_status_list room_bgcolor_3">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">121</span><span class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张珊珊</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="121">
+            </div>
+            <div class="room_status_list room_bgcolor_1">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">212</span><span class="room_type">大床房B</span></p>
+                    <p class="p_icon_big"><span class="icon icon_status icon_lock"></span></p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="212">
+            </div>
+            <div class="room_status_list room_bgcolor_4">
+                <div class="room_status_list_content">
+                    <p><span class="room_num">214</span><span class="room_type">大床房B</span></p>
+
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="214">
+            </div>
+            <div class="room_status_list room_bgcolor_2">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">216</span><span class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张珊珊</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="216">
+            </div>
+            <div class="room_status_list room_bgcolor_3">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">302</span><span class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张珊珊</p>
+                    <p><span class="icon icon_status icon_lian"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="302">
+            </div>
+            <div class="room_status_list room_bgcolor_2">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">304</span><span class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张珊珊</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="304">
+            </div>
+            <div class="room_status_list room_bgcolor_1">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">305<i class="icon icon_hourRoom"></i></span><span
+                            class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张立坤/张珊珊/杨力</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="305">
+            </div>
+            <div class="room_status_list room_bgcolor_1">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">310<i class="icon icon_hourRoom"></i></span><span
+                            class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张立坤/张珊珊/杨力</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+
+                        <span class="icon icon_status icon_tuan"></span>
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="310">
+            </div>
+            <div class="room_status_list room_bgcolor_3">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">312</span><span class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张珊珊</p>
+                    <p><span class="icon icon_status icon_lian"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="312">
+            </div>
+            <div class="room_status_list room_bgcolor_2">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">314</span><span class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张珊珊</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="314">
+            </div>
+            <div class="room_status_list room_bgcolor_1">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">502<i class="icon icon_hourRoom"></i></span><span
+                            class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张立坤/张珊珊/杨力</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+                        <span class="icon icon_status icon_miandarao"></span>
+                        <span class="icon icon_status icon_phone"></span>
+                        <span class="icon icon_status icon_remarks"></span>
+
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="502">
+            </div>
+            <div class="room_status_list room_bgcolor_1">
+                <div class="room_status_list_content">
+                    <p class=""><span class="room_num">510<i class="icon icon_hourRoom"></i></span><span
+                            class="room_type">大床房B</span></p>
+                    <p class="room_tenant">张立坤/张珊珊/杨力</p>
+                    <p><span class="icon icon_status icon_warning"></span>
+
+                        <span class="icon icon_status icon_tuan"></span>
+                    </p>
+                </div>
+                <input class="txtcbo hide" type="checkbox" value="510">
+            </div>
+
+
+            <div class="layui-clear"></div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<div class="right_click_box">
+    <p onclick="setRoomState()" class="flex_row_l curr"><span class="icon icon_zgjf"></span>置干净房</p>
+    <p class="flex_row_l"><span class="icon icon_zzf"></span>置脏房</p>
+    <p class="flex_row_l"><span class="icon icon_wxf"></span>维修房</p>
+    <p class="flex_row_l"><span class="icon icon_jcwx"></span>解除维修</p>
+    <p class="flex_row_l"><span class="icon icon_sf"></span>锁房</p>
+    <p class="flex_row_l"><span class="icon icon_jcsf"></span>解除锁房</p>
+</div>
+-->
+<div class="popup_box_4">
+    <!---------房间预览框------------>
+    <div id="popup_room_yl" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="zk_info">
+                <div class="arrow_up"></div>
+                <div class="info_panel">
+                    <p class="room_info">
+                        <span class="room_num room_color_3">202</span>
+                        <span class="room_type">大床房B</span>
+                    </p>
+                    <div class="nav_20"></div>
+                    <div class="layui-row">
+                        <div class="layui-col-sm7 layui-col-md7 layui-col-lg7 room_zk_info">
+                            <p class="zk_name">张珊珊/李丽丽/何仁耀</p>
+                            <p><span class="icon icon_mobile"></span>15384080060</p>
+                            <p><span class="icon icon_lian"></span>301/305/201</p>
+                        </div>
+                        <div class="layui-col-sm5 layui-col-md5 layui-col-lg5">
+                            <p>
+                                <button class="btn_base btn_blue">扫码支付</button>
+                                <button class="btn_base btn_blue">入账</button>
+                            </p>
+                            <p>
+                                <button class="btn_base btn_blue">预付款</button>
+                                <button class="btn_base btn_blue">结账</button>
+                            </p>
+                            <p>
+                                <button class="btn_base btn_blue">续住</button>
+                                <button class="btn_base btn_blue">换房</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="layui-row room_order">
+
+                        <div class="layui-col-sm7 layui-col-md7 layui-col-lg7 room_order_time">
+                            <p class="zk_name">到店：2019.03.12 12:00</p>
+                            <p class="zk_name">离店：2019.03.12 12:00</p>
+
+                        </div>
+                        <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 room_order_price">
+                            <p>预付<span>-300</span></p>
+                            <p>消费<span>180</span></p>
+                            <p>余额<span>-120</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="popup_room_set" class="popup" style="display: none">
+        <div class="layui-row flex_row">
+            <textarea id="txtarea_ft" class="layui-textarea" placeholder="请选择/输入房号"></textarea>
+        </div>
+        <div class="div_wx hide">
+            <div class="layui-row">
+                <label class="layui-form-label">维修原因</label>
+                <div class="layui-input-block">
+                    <input type="text" placeholder="请输入维修原因" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-row">
+                <label class="layui-form-label">起止时间</label>
+                <div class="layui-input-block">
+
+                    <input type="text" class="layui-input" id="txt_wxDate" placeholder=" - ">
+                </div>
+            </div>
+        </div>
+        <div class="nav_20"></div>
+        <div class="layui-form-item flex_row">
+            <button type="button" id="btn_close" class="layui-btn layui-btn-primary btn_close">取消</button>
+            <button type="button" id="btn_save" class="layui-btn">确定</button>
+        </div>
+        <div class="nav_10"></div>
+    </div>
+</div>
+<div class="popup_box_1">
+    <!---------房态设置------------>
+    <div id="popup_ft_set" class="popup layui-form" style="display: none">
+
+        <div class="ft_set_content">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>房态框大小</legend>
+                <div class="layui-field-box">
+
+                    <div id="box_size" class="slider"></div>
+                    <input type="hidden" id="txt_boxSize"/>
+                    <p class="box_size_desc">
+                        <span>小</span>
+                        <span>标准</span>
+                        <span>中</span>
+                        <span>大</span>
+                    </p>
+                </div>
+            </fieldset>
+        </div>
+        <div class="ft_set_content">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>颜色设置</legend>
+                <div class="layui-field-box ">
+                    <div class="flex_row_l color_picker">
+                        <input type="hidden" name="color" id="txt_kj">
+                        <div id="color_kj" class="picker"></div>
+                        空净房
+                    </div>
+                    <div class="flex_row_l color_picker">
+                        <input type="hidden" name="color" id="txt_zj" value="">
+                        <div id="color_zj" class="picker"></div>
+                        住净房
+                    </div>
+                    <div class="flex_row_l color_picker">
+                        <input type="hidden" name="color" id="txt_zz" value="">
+                        <div id="color_zz" class="picker"></div>
+                        住脏房
+                    </div>
+
+
+                    <div class="flex_row_l color_picker">
+                        <input type="hidden" name="color" value="" id="txt_kz">
+                        <div id="color_kz" class="picker"></div>
+                        空脏房
+                    </div>
+                    <div class="flex_row_l color_picker">
+                        <input type="hidden" name="color" value="" id="txt_wx">
+                        <div id="color_wx" class="picker"></div>
+                        维修
+                    </div>
+                    <div class="flex_row_l color_picker">
+                        <input type="hidden" name="color" value="" id="txt_ztys">
+                        <div id="color_ztys" class="picker"></div>
+                        字体颜色
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="ft_set_content">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>文字大小</legend>
+                <div class="layui-field-box">
+
+                    <div id="font_size" class="slider"></div>
+                    <input type="hidden" id="txt_fontSize"/>
+                    <p class="box_font_size">
+                        <span>小</span>
+
+                        <span>标准</span>
+                        <span>大</span>
+                    </p>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="ft_set_content ">
+            <fieldset class="layui-elem-field layui-field-title layui-form">
+                <legend>其他</legend>
+                <div class="layui-field-box flex_row other_checkbox">
+                    <input type="checkbox" lay-skin="primary" name="other" title="显示房型描述">
+                    <input type="checkbox" lay-skin="primary" name="other" title="房态分楼层" checked="">
+
+                </div>
+            </fieldset>
+        </div>
+        <div class="nav_20"></div>
+        <div class="layui-form-item flex_row">
+            <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消
+            </button>
+            <button type="button" id="btn_ft_set_save" class="layui-btn">确定</button>
+        </div>
+        <div class="nav_10"></div>
+    </div>
+</div>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script language="JavaScript">
+
+    layui.use(['element', 'layer', 'slider', 'colorpicker', 'form', 'laydate'], function () {
+        var element = layui.element, $ = layui.$, slider = layui.slider, colorpicker = layui.colorpicker,
+            laydate = layui.laydate
+        form = layui.form;
+        var timer = null;
+        //日期范围
+        laydate.render({
+            elem: '#txt_wxDate'
+            , range: true
+            , trigger: 'click'
+            , format: 'yyyy/MM/dd'
+        });
+        //设置步长
+
+        slider.render({
+            elem: '#box_size'
+            , step: 33.3333 //步长
+            //   ,min:25
+            , value: [0, 33.33333] //初始值
+            // , showstep: true //开启间隔点
+            , theme: '#0A8DFF' //主题色
+            , setTips: function (value) { //自定义提示文本
+                $("#txt_boxSize").val(value)
+                if (value == 0)
+                    return 'w:180;h:152';
+                else if (value == 34)
+                    return "w:190;h:160";
+                else if (value == 68)
+                    return "w:200;h:168";
+                else if (value == 100)
+                    return "w:210;h:177";
+            }
+        });
+
+        slider.render({
+            elem: '#font_size'
+            , step: 50 //步长
+            , value: [0, 50] //初始值
+            , theme: '#0A8DFF' //主题色
+            , setTips: function (value) { //自定义提示文本
+
+                var val = '标准';
+                if (value == 0)
+                    val = '小';
+                else if (value == 50)
+                    val = "标准";
+                else
+                    val = "大";
+                $("#txt_fontSize").val(val)
+                return val;
+
+            }
+        });
+
+
+        form.on('select(lz)', function (data) {
+            console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            console.log(data.othis); //得到美化后的DOM对象
+        });
+
+        window.bindColor = function (color, eid, txtId, curr) {
+            //开启全功能
+            colorpicker.render({
+                elem: '#' + eid
+                , color: color
+                , format: 'rgb'
+                , predefine: true
+                , alpha: true
+                , done: function (color) {
+                    $('#' + txtId).val(color); //向隐藏域赋值
+                    // layer.tips('给指定隐藏域设置了颜色值：'+ color, this.elem);
+                    //   $(".room_bgcolor_"+curr).css("background-color",color)
+                    //  color || this.change(color); //清空时执行 change
+                }
+                , change: function (color) {
+                    //给当前页面头部和左侧设置主题色
+                    // $('.header-demo,.layui-side .layui-nav').css('background-color', color);
+                }
+            });
+        }
+        /*1空净房*/
+        /*2住净房*/
+        /*3住脏房*/
+        /*4空脏房*/
+        /*5维修房*/
+        /*6字体颜色*/
+        bindColor('#218CFF', 'color_kj', 'txt_kj', 1);
+        bindColor('#30CA58', 'color_zj', 'txt_zj', 2);
+        bindColor('#FF9D23', 'color_zz', 'txt_zz', 3);
+        bindColor('#C9C9C9', 'color_kz', 'txt_kz', 4);
+        bindColor('#AC3330', 'color_wx', 'txt_wx', 5);
+        bindColor('#fff', 'color_ztys', 'txt_ztys', 6);
+        //房态设置框点击确定按钮
+        $("#btn_ft_set_save").on("click", function () {
+            $(".room_bgcolor_1").css("background-color", $("#txt_kj").val())
+            $(".room_bgcolor_2").css("background-color", $("#txt_zj").val())
+            $(".room_bgcolor_3").css("background-color", $("#txt_zz").val())
+            $(".room_bgcolor_4").css("background-color", $("#txt_kz").val())
+            $(".room_bgcolor_5").css("background-color", $("#txt_wx").val())
+            $(".room_status_list").css("color", $("#txt_ztys").val())
+            // $(".room_status_list").css(["width:",])
+            var boxSize = $("#txt_boxSize").val();
+            var fontSize = $("#txt_fontSize").val();
+            console.log(boxSize)
+            console.log("fontSize：" + fontSize)
+            if (boxSize == 25)
+                $(".room_status_list").css({"width": "180px", "height": "152px"})
+            else if (boxSize == 50)
+                $(".room_status_list").css({"width": "190px", "height": "160px"})
+            else if (boxSize == 75)
+                $(".room_status_list").css({"width": "200px", "height": "168px"})
+            else if (boxSize == 100)
+                $(".room_status_list").css({"width": "210px", "height": "177px"})
+
+            if (fontSize == "小") {
+                $(".room_status_list p>.room_num").css("font-size", "15px")
+                $(".room_status_list p>.room_type").css("font-size", "11px")
+                $(".room_status_list p.room_tenant").css("font-size", "13px")
+            }
+            else if (fontSize == "标准") {
+                $(".room_status_list p>.room_num").css("font-size", "16px")
+                $(".room_status_list p>.room_type").css("font-size", "12px")
+                $(".room_status_list p.room_tenant").css("font-size", "14px")
+            }
+            else if (fontSize == "大") {
+                $(".room_status_list p>.room_num").css("font-size", "18px")
+                $(".room_status_list p>.room_type").css("font-size", "14px")
+                $(".room_status_list p.room_tenant").css("font-size", "16px")
+            }
+            layer.closeAll()
+        })
+
+        //双击房间打开登记页面
+        $('.room_status_list_content').on("dblclick", function () {
+            clearTimeout(timer);
+            //   layer.closeAll('tips')
+            window.open("../checkIn/orderInfo.html")
+        });
+        $('.room_status_list_content').mousedown(function (e) {
+            // 1 = 鼠标左键 left; 2 = 鼠标中键; 3 = 鼠标右键
+            if (e.which == 3) {
+                layer.tips(strHtml, this, {tips: [4, '#252834'], time: 0});
+
+            }
+            else if (e.which == 1) {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    popup(1, "#popup_room_yl", "", '', 0.5)
+                }, 300);
+            }
+            return false;//阻止链接跳转
+        })
+        $(".layui-body").on("click",function () {
+            layer.closeAll('tips')
+        })
+        //房态修改弹框
+        $(".nav_ftsx").on("click", function () {
+            if ($(this).find("span:last-child").text() == "维修房")
+                $(".div_wx").removeClass("hide")
+            else
+                $(".div_wx").addClass("hide")
+
+            $(".nav_ftsx").removeClass("active")
+            $(this).addClass("active")
+            popup(1, "#popup_room_set", $(this).find("span:last-child").text(), '', 0)
+            $(".txtcbo").removeClass("hide");
+            //维修房
+
+        })
+        //房态修改选取
+        $(".txtcbo").on("click", function () {
+            var selectedVal = $.trim($("#txtarea_ft").val())
+            if ($(this).is(':checked')) {
+
+                $(this).prev().css({
+                    "border": "3px solid #20242E",
+                    "width": "calc(100% - 6px)",
+                    "height": "calc(100% - 6px)",
+                    "box-shadow": "3px 3px 6px 0px rgba(69,76,79,0.55)"
+                })
+                selectedVal += $(this).val() + "、"
+            }
+            else {
+                selectedVal = selectedVal.replace($(this).val() + "、", '');
+
+                $(this).prev().css({"border": "none", "width": "100%", "height": "100%", "box-shadow": "none"})
+            }
+            $("#txtarea_ft").val(selectedVal)
+
+        });
+        //房态修改弹框保存
+        $("#btn_save").on("click", function () {
+            close_poup();
+        });
+        //房态修改弹框取消关闭
+        $("#btn_close").on("click", function () {
+            close_poup();
+        });
+
+        window.close_poup = function () {
+            $("#txtarea_ft").val("");
+            $(".nav_ftsx").removeClass("active")
+            $(".txtcbo").addClass("hide")
+            $(".room_status_list_content").css({
+                "border": "none",
+                "width": "100%",
+                "height": "100%",
+                "box-shadow": "none"
+            })
+            layer.closeAll()
+        }
+
+
+        //清除默认右击事件
+        $(document).ready(function () {
+            $(document).bind("contextmenu", function (e) {
+                return false;
+            });
+        });
+        window.setRoomState = function (type) {
+            layer.closeAll('tips')
+        }
+        window.popup = function (type, content, title, id, shade) {
+            layer.closeAll();
+            layer.open({
+                type: type,
+                // content: $('#' + content),
+                content: $(content),
+                title: title,
+                shadeClose: true
+                , shade: shade
+                , cancel: function (index, layero) {
+                    /*  if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+                          layer.close(index)
+                      }
+                      return false;*/
+                    if (content == "#popup_room_set")
+                        close_poup()
+                }
+            });
+            if (id != '')
+                $(id).parent().addClass("layui-nav-itemed")
+        }
+        /* $(".room_status_list").hover(function () {
+              console.log(11)
+              layer.tips(strHtml, this, {tips: [4, '#252834'], time: 30000});
+          }); */
+        var strHtml = ' <div class="right_click_box">' +
+            '    <p onclick="setRoomState(1)" class="flex_row_l curr"><span class="icon icon_zgjf"></span>置干净房</p>' +
+            '    <p onclick="setRoomState(2)" class="flex_row_l"><span class="icon icon_zzf"></span>置脏房</p>' +
+            '    <p onclick="setRoomState(3)" class="flex_row_l"><span class="icon icon_wxf"></span>维修房</p>' +
+            '    <p onclick="setRoomState(4)" class="flex_row_l"><span class="icon icon_jcwx"></span>解除维修</p>' +
+            '    <p onclick="setRoomState(5)" class="flex_row_l"><span class="icon icon_sf"></span>锁房</p>' +
+            '    <p onclick="setRoomState(6)" class="flex_row_l"><span class="icon icon_jcsf"></span>解除锁房</p>' +
+            '</div>';
+
+
+//            $('#id').on('click', function(){
+//                var that = this;
+//                layer.tips('只想提示地精准些', that); //在元素的事件回调体中，follow直接赋予this即可
+//            });
+    })
+</script>
+</body>
+</html>

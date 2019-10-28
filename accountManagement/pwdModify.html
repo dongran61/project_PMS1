@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>密码修改</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/css.css">
+</head>
+<body>
+    <div class="page_panel">
+        <div class="panel_title flex_row_l">
+            <span class="line"></span>
+            密码修改
+        </div>
+        <div class="pwd_panel row flex_row">
+            <div class="layui-col-xs5 layui-col-sm5 layui-col-md5  layui-col-lg5 "><img src="../assets/images/image_1.png"/></div>
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6  layui-col-lg6 pwd_ctrl_panel">
+                <form class="layui-form" action="" lay-filter="pwdModify">
+                <div class="layui-form-item flex_col_l">
+                    <label class="layui-form-label">原始密码</label>
+                    <div class="layui-input-inline flex_row_l">
+                        <input type="text" name="username" lay-verify="required" placeholder="请输入原始密码" autocomplete="off" class="layui-input">
+                        <span class="icon zhanghao"></span>
+                    </div>
+                </div>
+                <div class="layui-form-item flex_col_l">
+                    <label class="layui-form-label">新密码</label>
+                    <div class="layui-input-inline flex_row_l">
+                        <input type="password" name="username" lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+                        <span class="icon pwd"></span>
+                    </div>
+
+                </div>
+                <div class="layui-form-item flex_col_l">
+                    <label class="layui-form-label">确认密码</label>
+                    <div class="layui-input-inline flex_row_l">
+                        <input type="password" name="username" lay-verify="required" placeholder="请确认新密码" autocomplete="off" class="layui-input">
+                        <span class="icon pwd"></span>
+                    </div>
+
+                </div>
+                <div class="layui-form-item">
+
+                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(setting)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

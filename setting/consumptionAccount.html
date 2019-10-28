@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>消费账户</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-row">
+        <div class="layui-row">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 btn_panel flex_row">
+                <button class="btn_base btn_search flex_row active" data-type="search"><i class="icon"></i>查询</button>
+                <button class="btn_base btn_edit flex_row" data-type="edit"><i class="icon"></i>修改</button>
+                <button class="btn_base btn_add flex_row" data-type="add"><i class="icon"></i>新增</button>
+                <input id="btnStatus" type="hidden" value="0"/>
+
+                <!--0为查询-->
+                <!--1为修改-->
+                <!--2为新增-->
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left">
+                <form class="layui-form" action="" lay-filter="setting">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账户姓名</label>
+                        <div class="layui-input-block">
+                            <input name="accountName" type="text" required lay-verify="required"
+                                   placeholder="请输入账户姓名"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" id="txtStarDate" name="starDate" placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">结束时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" id="txtEndDate" name="endDate" placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">房型</label>
+                        <div class="layui-input-block">
+                            <input name="roomType" type="text" required
+                                   lay-verify="required" placeholder="请输入房型"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">房号</label>
+                        <div class="layui-input-block">
+                            <input name="roomNumber" type="text" required
+                                   lay-verify="required" placeholder="请输入房号"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">客源类型</label>
+                        <div class="layui-input-block">
+                            <input name="passengerSourcesType" type="text"  required lay-verify="required"
+                                   placeholder="请输入客源类型"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+
+                            <input type="radio" name="rdo_ok" value="0" lay-skin="primary" title="永久账户"
+                                   checked>
+
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                            <textarea name="desc" placeholder="请输入描述" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 " style="padding: 0">
+                <div class="setting_right">
+                    <table class="layui-table" lay-data="{height:'full-100', url:'../json/consumptionAccount.json', page:false}"
+                           lay-filter="account">
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'accountName'}">账户名称</th>
+                            <th lay-data="{field:'starDate', hide: true }">开始时间</th>
+                            <th lay-data="{field:'endDate', hide: true }">结束时间</th>
+                            <th lay-data="{field:'passengerSourcesType', hide: true }">客源类型</th>
+                            <th lay-data="{field:'roomType', hide: true }">房型</th>
+                            <th lay-data="{field:'roomNumber', hide: true }">房号</th>
+                            <th lay-data="{field:'status'}">状态</th>
+                            <th lay-data="{field:'permanentStatus',templet: '#permanentStatusTpl'}">永久账户</th>
+                            <th lay-data="{field:'balance',style:'color:#858DA2'}">余额</th>
+                            <th lay-data="{field:'credit',style:'color:#858DA2'}">信用</th>
+                            <th lay-data="{field:'desc',style:'color:#858DA2'}">描述</th>
+
+
+                        </tr>
+
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script type="text/html" id="permanentStatusTpl">
+    {{#  if(d.permanentStatus == '是'){ }}
+    <em class="font_0DEBAA">{{d.permanentStatus}}</em>
+    {{#  } else { }}
+    <em class="font_FD6736">{{d.permanentStatus}}</em>
+    {{#  } }}
+</script>
+<script>  //初始赋值
+layui.use('laydate', function(){
+    var laydate = layui.laydate;
+    laydate.render({
+        elem: '#txtStarDate'
+        ,value: ''
+        ,isInitValue: true
+    });
+    laydate.render({
+        elem: '#txtEndDate'
+        , value: ''
+        , isInitValue: true
+    });
+});
+    layui.use('element', function () {
+        var element = layui.element;
+        var $ = layui.$, active = {
+            search: function () { //获取搜索数据
+                $("#btnStatus").val("0")
+            }
+            , edit: function () { //编辑
+                $("#btnStatus").val("1")
+            }
+            , add: function () { //新增
+                $("#btnStatus").val("2")
+            }
+        };
+
+        $('.btn_base').on('click', function () {
+            var type = $(this).data('type');
+            $(".btn_base").removeClass("active")
+            active[type] ? active[type].call(this) : '';
+            $(this).addClass("active")
+        });
+    });
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(setting)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+
+    layui.use('table', function () {
+        var $ = layui.jquery, form = layui.form;
+        var table = layui.table;
+        //监听工具条
+        table.on('tool(user)', function (obj) {
+            var data = obj.data;
+            layer.msg('obj.event:' + obj.event);
+            if (obj.event === 'reset') {
+                layer.msg('ID：' + data.name + ' 的重置密码操作');
+            }
+        });
+
+
+        table.on('rowDouble(account)', function (obj) {
+            if ($("#btnStatus").val() == "1") {
+                console.log(obj.data) //得到当前行数据
+                form.val('setting', {
+
+                    "accountName": obj.data.accountName
+                    ,"roomType": obj.data.roomType
+                    ,"roomNumber": obj.data.roomNumber
+                    , "permanentStatus": obj.data.permanentStatus
+                    , "starDate": obj.data.starDate
+                    , "endDate": obj.data.endDate
+                    , "desc": obj.data.desc
+                    , "passengerSourcesType": obj.data.passengerSourcesType
+                });
+
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

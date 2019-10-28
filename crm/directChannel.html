@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渠道直连</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link href="css/left.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="left" class="layui-side layui-bg-black layui-anim layui-anim-upbit layui-form">
+
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <li class="layui-nav-item">
+                <a class="flex_row_l" href="javascript:;"><span class="icon icon_FacM"></span>企业客户管理</a>
+                <dl class="layui-nav-child dl_nav_2">
+                    <dd>
+                        <a class="nav_2 show" href="javascript:;">
+                            <span class="layui-icon layui-icon-triangle-r"></span>
+                            <span class="line"></span>
+                            <span class="font">公司协议</span>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a class="nav_2 " href=""><span class="line"></span><span class="font">团队旅行社</span></a>
+                    </dd>
+
+                    <dd>
+                        <a class="nav_2 " href=""><span class="line"></span><span class="font">订房中心/OTA</span></a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="flex_row_l" href="javascript:;"><span class="icon icon_saleM"></span>销售管理</a>
+                <dl class="layui-nav-child dl_nav_2">
+                    <dd>
+                        <a class="nav_2 show" href="javascript:;">
+                            <span class="layui-icon layui-icon-triangle-r"></span>
+                            <span class="line"></span>
+                            <span class="font">公司协议</span>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a class="nav_2 " href=""><span class="line"></span><span class="font">团队旅行社</span></a>
+                    </dd>
+
+                    <dd>
+                        <a class="nav_2 " href=""><span class="line"></span><span class="font">订房中心/OTA</span></a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="layui-body" class="layui-body" style="border: none">
+
+    <div class="page_panel relative">
+
+        <div class="layui-row">
+
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md12  layui-col-lg12 " style="padding: 0">
+                <div class="setting_right">
+                    <div class="layui-row">
+
+                    </div>
+                    <table class="layui-table"
+                           lay-data="{height: 'full', url:'../json/marketingManagement.json', page:false}"
+                           lay-filter="user">
+                        <thead>
+                        <tr>
+
+                            <th lay-data="{field:'facName'}">渠道名称</th>
+
+                            <th lay-data="{field:'status', templet: '#barOperation',align:'center',style:'text-align: center'}">
+                                状态
+                            </th>
+
+
+                            <th lay-data="{field:'status', templet: '#barSetting',align:'center',style:'text-align: center'}">
+                                设置规则
+                            </th>
+                        </tr>
+
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<script type="text/html" id="barOperation">
+    {{#  if(d.status == '审核中'){ }}
+    <a class="layui-btn  layui-btn-xs btn_blue" lay-event="list_canel">已报名</a>
+    {{#  } else if(d.status == '不通过'){ }}
+    <a class="layui-btn  layui-btn-xs btn_orange" lay-event="list_ok">未报名</a>
+    {{#  } else if(d.status == '过期'){ }}
+    <a class="layui-btn  layui-btn-xs btn_gray" lay-event="">已过期</a>
+    {{#  } }}
+</script>
+<script type="text/html" id="barSetting">
+
+    {{#  if(d.status == '过期'){ }}
+    <em class="font_D1D3DA">设置规则</em>
+    {{#  } else{ }}
+     <a class="layui-btn  layui-btn-xs " lay-event="set">设置规则</a>
+    {{#  } }}
+</script>
+<script type="text/html" id="barClose">
+
+    <a class="layui-btn layui-btn-xs btn_orange" lay-event="list_close">关闭</a>
+</script>
+<div class="popup_box_1">
+    <div id="popup_cyl" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm3 layui-col-md3 layui-col-lg3">
+                    <label class="layui-form-label">开始日期：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <input type="text" class="layui-input date_item" placeholder="开始日期">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm3 layui-col-md3 layui-col-lg3">
+                    <label class="layui-form-label">结束日期：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <input type="text" class="layui-input date_item" placeholder="结束日期">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item-xs">
+                    <label class="layui-form-label ">房型：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变行程改变行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item-sm">
+                    <label class="layui-form-label">订房数：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <input type="number" value="20" class="layui-input"/>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row flex_row_l">
+                <div class="layui-row layui-row_item  layui-col-sm12 layui-col-md12 layui-col-lg12 ">
+                    <label class="layui-form-label">星期：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期一" checked="">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期二" checked="">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期三" checked="">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期四" checked="">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期五" checked="">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期六" checked="">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期日" checked="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="nav_10"></div>
+            <div class="layui-row layui-row_item flex_row_r">
+
+
+                <div class="layui-row layui-row_item layui-col-sm5 layui-col-md5 layui-col-lg5 flex_row_r">
+                    <button type="button" class="btn_base2 btn_fff_blue">退出</button>
+
+                    <button type="button" class="btn_base2 btn_blue">设置</button>
+
+                </div>
+
+
+            </div>
+            <div class="nav_10"></div>
+            <div class="layui-row cyl_table">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="settingRules">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'yingyeTime',width:'120'}">开始时间</th>
+                        <th lay-data="{field:'yewuTime',width:'120'}">结束时间</th>
+                        <th lay-data="{field:'price',width:'140'}">星期<!--显示数据为一、二、三、四--></th>
+                        <th lay-data="{field:'banci',width:'120'}">房型</th>
+                        <th lay-data="{field:'roomNum',width:'80'}">房数</th>
+
+                        <th lay-data="{field:'roomNum',width:'80'}">超订数</th>
+
+                        <th lay-data="{field:'yingyeTime',width:'120'}">设置时间</th>
+                        <th lay-data="{field:'caozuoyuan',width:'80'}">设置人</th>
+                        <th lay-data="{field:'daima',align:'center', templet: '#barClose',width:'120'}"></th>
+
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="nav_30"></div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>
+    //JavaScript代码区域
+    layui.use(['element', 'laydate', 'form', 'table', 'layer'], function () {
+        var element = layui.element, $ = layui.jquery, form = layui.form, table = layui.table, laydate = layui.laydate;
+
+        //监听提交
+        form.on('submit(setting)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+        table.on('tool(settingRules)', function (obj) {
+            if (obj.event === 'list_close') {
+                layer.open({
+                    type: 1
+                    , content: '<div style="padding: 20px 100px;">是否关闭？</div>'
+                    , btn: ['是', '否']
+                    , btnAlign: 'c' //按钮居中
+                    , yes: function () {
+                        console.log("是")
+                        layer.closeAll();
+                    }
+                });
+            }
+        })
+
+        //监听工具条
+        table.on('tool(user)', function (obj) {
+            var data = obj.data;
+            // layer.msg('obj.event:' + obj.event);
+            if (obj.event === 'shenhe') {
+                // layer.msg('ID：' + data.name + ' 的重置密码操作');
+
+                layer.open({
+                    type: 1
+                    , content: '<div style="padding: 20px 100px;">是否通过审核？</div>'
+                    , btn: ['通过', '不通过']
+                    , btnAlign: 'c' //按钮居中
+                    , yes: function () {
+                        console.log("通过操作")
+                        layer.closeAll();
+                    }
+                });
+            }
+            else if (obj.event === 'list_canel') {
+                layer.open({
+                    type: 1
+                    , content: '<div style="padding: 20px 100px;">是否取消报名？</div>'
+                    , btn: ['是', '否']
+                    , btnAlign: 'c' //按钮居中
+                    , yes: function () {
+                        console.log("是")
+                        layer.closeAll();
+                    }
+                });
+            }
+            else if (obj.event === 'list_ok') {
+                layer.open({
+                    type: 1
+                    , content: '<div style="padding: 20px 100px;">是否报名？</div>'
+                    , btn: ['是', '否']
+                    , btnAlign: 'c' //按钮居中
+                    , yes: function () {
+                        console.log("是")
+                        layer.closeAll();
+                    }
+                });
+            }
+
+            else if (obj.event === 'set') {
+                layer.open({
+                    type: 1,
+                    content: $('#popup_cyl'),
+                    title: "设置规则"
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

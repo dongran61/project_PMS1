@@ -1,0 +1,77 @@
+
+.layui-nav .banci{margin-right: 30px}
+.layui-nav-item>a>.icon{width: 25px; height: 25px; margin-right: 15px;}
+
+.layui-nav-item>a>.icon.icon_FacM{background-position: -241px -855px;}
+.layui-nav-item>a>.icon.icon_saleM{background-position: -241px -893px;}
+
+
+.layui-nav-item>a:hover>.icon.icon_FacM,.layui-nav-itemed>a>.icon.icon_FacM{background-position: -280px -855px;}
+.layui-nav-item>a:hover>.icon.icon_saleM,.layui-nav-itemed>a>.icon.icon_saleM{background-position: -280px -893px;}
+.layui-nav-tree .layui-nav-item>a{position: relative; height: 51px; line-height: 51px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+
+.layui-nav-child{margin-left: 30px !important;width:170px !important; min-width: 100px !important;}
+.shop_name .layui-nav-child{min-width:170px !important; width: auto !important;}
+ul.layui-nav-child{ border-left:none !important;margin-left:0px !important;}
+.page_panel{padding: 15px;}
+.nav_2{margin: 0; border-left: 1px dotted #505158 !important;padding: 0 !important;position: relative;
+    display: flex !important;flex-direction: row;align-items: center;justify-content: left;
+}
+.nav_2>span.font{margin-left: 2px !important; }
+.nav_2>span.layui-icon{margin: 0 0 0 0px; position: absolute;
+    left:-5px;}
+.nav_2.show{color: #FF6D2D !important;background-color: #1C1F27}
+
+.ul_nav_3{ border-left: 1px dotted #505158 !important;}
+.nav_2 span.line{width: 18px; display: inline-block; height: 6px; border-top: 1px dotted #505158 ;padding-left: 0px }
+.nav_2.show span.line{border: none;}
+.ul_nav_3 li .nav_3{padding-left: 45px !important;width: 100%}
+.dl_nav_2{background-color:#1C1F27; padding: 0 }
+.nav_2:hover,.nav_3:hover{background-color: #303542 !important; color: #8EA1B5 !important;}
+
+.menu_hide_panel .box
+{
+    width:10px;
+    height:90px;
+    border-top:10px solid transparent;
+    border-right:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-left:10px solid #252834;
+    /*
+    position: absolute;
+    top:0;
+    z-index: 0;
+    */
+}
+.menu_hide_panel .layui-icon{ position: absolute;
+    top:calc(50% - 10px );left:-0px;font-size: 11px;
+
+}
+.menu_hide_panel.show .layui-icon{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.layui-side-scroll{background-color:#20242E }
+.layui-nav-tree{overflow: hidden}
+.layui-nav-bar{display: none}
+.layui-nav-tree .layui-nav-item{width: 100%}
+
+/*****************/
+.room_num_panel{width: 170px;height:60px; margin: 13px  0 13px 15px;background-color: #303542;border: 1px solid #1C1F27;border-radius:3px; color: #fff }
+.room_num_panel span:first-child{margin-right: 10px;}
+.layui-nav-child .icon{ margin:0 5px;width: 20px;height: 24px;}
+
+
+.nav_2:hover span.font,.nav_2.active span.font{color: #FF6D2D}
+
+#left{overflow: hidden;}
+
+.layui-side-scroll{overflow-y: scroll;position: relative}
+.layui-side-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+

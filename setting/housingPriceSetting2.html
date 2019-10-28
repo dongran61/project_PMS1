@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>房价码设置（阶段调整）</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+    <style>
+        .layui-layer.layui-layer-page{width: 600px !important;}
+    </style>
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li>房价设置</li>
+            <li class="layui-this">阶段调整</li>
+        </ul>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-xs10 layui-col-sm110 layui-col-md10  layui-col-lg11 btn_panel layui-form ">
+            <div class="setting_right">
+                <input type="radio" name="sex" value="0" title="所有状态" checked>
+                <input type="radio" name="sex" value="1" title="已通过">
+                <input type="radio" name="sex" value="2" title="未通过">
+                <input type="radio" name="sex" value="3" title="未审核">
+                <input type="radio" name="sex" value="4" title="已过期">
+            </div>
+        </div>
+        <div class="layui-col-xs2 layui-col-sm12 layui-col-md2  layui-col-lg1 flex_row_r btn_panel layui-form ">
+
+            <button id="btn_tj" class="btn_base btn_add flex_row active" data-type="add"><i class="icon"></i>阶段调价</button>
+        </div>
+    </div>
+    <div class="layui-row">
+
+        <div class="layui-col-xs12layui-col-sm12 layui-col-md12  layui-col-lg12">
+            <div class="setting_right ">
+
+                <table class="layui-table table_h_padding_lr">
+                    <colgroup>
+                        <col style="color: #4C4E54">
+                        <col sort="true" true fixed="left">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>房价码</th>
+                        <th>房型</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>周一</th>
+                        <th>周二</th>
+                        <th>周三</th>
+                        <th>周四</th>
+                        <th>周五</th>
+                        <th>周六</th>
+                        <th>周日</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>贤心</td>
+                        <td>1230</td>
+                        <td><select>
+                            <option>大床房</option>
+                            <option>标准房</option>
+                            <option>家庭套房</option>
+                        </select></td>
+                        <td>2019-07-01</td>
+                        <td>2019-08-14</td>
+                        <td class="font_C84744">-10</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>贤心</td>
+                        <td>2019-08-14</td>
+                        <td><a class="layui-btn layui-btn-xs btn_orange">未审核</a></td>
+                    </tr>
+                    <tr>
+                        <td>贤心</td>
+                        <td>1230</td>
+                        <td><select>
+                            <option>大床房</option>
+                            <option>标准房</option>
+                            <option>家庭套房</option>
+                        </select></td>
+                        <td>2019-07-01</td>
+                        <td>2019-08-14</td>
+                        <td class="font_C84744">-10</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>贤心</td>
+                        <td>2019-08-14</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_green">已通过</a></td>
+                    </tr>
+                    <tr>
+                        <td>贤心</td>
+                        <td>1230</td>
+                        <td><select>
+                            <option>大床房</option>
+                            <option>标准房</option>
+                            <option>家庭套房</option>
+                        </select></td>
+                        <td>2019-07-01</td>
+                        <td>2019-08-14</td>
+                        <td class="font_C84744">-10</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>贤心</td>
+                        <td>2019-08-14</td>
+                        <td><a class="layui-btn  layui-btn-xs  btn_blue">未通过</a></td>
+                    </tr>
+                    <tr>
+                        <td>贤心</td>
+                        <td>1230</td>
+                        <td><select>
+                            <option>大床房</option>
+                            <option>标准房</option>
+                            <option>家庭套房</option>
+                        </select></td>
+                        <td>2019-07-01</td>
+                        <td>2019-08-14</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="font_2FCC71">+10</td>
+                        <td>贤心</td>
+                        <td>2019-08-14</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_gray">已过期</a></td>
+                    </tr>
+                    <tr>
+                        <td>贤心</td>
+                        <td>1230</td>
+                        <td><select>
+                            <option>大床房</option>
+                            <option>标准房</option>
+                            <option>家庭套房</option>
+                        </select></td>
+                        <td>2019-07-01</td>
+                        <td>2019-08-14</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="font_2FCC71">+10</td>
+                        <td>贤心</td>
+                        <td>2019-08-14</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_gray">已过期</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="nav_30"></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="popup" class="popup" style="display: none;">
+    <form class="layui-form" action="" lay-filter="popupSetting">
+        <div class="layui-row">
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6  layui-col-lg6 padding_r">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">调价名称</label>
+                    <div class="layui-input-block">
+                        <input id="txtRoleName" name="roleName" type="text" required
+                               lay-verify="required" placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">房价码</label>
+                    <div class="layui-input-block">
+                            <select multiple="multiple" lay-filter="fjm_ddl">
+                                <option value="">请选择</option>
+                                <option value="0" selected>房价码1</option>
+                                <option value="1">房价码2</option>
+                                <option value="2">房价码3</option>
+                                <option value="3" selected>房价码4</option>
+                                <option value="4">房价码5</option>
+                            </select>
+
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input date_item"  name="starDate"
+                               placeholder="请选择">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">截止时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input date_item" name="endDate" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">房型</label>
+                    <div class="layui-input-block">
+                        <select name="roomType" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="前台(系统预设)">大床房</option>
+                            <option value="客房">家庭套房</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6  layui-col-lg6 padding_l">
+                <div class="layui-form-item flex_row_l div_operation_panel">
+
+                        <input type="checkbox" lay-skin="primary" title="星期一">
+                       <!-- <div class="btn_operation_panel flex_row_l">
+                            <input type="text"  value="+" class="layui-input " disabled>
+                            <div class="flex_col_r btn_operation">
+                                <i data-type="minus" class="layui-icon layui-icon-triangle-d operation_sf"></i>
+                                <i data-type="plus" class="layui-icon layui-icon-triangle-d operation_sf"></i>
+                                <input type="hidden" value="0"/>
+                            </div>
+                        </div>-->
+                        <select class="ddl_operation" name="roomType" lay-verify="required">
+                            <option value="+">+</option>
+                            <option value="—">—</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <i class="icon"></i>
+
+                </div>
+                <div class="layui-form-item  flex_row_l div_operation_panel">
+
+                        <input type="checkbox" lay-skin="primary" title="星期二">
+                        <select class="ddl_operation" name="roomType" lay-verify="required">
+                            <option value="+">+</option>
+                            <option value="—">—</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <i class="icon"></i>
+
+                </div>
+                <div class="layui-form-item flex_row_l div_operation_panel">
+
+                        <input type="checkbox" lay-skin="primary" title="星期三">
+                        <select class="ddl_operation" name="roomType" lay-verify="required">
+                            <option value="+">+</option>
+                            <option value="—">—</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <i class="icon"></i>
+
+                </div>
+                <div class="layui-form-item flex_row_l div_operation_panel">
+
+                        <input type="checkbox" lay-skin="primary" title="星期四">
+                        <select class="ddl_operation" name="roomType" lay-verify="required">
+                            <option value="+">+</option>
+                            <option value="—">—</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <i class="icon"></i>
+
+                </div>
+                <div class="layui-form-item flex_row_l div_operation_panel">
+
+                        <input type="checkbox" lay-skin="primary" title="星期五">
+                        <select class="ddl_operation" name="roomType" lay-verify="required">
+                            <option value="+">+</option>
+                            <option value="—">—</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <i class="icon"></i>
+
+                </div>
+                <div class="layui-form-item flex_row_l div_operation_panel">
+                    <input type="checkbox" lay-skin="primary" title="星期六">
+                        <select class="ddl_operation" name="roomType" lay-verify="required">
+                            <option value="+">+</option>
+                            <option value="—">—</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <i class="icon"></i>
+
+                </div>
+
+                <div class="layui-form-item flex_row_l div_operation_panel">
+
+                        <input type="checkbox" lay-skin="primary" title="星期日">
+                        <select class="ddl_operation" name="roomType" lay-verify="required">
+                            <option value="+">+</option>
+                            <option value="—">—</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <i class="icon"></i>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="nav_20"></div>
+        <div class="layui-row">
+            <div class="layui-form-item layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12  flex_row">
+
+                    <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>  //初始赋值
+
+
+layui.use(['element', 'laydate','table','multiSelect'], function () {
+
+    var element = layui.element, $ = layui.jquery, form = layui.form, table = layui.table, laydate = layui.laydate,multiSelect = layui.multiSelect;
+
+    /*
+    var active = {
+        plus: function(){ //获取搜索数据
+            $(this).parents().find("input[type='hidden']").val(parseInt($(this).parents().find("input[type='hidden']").val())+1)
+        }
+        ,minus: function(){ //编辑
+            $(this).parents().find("input[type='hidden']").val(parseInt($(this).parents().find("input[type='hidden']").val())-1)
+        }
+    };
+
+    $('.operation_sf').on('click', function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+        var currVal=$(this).parents().find("input[type='hidden']").val()
+        alert(currVal)
+        switch(currVal) {
+            case "0":
+                $(this).parents().prev().val("+")
+                break;
+            case "1":
+                $(this).parents().prev().val("-")
+                break;
+            case "2":
+                $(this).parents().prev().val("*")
+                break;
+            case "3":
+                $(this).parents().prev().val("/")
+                break;
+        }
+    });
+
+    */
+    lay('.date_item').each(function () {
+        laydate.render({
+            elem: this
+            , trigger: 'click'
+        });
+    });
+    $("#btn_tj").on("click",function () {
+        layer.open({
+            type: 1,
+            content: $('#popup') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+        });
+    })
+    $('#get-val').click(function() {
+        var vals = [],
+            texts = [];
+        $('select[multiple] option:selected').each(function() {
+            vals.push($(this).val());
+            texts.push($(this).text());
+        })
+    })
+    form.on('select(test)',function(data){
+        console.dir(data);
+    })
+
+});
+layui.config({
+    base: '../assets/layui/',
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>角色权限设置</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-row flex_row_l">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md6  layui-col-lg6 btn_panel flex_row_l">
+
+            <button class="btn_base btn_add flex_row active" data-type="add"><i class="icon"></i>新增</button>
+
+        </div>
+        <div class="layui-col-xs8 layui-col-sm8 layui-col-md6  layui-col-lg6 btn_panel flex_row_r">
+            <div class="layui-transfer-search">
+                <i class="layui-icon layui-icon-search"></i>
+                <input type="input" class="layui-input" placeholder="关键词搜索">
+
+            </div>
+            <button class="btn_base btn_add flex_row active" data-type="search">搜索</button>
+
+        </div>
+    </div>
+    <div class="layui-row roleSettings_tab">
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12  layui-col-lg12 flex_row_l">
+            <table id="roleTable" class="layui-table" lay-data="{height: 200, url:'../json/roleSettings.json', page:false}"
+                   lay-filter="roleTable">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'roleName'}">角色名称</th>
+                    <th lay-data="{field:'dataJurisdiction'}">数据权限</th>
+                    <th lay-data="{field:'createDate',style:'color:#858DA2'}">创建日期</th>
+                    <th lay-data="{field:'createName',style:'color:#858DA2'}">创建人</th>
+                    <th lay-data="{fixed: 'right', align:'center', toolbar: '#barOperation'}">操作</th>
+                </tr>
+                </thead>
+            </table>
+            <script type="text/html" id="barOperation">
+                <a class="layui-btn layui-btn-danger layui-btn-xs btn_orange" lay-event="del">删除</a>
+                <a class="layui-btn layui-btn-xs" data-method="offset" data-type="auto" lay-event="edit">编辑</a>
+
+            </script>
+        </div>
+    </div>
+    <div class="layui-row roleSettings_tree">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md6  layui-col-lg6 ">
+            <div class="tree_panel">
+                <p class="title">菜单分配</p>
+                <div id="tree_cd" class="tree-more"></div>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md6  layui-col-lg6 ">
+            <div class="tree_panel">
+                <p class="title">权限分配</p>
+                <div id="tree_qx" class="tree-more"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup" class="popup" style="display: none">
+    <form class="layui-form" action="" lay-filter="popupSetting">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色名称</label>
+            <div class="layui-input-block">
+                <input id="txtRoleName" name="roleName" type="text" required
+                       lay-verify="required" placeholder="请输入"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">数据权限</label>
+            <div class="layui-input-block">
+                <select name="dataJurisdiction" lay-verify="required">
+                    <option value="">请选择</option>
+                    <option value="全部">全部</option>
+                    <option value="本级">本级</option>
+                    <option value="自定义">自定义</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['table','form','tree', 'util'], function () {
+        var table = layui.table, form = layui.form;
+        ;
+        var $ = layui.$
+        //监听工具条
+        table.on('tool(roleTable)', function (obj) {
+            var data = obj.data;
+            //  layer.msg('obj.event:' + obj.event);
+            if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                form.val('popupSetting', {
+                    "roleName": data.roleName
+                    , "dataJurisdiction": data.dataJurisdiction // "name": "value"
+                });
+                form.render('select')
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+                layer.open({
+                    type: 1,
+                    content: $('#popup') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                });
+
+            }
+        });
+
+        form.on('submit(editSubmit)', function (data) {
+            console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+            console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            table.reload('roleTable', {
+                url: '../json/roleSettings.json'
+                //,where: {} 设定异步数据接口的额外参数
+                //,height: 300
+            });
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+        var tree = layui.tree
+            , layer = layui.layer
+            , util = layui.util
+            //模拟数据1
+            , data1 = [
+                {
+                title: '预订'
+                , id: 1
+                , children: [{
+                    title: '用户'
+                    , id: 1000
+                    , children: [{
+                        title: '客人'
+                        , id: 10001
+                    }, {
+                        title: '客人'
+                        , id: 10002
+                    }]
+                }, {
+                    title: '角色'
+                    , id: 1001
+                }, {
+                    title: '特殊'
+                    , id: 1002
+                }]
+            }, {
+                title: '登记'
+                , id: 2
+                , children: [{
+                    title: '登记'
+                    , id: 2000
+                }]
+            }, {
+                title: '订单'
+                , id: 4
+                , children: [{
+                    title: '订单'
+                    , id: 3004
+                }]
+            }, {
+                title: '房情'
+                , id: 5
+                , children: [{
+                    title: '订单'
+                    , id: 3005
+                }]
+            }
+                , {
+                    title: '房态'
+                    , id: 6
+                    , children: [{
+                        title: '订单'
+                        , id: 3006
+                    }]
+                }
+                , {
+                    title: '夜审'
+                    , id: 7
+                    , children: [{
+                        title: '订单'
+                        , id: 3007
+                    }]
+                }, {
+                    title: '报表'
+                    , id: 8
+                    , children: [{
+                        title: '订单'
+                        , id: 3008
+                    }]
+                }, {
+                    title: '营销管理'
+                    , id: 9
+                    , children: [{
+                        title: '订单'
+                        , id: 3009
+                    }]
+                }, {
+                    title: '财务设置'
+                    , id: 10
+                    , children: [{
+                        title: '订单'
+                        , id: 3010
+                    }]
+                }
+
+            ]
+
+        //菜单分配
+        tree.render({
+            elem: '#tree_cd'
+            , data: data1
+            , showCheckbox: true
+            , showLine: false
+        });
+        //权限分配
+        tree.render({
+            elem: '#tree_qx'
+            , data: data1
+            , showCheckbox: true
+            , showLine: false
+        });
+
+    });
+</script>
+</body>
+</html>

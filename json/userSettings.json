@@ -1,0 +1,38 @@
+{
+  "code": 0
+,"msg": ""
+,"count": 3000000
+,"data": [{
+  "account": "10001"
+,"name": "杜甫"
+,"status":"启用"
+,"department": "前厅部"
+,"gangwei": "前台接待"
+,"role": "前台接待"
+,"phone": "15358408800"
+},{
+  "account": "10002"
+,"name": "李白"
+,"status":"启用"
+,"department": "酒店事业部"
+,"gangwei": "值班经理"
+,"role": "管理员"
+,"phone": "15358408801"
+},{
+  "account": "10003"
+,"name": "王安石"
+,"department": "前厅部"
+,"status":"停用"
+,"gangwei": "值班经理"
+,"role": "管理员"
+,"phone": "15358408802"
+},{
+  "account": "10004"
+,"name": "杜甫"
+,"status":"启用"
+,"department": "前厅部"
+,"gangwei": "前台接待"
+,"role": "前台接待"
+,"phone": "15358408803"
+}
+]}

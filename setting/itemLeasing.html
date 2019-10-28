@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>物品租赁</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">物品去向</li>
+            <li>去向明细</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                    <div class="layui-row">
+                        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 btn_panel flex_row">
+                            <button class="btn_base btn_delete flex_row " data-type="search"><i class="icon"></i>删除
+                            </button>
+                            <button class="btn_base btn_search flex_row active" data-type="search"><i class="icon"></i>查询
+                            </button>
+                            <button class="btn_base btn_edit flex_row" data-type="edit"><i class="icon"></i>修改</button>
+                            <button class="btn_base btn_add flex_row" data-type="add"><i class="icon"></i>新增</button>
+                            <input id="btnStatus" type="hidden" value="0"/>
+                            <!--0为查询-->
+                            <!--1为修改-->
+                            <!--2为新增-->
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left">
+                            <form class="layui-form" action="" lay-filter="setting">
+
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">物品名称</label>
+                                    <div class="layui-input-block">
+                                        <input name="name" type="text" required lay-verify="required"
+                                               placeholder="请输入物品名称"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">单价</label>
+                                    <div class="layui-input-block">
+                                        <input name="price" type="text" required
+                                               lay-verify="required" placeholder="请输入单价"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">数量</label>
+                                    <div class="layui-input-block">
+                                        <input name="qty" type="text" required lay-verify="required"
+                                               placeholder="请输入数量"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">所属部门</label>
+                                    <div class="layui-input-block">
+                                        <select name="department" lay-verify="required">
+                                            <option value="">请选择所属部门</option>
+                                            <option value="前台(系统预设)">前台(系统预设)</option>
+                                            <option value="客房">客房</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 " style="padding: 0">
+                            <div class="setting_right">
+                                <table class="layui-table" lay-data="{url:'../json/itemLeasing.json', page:false}"
+                                       lay-filter="user">
+                                    <thead>
+                                    <tr>
+                                        <th lay-data="{field:'name'}">物品名称</th>
+                                        <th lay-data="{field:'price',style:'color:#858DA2'}">单价</th>
+                                        <th lay-data="{field:'qty'}">数量</th>
+                                        <th lay-data="{field:'surplus'}">可用数</th>
+                                        <th lay-data="{field:'department',style:'color:#858DA2'}">归属部门</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left">
+                        <form class="layui-form" action="" lay-filter="formQxmx">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">物品名称</label>
+                                <div class="layui-input-block">
+                                    <input name="name" type="text" required lay-verify="required"
+                                           placeholder="请输入物品名称"
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">单价</label>
+                                <div class="layui-input-block">
+                                    <input name="price" type="text" required
+                                           lay-verify="required" placeholder="请输入单价"
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">数量</label>
+                                <div class="layui-input-block">
+                                    <input name="qty" type="text" required lay-verify="required"
+                                           placeholder="请输入数量"
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">所属部门</label>
+                                <div class="layui-input-block">
+                                    <select name="department" lay-verify="required">
+                                        <option value="">请选择所属部门</option>
+                                        <option value="前台(系统预设)">前台(系统预设)</option>
+                                        <option value="客房">客房</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                                    <button class="layui-btn" lay-submit lay-filter="btnSearch">查询</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 " style="padding: 0">
+                        <div class="setting_right layui-form">
+
+                            <table class="layui-table" lay-data="{ url:'../json/itemLeasingDesc.json', page:false}"
+                                   lay-filter="tableQxmx" style="width: 100%">
+                                <thead>
+                                <tr>
+                                    <th lay-data="{field:'name',minWidth: 160}">物品名称</th>
+                                    <th lay-data="{field:'jyName', minWidth: 110}">借用人</th>
+                                    <th lay-data="{field:'jyRoomNumber', minWidth: 100}">借用房号</th>
+                                    <th lay-data="{field:'qty', minWidth: 100}">数量</th>
+                                    <th lay-data="{field:'roomStatus', minWidth: 140}">房间状态</th>
+                                    <th lay-data="{field:'phone',style:'color:#858DA2', minWidth: 140}">联系方式</th>
+                                </tr>
+                                </thead>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    //JavaScript代码区域
+    layui.use(['element','form','table'], function () {
+        var element = layui.element,form = layui.form,$ = layui.jquery,table = layui.table;
+        var $ = layui.$, active = {
+            search: function () { //获取搜索数据
+                $("#btnStatus").val("0")
+            }
+            , edit: function () { //编辑
+                $("#btnStatus").val("1")
+            }
+            , add: function () { //新增
+                $("#btnStatus").val("2")
+            }
+        };
+
+        $('.btn_base').on('click', function () {
+            var type = $(this).data('type');
+            $(".btn_base").removeClass("active")
+            active[type] ? active[type].call(this) : '';
+            $(this).addClass("active")
+        });
+
+
+
+        //监听提交
+        form.on('submit(setting)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+
+        //监听工具条
+        table.on('rowDouble(user)', function (obj) {
+            if ($("#btnStatus").val() == "1") {
+                console.log(obj.data) //得到当前行数据
+                form.val('setting', {
+                    "name": obj.data.name
+                    , "price": obj.data.price
+                    , "qty": obj.data.qty
+                    , "surplus": obj.data.surplus
+                    , "department": obj.data.department
+                });
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

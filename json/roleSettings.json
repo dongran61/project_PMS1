@@ -1,0 +1,36 @@
+{
+  "code": 0
+,"msg": ""
+,"count": 3000000
+,"data": [{
+  "id": "10001"
+,"roleName": "杜甫"
+,"dataJurisdiction":"全部"
+,"createDate": "2019/08/01"
+,"createName": "李白"
+},{
+  "id": "10002"
+,"roleName": "李贺"
+,"dataJurisdiction":"全部"
+,"createDate": "2019/08/02"
+,"createName": "李贺"
+},{
+  "id": "10003"
+,"roleName": "刘禹锡"
+,"dataJurisdiction":"本级"
+,"createDate": "2019/08/03"
+,"createName": "刘禹锡"
+},{
+  "id": "10004"
+,"roleName": "温庭筠"
+,"dataJurisdiction":"本级"
+,"createDate": "2019/08/04"
+,"createName": "温庭筠"
+},{
+  "id": "10005"
+,"roleName": "李商隐"
+,"dataJurisdiction":"本级"
+,"createDate": "2019/08/09"
+,"createName": "杜牧"
+}
+]}

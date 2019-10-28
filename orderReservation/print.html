@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打印</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/order.css">
+    <style type="text/css">
+        .layui-row{
+            width:100%;}
+        .hr{background-color: #000;}
+    </style>
+</head>
+<body style="background-color: #fff;">
+<div id="popup_print" class="layui-form">
+
+    <div class="layui-row printInfo flex_row_l">
+        <div class="layui-col-sm7 layui-col-md7 layui-col-lg7">
+            <label>收款人：</label><em>李丽丽</em>
+
+        </div>
+        <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 ">
+            <label >打印时间：</label><em>2019-06-07 11:21</em>
+        </div>
+    </div>
+    <div class="layui-row printInfo flex_row_l">
+        <div class="layui-col-sm7 layui-col-md7 layui-col-lg7">
+            <label >房号：</label ><em>201</em>
+        </div>
+        <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 ">
+            <label >房价：</label ><em>128.00</em>
+        </div>
+    </div>
+    <div class="layui-row printInfo flex_row_l">
+        <div class="layui-col-sm7 layui-col-md7 layui-col-lg7">
+            <label >房型：</label ><em>大床房A</em>
+        </div>
+        <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 ">
+            <label >预付款：</label ><em>128.00</em>
+        </div>
+    </div>
+    <div class="layui-row printInfo dh ">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+            <label >抵离时间：</label><em >2019.02.22 13:11 - 2019.02.22 13:11</em>
+
+        </div>
+    </div>
+    <hr>
+    <div class="layui-row printInfo dh">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+            <label >入住人：</label><em >玛丽莲</em>
+
+
+        </div>
+    </div>
+    <div class="layui-row printInfo dh">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+            <label >性别：</label><em >女</em>
+        </div>
+    </div>
+    <div class="layui-row printInfo dh">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+            <label >出生年月：</label><em >1986.02</em>
+        </div>
+    </div>
+    <div class="layui-row printInfo dh">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+            <label >证件号：</label><em >3199923445233422</em>
+        </div>
+    </div>
+    <div class="layui-row printInfo dh">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+            <label >地址：</label> <em >杭州市下城区朝晖7小区91幢1单元231室</em>
+        </div>
+    </div>
+    <div class="layui-row printInfo dh tips">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12 ">
+            <label >提醒：</label>  <em class="flex_row_l">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+            Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum,
+            nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</em>
+
+        </div>
+    </div>
+    <div class="layui-row printInfo_qm flex_row_l dh">
+        <div class="layui-col-sm9 layui-col-md9 layui-col-lg9 flex_row_l">
+            <label >客人签名：</label><em class="flex_row_l">Lorem ipsum dolor</em>
+
+        </div>
+
+    </div>
+    <div class="nav_10"></div>
+
+</div>
+<div class="layui-row  flex_row">
+    <button type="button" class="btn_base2 btn_black flex_row " id="btn_print_ok"><i class="icon icon_print"></i>打印</button></div>
+<div class="nav_30"></div>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+    layui.use(['element','layer'], function () {
+        var element = layui.element, $ = layui.jquery
+        $('#btn_print_ok').on('click', function () {
+
+            //  window.document.body.innerHTML=$("#popup_print").html;
+
+          document.body.innerHTML=document.getElementById('popup_print').innerHTML
+            window.print();
+
+           // layer.close(index);
+        });
+        })
+        </script>
+</body>
+</html>

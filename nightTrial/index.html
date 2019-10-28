@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>夜审</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link href="css/left.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div id="left" class="layui-side layui-bg-black layui-anim layui-anim-upbit layui-form">
+
+    <div class="layui-side-scroll">
+        <!-- 左侧导航区域 -->
+        <div class="nightT_btn flex_row">
+            <span>房租入账</span>
+        </div>
+        <div class="nightT_btn flex_row" onclick="popup(1,'popup_tips','')">
+            <span>报表统计及数据更新</span>
+        </div>
+
+    </div>
+</div>
+<div id="layui-body" class="layui-body" style="border: none">
+
+    <div class="page_panel relative">
+
+        <div class="layui-row tab_border_radius">
+
+            <table class=" layui-table"
+                   lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                   lay-filter="order">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'daima'}">房型</th>
+                    <th lay-data="{field:'project',style:'color:#858DA2'}">姓名</th>
+                    <th lay-data="{field:'roomNum'}">房号</th>
+                    <th lay-data="{field:'daima',style:'color:#858DA2'}">房价码</th>
+                    <th lay-data="{field:'price'}">房价</th>
+                    <th lay-data="{field:'daima',style:'color:#858DA2'}">客源类型</th>
+                    <th lay-data="{field:'yingyeTime'}">到店时间</th>
+                    <th lay-data="{field:'yewuTime'}">离店时间</th>
+                </tr>
+                </thead>
+
+            </table>
+        </div>
+        <div class="layui-row table_total_panel">
+            <div class="table_total flex_row">
+                <div class="layui-col-sm6 layui-col-md6 layui-col-lg6 flex_row">房间数：1</div>
+                <div class="layui-col-sm6 layui-col-md6 layui-col-lg6 flex_row">房费收入：<em class="font_FF653B">300</em>
+                </div>
+
+            </div>
+        </div>
+        <div class="nav_30"></div>
+    </div>
+</div>
+<div class="popup_box_2">
+    <div id="popup_tips" class="popup" style="display: none">
+        <p class="flex_col">
+            <span class="icon icon_ys"></span>
+
+        </p>
+        <p>请先进行【房租入账】操作后，再开始本操作</p>
+    </div>
+</div>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['element', 'laydate', 'form', 'layer', 'table'], function () {
+        var table = layui.table, $ = layui.jquery, laydate = layui.laydate, form = layui.form;
+
+        $(".btn_close").on("click", function () {
+            layer.closeAll();
+        })
+
+        window.popup = function (type, content, title) {
+            layer.open({
+                type: type,
+                content: $('#' + content),
+                title: title
+            });
+        }
+
+    });
+
+</script>
+</body>
+</html>

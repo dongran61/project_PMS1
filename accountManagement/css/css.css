@@ -1,0 +1,16 @@
+
+.panel_title{ margin: 20px 0px;color: #4C4E54;}
+.panel_title .line{width:5px;display: inline-block;
+    height:18px;
+    background:linear-gradient(180deg,rgba(10,141,255,1) 0%,rgba(10,141,255,1) 100%); margin-right: 10px;}
+.pwd_panel{height:380px;
+    background:rgba(255,255,255,1);
+    border-radius:8px;
+    border:1px solid rgba(231,234,239,1);}
+
+.pwd_panel img{width:268px;height: 253px; margin: 63px 10%; }
+.layui-form-label {
+     padding: 5px 0px;
+     text-align: left;
+}
+.pwd_ctrl_panel{ margin: 50px 0px 50px 30px;}

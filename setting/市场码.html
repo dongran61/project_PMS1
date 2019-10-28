@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>市场码</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-row">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left">
+            <form class="layui-form" action="" lay-filter="setting">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">代码</label>
+                    <div class="layui-input-block">
+                        <input id="txtAccount" name="account" type="text" required
+                               lay-verify="required" placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <input id="txtDepartment" name="department" type="text" required
+                               lay-verify="required" placeholder="请输入部门"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标记</label>
+                    <div class="layui-input-block">
+                        <select name="role" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="管理员">免房费</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属房价类别</label>
+                    <div class="layui-input-block">
+                        <select name="role" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="管理员">中介</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block layui-input-inline">
+                        <input type="checkbox" value="0" lay-skin="primary" title="停用" checked>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 " style="padding: 0">
+            <div class="setting_right">
+                <table class="layui-table" lay-data="{height: 'full-100', url:'../json/userSettings.json', page:false}"
+                       lay-filter="user">
+                    <thead>
+
+                    <tr>
+                        <th lay-data="{field:'account'}">代码</th>
+                        <th lay-data="{field:'name'}">描述</th>
+                        <th lay-data="{field:'name'}">标记</th>
+                        <th lay-data="{field:'name'}">所属房价类别</th>
+                        <th lay-data="{field:'status',style:'color:#0DEBAA'}">停用</th>
+
+                        <th lay-data="{fixed: 'right',align:'center', toolbar: '#barOperation'}"></th>
+                    </tr>
+
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barOperation">
+    <a class="layui-btn  layui-btn-xs btn_blue" lay-event="edit">编辑</a>
+</script>
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+
+
+    layui.use('table', function () {
+        var $ = layui.jquery, form = layui.form;
+        var table = layui.table;
+        //监听工具条
+        table.on('tool(user)', function (obj) {
+            var data = obj.data;
+            layer.msg('obj.event:' + obj.event);
+            if (obj.event === 'edit') {
+                layer.msg('ID：' + data.name + ' 编辑');
+            }
+        });
+
+
+        table.on('rowDouble(user)', function (obj) {
+            if($("#btnStatus").val()=="1") {
+                console.log(obj.data) //得到当前行数据
+                form.val('setting', {
+                    "account": obj.data.account
+                    ,
+                    "name": obj.data.name
+                    ,
+                    "department": obj.data.department // "name": "value"
+                    ,
+                    "gangwei": obj.data.gangwei
+                    ,
+                    "phone": obj.data.phone
+                    ,
+                    "rdo_ok": $("input[name='rdo_ok'][value='0']").attr("checked", obj.data.status == "启用" ? true : false)
+                    ,
+                    "rdo_ok": $("input[name='rdo_ok'][value='1']").attr("checked", obj.data.status == "停用" ? true : false)
+                    ,
+                    "role": obj.data.role
+                });
+                form.render('radio');
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

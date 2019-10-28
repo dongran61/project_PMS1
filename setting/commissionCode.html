@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>佣金码</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+
+        <div class="layui-row">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 btn_panel flex_row">
+                <button class="btn_base btn_delete flex_row" data-type="delete"><i class="icon"></i>删除
+                </button>
+                <button class="btn_base btn_search flex_row active" data-type="search"><i class="icon"></i>查询
+                </button>
+                <button class="btn_base btn_edit flex_row" data-type="edit"><i class="icon"></i>修改</button>
+                <button class="btn_base btn_add flex_row" data-type="add"><i class="icon"></i>新增</button>
+                <input id="btnStatus" type="hidden" value="0"/>
+                <!--0为查询-->
+                <!--1为修改-->
+                <!--2为新增-->
+            </div>
+        </div>
+
+
+        <div class="layui-row overflow_hidden" style="height:calc(50% - 60px);">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left left_overflow">
+                <form class="layui-form " action="" lay-filter="setting">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">代码</label>
+                        <div class="layui-input-block">
+                            <input name="name" type="text" required lay-verify="required"
+                                   placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">名称</label>
+                        <div class="layui-input-block">
+                            <input name="name" type="text" required lay-verify="required"
+                                   placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input date_item"  name="starDate"
+                                   placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">截止时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input date_item" name="endDate" placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block layui-input-inline">
+                            <input type="checkbox" value="0" lay-skin="primary" title="阶梯分类房"
+                                   checked>
+                            <input type="checkbox"  value="1" lay-skin="primary" title="私有">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">阶梯时段</label>
+                        <div class="layui-input-block">
+                            <select name="department" lay-verify="required">
+                                <option value="">请选择所属部门</option>
+                                <option value="前台(系统预设)">前台(系统预设)</option>
+                                <option value="客房">客房</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">
+                            <select name="department" lay-verify="required">
+                                <option value="">请选择所属部门</option>
+                                <option value="前台(系统预设)">前台(系统预设)</option>
+                                <option value="客房">客房</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 ">
+                <div class="setting_right height_100">
+                    <table class="layui-table table_h_padding_lr">
+                        <thead>
+                        <tr>
+                            <th>代码</th>
+                            <th>名称</th>
+                            <th>开始日期</th>
+                            <th>截止日期</th>
+                            <th>阶梯分房类</th>
+                            <th>阶梯时段</th>
+                            <th>私有</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>代码</td>
+                                <td>代s码</td>
+                                <td>2018-02-02</td>
+                                <td>2018-02-02</td>
+                                <td>是</td>
+                                <td>月</td>
+                                <td>否</td>
+                                <td>启用</td>
+                            </tr>
+                            <tr>
+                                <td>代码</td>
+                                <td>代s码</td>
+                                <td>2018-07-02</td>
+                                <td>2018-11-02</td>
+                                <td>否</td>
+                                <td>月</td>
+                                <td>否</td>
+                                <td>启用</td>
+                            </tr>
+                            <tr>
+                                <td>代码</td>
+                                <td>代s码</td>
+                                <td>2019-02-02</td>
+                                <td>2018-02-02</td>
+                                <td>是</td>
+                                <td>月</td>
+                                <td>是</td>
+                                <td>启用</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    <div class="nav_20"></div>
+
+    <div class="layui-row">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 btn_panel flex_row_l">
+            <button class="btn_base btn_delete flex_row active" data-type="delete"><i class="icon"></i>删除
+            </button>
+
+            <button class="btn_base btn_edit flex_row" data-type="edit"><i class="icon"></i>修改</button>
+            <input id="btnStatus2" type="hidden" value="0"/>
+            <!--0为查询-->
+            <!--1为修改-->
+            <!--2为新增-->
+        </div>
+    </div>
+    <div class="layui-row overflow_hidden" style="height:calc(50% - 60px);">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left left_overflow">
+            <form class="layui-form " action="" lay-filter="setting">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-block">
+                        <select name="department" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="比例">比例</option>
+                            <option value="定额">定额</option>
+                            <option value="底价">底价</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">房型</label>
+                    <div class="layui-input-block">
+                        <select multiple="multiple" lay-filter="fjm_ddl">
+                            <option value="">请选择</option>
+                            <option value="0" selected>房价码1</option>
+                            <option value="1">房价码2</option>
+                            <option value="2">房价码3</option>
+                            <option value="3" selected>房价码4</option>
+                            <option value="4">房价码5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">方式</label>
+                    <div class="layui-input-block">
+                        <select name="department" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="间/夜">间/夜</option>
+                            <option value="次数">次数</option>
+                            <option value="价格">价格</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">底价底线</label>
+                    <div class="layui-input-block">
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+
+                    <div class="layui-input-block layui-input-inline">
+                        <input type="checkbox" value="0" lay-skin="primary" title="扣费服务"
+                               checked>
+                        <input type="checkbox"  value="1" lay-skin="primary" title="扣包价">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"></label>
+                    <div class="layui-input-block flex_row_l">
+                        <div class="layui_input_panel flex_row_l">
+                            <input name="name" type="text" value="间夜"  class="layui-input" style="border: none" disabled>
+
+                            <input name="name" type="text" value="设置值" class="layui-input" style="border: none" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item flex_row_l" >
+                    <label class="layui_label">初始值</label>
+                    <div class="layui_input_panel flex_row_l">
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="最低"
+                               autocomplete="off" class="layui-input">
+
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="最高"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item flex_row_l" >
+                    <label class="layui_label">阶梯一</label>
+                    <div class="layui_input_panel flex_row_l">
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item flex_row_l" >
+                    <label class="layui_label">阶梯二</label>
+                    <div class="layui_input_panel flex_row_l">
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item flex_row_l" >
+                    <label class="layui_label">阶梯三</label>
+                    <div class="layui_input_panel flex_row_l">
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item flex_row_l" >
+                    <label class="layui_label">阶梯四</label>
+                    <div class="layui_input_panel flex_row_l">
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item flex_row_l" >
+                    <label class="layui_label">阶梯五</label>
+                    <div class="layui_input_panel flex_row_l">
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+
+                        <input name="name" type="text" required lay-verify="required"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 height_100">
+            <div class="setting_right height_100 overflow_x">
+                <table class="layui-table " lay-data="{height:'full-100',width:2000,url:'../json/itemLeasing.json', page:false}">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'name'}">房型</th>
+                        <th lay-data="{field:'name'}">类型</th>
+                        <th lay-data="{field:'name'}">方式</th>
+                        <th lay-data="{field:'name'}">房价底线</th>
+                        <th lay-data="{field:'name'}">返佣值</th>
+                        <th lay-data="{field:'name'}">扣税底线</th>
+                        <th lay-data="{field:'name'}">扣包价</th>
+                        <th lay-data="{field:'name'}">最低佣金</th>
+                        <th lay-data="{field:'name'}">最高佣金</th>
+                        <th lay-data="{field:'name'}">阶梯一</th>
+                        <th lay-data="{field:'name'}">阶梯二</th>
+                        <th lay-data="{field:'name'}">阶梯三</th>
+                        <th lay-data="{field:'name'}">阶梯四</th>
+                        <th lay-data="{field:'name'}">阶梯五</th>
+                    </tr>
+                    </thead>
+                    <!--
+                    <tbody>
+                    <tr>
+                        <td>房型</td>
+                        <td>类型</td>
+                        <td>方式</td>
+                        <td>房价底线</td>
+                        <td>返佣值</td>
+                        <td>扣税底线</td>
+                        <td>扣包价</td>
+                        <td>最低佣金</td>
+                        <td>最高佣金</td>
+                        <th>阶梯一</th>
+                        <th>阶梯二</th>
+                        <th>阶梯三</th>
+                        <th>阶梯四</th>
+                        <th>阶梯五</th>
+                    </tr>
+                    <tr>
+                        <td>房型</td>
+                        <td>类型</td>
+                        <td>方式</td>
+                        <td>房价底线</td>
+                        <td>返佣值</td>
+                        <td>扣税底线</td>
+                        <td>扣包价</td>
+                        <td>最低佣金</td>
+                        <td>最高佣金</td>
+                        <th>阶梯一</th>
+                        <th>阶梯二</th>
+                        <th>阶梯三</th>
+                        <th>阶梯四</th>
+                        <th>阶梯五</th>
+                    </tr>
+                    <tr>
+                        <td>房型</td>
+                        <td>类型</td>
+                        <td>方式</td>
+                        <td>房价底线</td>
+                        <td>返佣值</td>
+                        <td>扣税底线</td>
+                        <td>扣包价</td>
+                        <td>最低佣金</td>
+                        <td>最高佣金</td>
+                        <th>阶梯一</th>
+                        <th>阶梯二</th>
+                        <th>阶梯三</th>
+                        <th>阶梯四</th>
+                        <th>阶梯五</th>
+                    </tr>
+
+                    </tbody>
+                    -->
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>
+    //JavaScript代码区域
+    layui.use(['element', 'laydate','table'], function () {
+        var element = layui.element, $ = layui.jquery, form = layui.form, table = layui.table, laydate = layui.laydate;
+        lay('.date_item').each(function () {
+            laydate.render({
+                elem: this
+                , trigger: 'click'
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    layui.config({
+        base: '../assets/layui/',
+    })
+    layui.use(['multiSelect'],function() {
+        var $ = layui.jquery,form = layui.form,multiSelect = layui.multiSelect;
+        $('#get-val').click(function() {
+            var vals = [],
+                texts = [];
+            $('select[multiple] option:selected').each(function() {
+                vals.push($(this).val());
+                texts.push($(this).text());
+            })
+        })
+        form.on('select(test)',function(data){
+            console.dir(data);
+        })
+    });
+</script>
+</body>
+</html>

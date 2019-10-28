@@ -1,0 +1,57 @@
+{
+  "code": 0
+,"msg": ""
+,"count": 3000000
+,"data": [{
+  "id": "10001"
+,"name": "杜甫"
+,"price":102.00
+,"qty": 2
+,"surplus": 10
+,"department": "前台(系统预设)"
+},{
+  "id": "10002"
+,"name": "李白"
+,"price":172.00
+,"qty": 5
+,"surplus": 6
+,"department": "客房"
+},{
+  "id": "10003"
+,"name": "王安石"
+,"price":102.00
+,"qty": 2
+,"surplus": 7
+,"department": "客房"
+},{
+  "account": "10004"
+,"name": "杜甫"
+,"price":99.00
+,"qty": 1
+,"surplus": 8
+,"department": "前台(系统预设)"
+},{
+  "account": "10004"
+,"name": "杜甫"
+,"price":99.00
+,"qty": 1
+,"surplus": 8
+,"department": "前台(系统预设)"
+}
+,{
+    "account": "10004"
+  ,"name": "杜甫"
+  ,"price":99.00
+  ,"qty": 1
+  ,"surplus": 8
+  ,"department": "前台(系统预设)"
+  }
+,{
+    "account": "10004"
+  ,"name": "杜甫"
+  ,"price":99.00
+  ,"qty": 1
+  ,"surplus": 8
+  ,"department": "前台(系统预设)"
+  }
+]}

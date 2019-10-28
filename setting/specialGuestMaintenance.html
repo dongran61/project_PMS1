@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>特殊客人维护</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-row">
+        <div class="layui-row">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 btn_panel flex_row">
+                <button class="btn_base btn_search flex_row active" data-type="search"><i class="icon"></i>查询</button>
+                <button class="btn_base btn_edit flex_row" data-type="edit"><i class="icon"></i>修改</button>
+                <button class="btn_base btn_add flex_row" data-type="add"><i class="icon"></i>新增</button>
+                <input id="btnStatus" type="hidden" value="0"/>
+
+                <!--0为查询-->
+                <!--1为修改-->
+                <!--2为新增-->
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left">
+                <form class="layui-form" action="" lay-filter="setting">
+
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-block">
+                            <input id="txtName" name="name" type="text" required lay-verify="required"
+                                   placeholder="请输入姓名"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">证件号</label>
+                        <div class="layui-input-block">
+                            <input id="txtCardID" name="cardID" type="text" required
+                                   lay-verify="required" placeholder="请输入证件号"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">类别</label>
+                        <div class="layui-input-block">
+                            <select id="ddlCategory" name="category" lay-verify="required">
+                                <option value="">请选择类别</option>
+                                <option value="A类优质客户">A类优质客户</option>
+                                <option value="B类特殊客">B类特殊客</option>
+                                <option value="C类黑名单">C类黑名单</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">联系电话</label>
+                        <div class="layui-input-block">
+                            <input id="txtPhone" name="phone" type="text"  required lay-verify="required"
+                                   placeholder="请输入联系电话"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                            <textarea id="txtDesc" name="desc" placeholder="请输入描述" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 " style="padding: 0">
+                <div class="setting_right">
+                    <table class="layui-table" lay-data="{height: 'full-100', url:'../json/specialGuestMaintenance.json', page:false}"
+                           lay-filter="user">
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'name'}">姓名</th>
+                            <th lay-data="{field:'cardID'}">证件号</th>
+                            <th lay-data="{field:'category'}">类别</th>
+                            <th lay-data="{field:'phone',style:'color:#858DA2'}">联系电话</th>
+                            <th lay-data="{field:'desc',style:'color:#858DA2'}">描述</th>
+                        </tr>
+
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+        var $ = layui.$, active = {
+            search: function () { //获取搜索数据
+                $("#btnStatus").val("0")
+            }
+            , edit: function () { //编辑
+                $("#btnStatus").val("1")
+            }
+            , add: function () { //新增
+                $("#btnStatus").val("2")
+            }
+        };
+
+        $('.btn_base').on('click', function () {
+            var type = $(this).data('type');
+            $(".btn_base").removeClass("active")
+            active[type] ? active[type].call(this) : '';
+            $(this).addClass("active")
+        });
+    });
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(setting)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+
+    layui.use('table', function () {
+        var $ = layui.jquery, form = layui.form;
+        var table = layui.table;
+        //监听工具条
+        table.on('tool(user)', function (obj) {
+            var data = obj.data;
+            layer.msg('obj.event:' + obj.event);
+            if (obj.event === 'reset') {
+                layer.msg('ID：' + data.name + ' 的重置密码操作');
+            }
+        });
+
+
+        table.on('rowDouble(user)', function (obj) {
+            if ($("#btnStatus").val() == "1") {
+                console.log(obj.data) //得到当前行数据
+                form.val('setting', {
+
+                    "name": obj.data.name
+                    ,"cardID": obj.data.cardID
+                    ,"category": obj.data.category
+                    , "phone": obj.data.phone
+                    , "desc": obj.data.desc
+                });
+
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

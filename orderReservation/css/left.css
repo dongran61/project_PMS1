@@ -1,0 +1,11 @@
+body{height: calc(100% - 100px)}
+.room_status{width: 170px;height: 60px; margin: 10px auto;background:rgba(48,53,66,1);
+    border-radius:3px;
+    border:1px solid rgba(28,31,39,1);}
+.order_num{padding: 0 30px;
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:3px;color: #20242E;
+    border:1px solid rgba(223,241,255,1);position: absolute; right: 40px;}
+
+

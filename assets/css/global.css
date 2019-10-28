@@ -1,0 +1,148 @@
+
+@charset "UTF-8";
+
+html {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+}
+body {
+    margin: 0 auto; height: 100%;
+    padding: 0;
+    font-family: "微软雅黑";
+    /*width: 7.5rem;*/
+    background-color: #EFF3F6;
+}
+button,input{ border: none; outline: none;}
+em,label{font-style: normal;}
+::-webkit-input-placeholder,
+::-webkit-input-placeholder,
+::-webkit-input-placeholder{line-height: 1.3;color: #C0C6CC;}
+ul,li{list-style: none}
+i{font-style: normal}
+button{cursor: pointer !important;}
+
+.flex_row{display: flex;flex-direction: row;align-items: center;justify-content: center;}
+.flex_row_l{display: flex !important;flex-direction: row;align-items: center;justify-content: left;}
+.flex_row_r{display: flex !important;flex-direction: row;align-items: center;justify-content: flex-end;}
+.flex_col{display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.flex_col_l{display: flex;flex-direction: column;align-items: left;justify-content: center;}
+.flex_col_r{display: flex;flex-direction: column;align-items: left;justify-content: flex-end;}
+.a_underline,.a_underline:hover{border-bottom: 1px solid #ff653B;padding-bottom: 5px;color: #ff653B;}
+
+/*********  字体颜色**********/
+.font_488AFF{color: #488AFF}
+.font_3A4048{color: #3A4048}
+.font_fff{color: #fff}
+.font_51566B{color: #51566B}
+.font_4C4E54{color: #4C4E54}
+.font_C84744{color: #C84744}
+.font_FF0023{color: #FF0023}
+.font_2FCC71{color: #2FCC71}
+.font_0DEBAA{color: #0DEBAA}
+.font_30CA58{color: #30CA58}
+.font_FD6736{color: #FD6736}
+.font_20242E{color:#20242E }
+.font_7D889E{color: #7D889E}
+.font_303542{color: #303542}
+.font_FF653B{color: #ff653B}
+
+.font_8{font-size: 8px}
+.font_9{font-size: 9px}
+.font_10{font-size: 10px}
+.font_12{font-size: 12px}
+.font_14{font-size: 14px}
+.font_16{font-size: 16px}
+.font_18{font-size: 18px}
+.font_20{font-size: 20px}
+.font_22{font-size: 22px}
+.font_24{font-size: 24px}
+.font_26{font-size: 26px}
+.font_28{font-size: 28px}
+.font_30{font-size: 30px}
+.font_bold{font-weight: bold}
+/*********背景颜色**********/
+.bg_14161D {
+    background-color: #14161D;
+}
+.bg_fff{background-color: #fff;}
+.bg_58759B{background-color: #58759B}
+.popup{padding: 20px 20px 20px 0px;}
+/*******************/
+.nav_10{height: 10px;width: 100%; clear: both}
+.nav_20{height: 20px;width: 100%; clear: both}
+.nav_30{height: 30px;width: 100%; clear: both}
+.nav_40{height: 40px;width: 100%; clear: both}
+.icon{display: inline-block;background: url("../images/icon.png") no-repeat;background-size:1440px 1171px;}
+.icon_img{  display: inline-block;background: url("../images/images.png") no-repeat;background-size:1291px 531px }
+
+.hide{ display: none !important;transition: all .3s; -webkit-transition: all .3s;
+    -webkit-animation-name: layui-upbit;
+    animation-name: layui-upbit;}
+.page_panel{padding: 15px 30px;
+    height:100%;
+}
+.page_panel2{padding: 15px 30px;
+}
+.page_panel3{padding: 15px 0px;
+}
+iframe{width: 100%; height: 100%; border: none;outline: none;}
+.left_iframe{width: 200px; overflow: hidden !important;}
+.header_iframe{width: 100%;}
+.layui-layout-admin .layui-side{ overflow: hidden !important;}
+.layui-body iframe{ height: calc(100% - 5px);}
+.relative{position: relative}
+/*左边导航栏隐藏按钮*/
+.menu_hide_panel .box
+{
+    width:10px;
+    height:90px;
+    border-top:10px solid transparent;
+    border-right:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-left:10px solid #252834;
+    /*
+    position: absolute;
+    top:0;
+    z-index: 0;
+    */
+}
+
+.btn_orange{background-color:#FF653B;
+    border-radius:3px;}
+.btn_orange:hover{background-color: #D13300}
+.btn_orange{background-color:#FF653B;
+    border-radius:3px;}
+.btn_orange:hover{background-color: #D13300}
+.btn_blue{background-color:#0A8DFF;
+    border-radius:3px;}
+.btn_blue:hover{background-color: #006ECE}
+.btn_green{background-color: #0DEBAA}
+.btn_green:hover{background-color:#04C089}
+.btn_gray{background-color: #DCDDE0}
+.btn_gray:hover{background-color:#DCDDE0}
+.btn_58759B{background-color:#58759B;
+    border-radius:3px;}
+.btn_black{background-color: #252834}
+.btn_fff_blue{border:1px solid #0A8DFF  !important;background-color: #fff;
+    border-radius:3px; color: #0A8DFF !important;}
+
+
+.menu_hide_panel .layui-icon{ position: absolute;
+    top:calc(50% - 10px );left:-0px;font-size: 11px;
+
+}
+.menu_hide_panel.show .layui-icon{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.layui-layout-admin .layui-body{bottom: 0;}
+.layui-layout-admin .layui-body2{
+    left:0 !important;}
+
+.popup_box_1 .layui-layer.layui-layer-page{width: 650px !important;}
+.popup_box_3 .layui-layer.layui-layer-page{width: 450px !important;}

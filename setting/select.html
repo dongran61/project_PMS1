@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+
+</head>
+<body>
+<div class="layui-form">
+    <div class="layui-fluid">
+        <div class="layui-form layui-col-md12">
+            <div class="layui-form-item">
+                <div class="layui-col-md4">
+                    <label class="layui-form-label">城市<span style="color:red">●</span></label>
+                    <div class="layui-input-block">
+                        <select name="select_base_cityname" id="select_base_cityname" lay-filter="select_base_cityname" xm-select="select_base_cityname" xm-select-type="1">
+                            <option value=""></option>
+                            <option value="1">北京</option>
+                            <option value="2">上海</option>
+                            <option value="3">天津</option>
+                            <option value="4">重庆</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row ">
+                <div class="test-table-reload-btn" style="margin-bottom: 10px;">
+                    <button type="button" class="layui-btn layui-btn-danger" lay-submit lay-filter="btn_submit" id="btn_submit"><i class="layui-icon">&#xe681</i>获取</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+
+<script src="../assets/layui/multiSelect.js"></script>
+<script type="text/javascript">
+    //全局定义一次, 加载formSelects
+    layui.config({
+        base: '/' //此处路径请自行处理, 可以使用绝对路径
+    }).extend({
+        formSelects: 'formSelects-v4'
+    });
+    //加载模块
+    layui.use(['jquery', 'formSelects'], function () {
+        var formSelects = layui.formSelects;
+
+    });
+</script>
+</body>
+</html>

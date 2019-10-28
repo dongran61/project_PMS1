@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="page_panel">
+
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+
+        <button id="btn_search" class="btn_base btn_black  btn_search_poup">精确查找<i
+                class="layui-icon layui-icon-search"></i></button>
+        <ul class="layui-tab-title">
+
+            <li class="layui-this">今日预订</li>
+            <li>所有预订</li>
+            <li>今日离店</li>
+            <li>当前在住</li>
+            <li>当前欠费</li>
+            <li>挂S帐</li>
+            <li>入住记录</li>
+        </ul>
+
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="table_panel">
+                    <div class="layui-row table_total_row font_fff flex_row">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_l">
+                            <span class="icon icon_jryd"></span>今日预抵
+                        </div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8 flex_row_r">
+                            合计：5条
+                            <button id="btn_exportFile" class="bg_58759B btn_base1 flex_row"><i
+                                    class="icon icon_download"></i>下载
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="layui-row tab_border_radius">
+
+                        <table class=" layui-table"
+                               lay-data="{height: 'full-520', url:'../json/order.json', page:false}"
+                               lay-filter="order">
+                            <thead>
+                            <tr>
+                                <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                                <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                                <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                                <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                                <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                                <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                                <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                                <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">预付</th>
+                                <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                                <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                                <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                                <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+                                <th lay-data="{field:'time',sort: true,width:100}">保留时间</th>
+                                <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                                <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="nav_30"></div>
+                <div class="table_panel">
+                    <div class="layui-row table_total_row font_fff flex_row">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_l">
+                            <span class="icon icon_jrqx"></span>今日取消
+                        </div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8 flex_row_r">
+                            合计：5条
+                            <button id="btn_exportFile2" class="bg_58759B btn_base1 flex_row"><i
+                                    class="icon icon_download"></i>下载
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="layui-row tab_border_radius">
+
+                        <table class=" layui-table"
+                               lay-data="{height: 'full-520', url:'../json/order.json', page:false}"
+                               lay-filter="order">
+                            <thead>
+                            <tr>
+                                <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                                <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                                <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                                <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                                <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                                <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                                <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                                <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">预付</th>
+                                <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                                <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                                <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                                <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+                                <th lay-data="{field:'time',sort: true,width:100}">保留时间</th>
+                                <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                                <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="table_panel">
+                    <div class="layui-row table_total_row font_fff flex_row">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_l">
+                            <span class="icon icon_jryd"></span>有效预订
+                        </div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8 flex_row_r">
+                            合计：5条
+                            <button class="bg_58759B btn_base1 flex_row"><i
+                                    class="icon icon_download"></i>下载
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="layui-row tab_border_radius">
+
+                        <table class=" layui-table"
+                               lay-data="{height: 'full-520', url:'../json/order.json', page:false}"
+                               lay-filter="order">
+                            <thead>
+                            <tr>
+                                <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                                <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                                <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                                <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                                <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                                <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                                <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                                <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                                <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                                <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                                <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                                <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+                                <th lay-data="{field:'time',sort: true,width:100}">保留时间</th>
+                                <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                                <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="nav_30"></div>
+                <div class="table_panel">
+                    <div class="layui-row table_total_row font_fff flex_row">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_l">
+                            <span class="icon icon_jrqx"></span>失效预订
+                        </div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8 flex_row_r">
+                            合计：5条
+                            <button  class="bg_58759B btn_base1 flex_row"><i
+                                    class="icon icon_download"></i>下载
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="layui-row tab_border_radius">
+
+                        <table class=" layui-table"
+                               lay-data="{height: 'full-520', url:'../json/order.json', page:false}"
+                               lay-filter="order">
+                            <thead>
+                            <tr>
+                                <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                                <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                                <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                                <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                                <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                                <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                                <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                                <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                                <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                                <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                                <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                                <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+                                <th lay-data="{field:'time',sort: true,width:100}">保留时间</th>
+                                <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                                <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="table_panel">
+                    <div class="layui-row table_total_row font_fff flex_row">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_l">
+                            <span class="icon icon_jryd"></span>应走未走
+                        </div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8 flex_row_r">
+                            合计：5条
+                            <button class="bg_58759B btn_base1 flex_row"><i
+                                    class="icon icon_download"></i>下载
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="layui-row tab_border_radius">
+
+                        <table class=" layui-table"
+                               lay-data="{height: 'full-520', url:'../json/order.json', page:false}"
+                               lay-filter="order">
+                            <thead>
+                            <tr>
+                                <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                                <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                                <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                                <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                                <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                                <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                                <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                                <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                                <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                                <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                                <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                                <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+                                <th lay-data="{field:'time',sort: true,width:100}">保留时间</th>
+                                <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                                <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="nav_30"></div>
+                <div class="table_panel">
+                    <div class="layui-row table_total_row font_fff flex_row">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_l">
+                            <span class="icon icon_jrqx"></span>今日已离
+                        </div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8 flex_row_r">
+                            合计：5条
+                            <button  class="bg_58759B btn_base1 flex_row"><i
+                                    class="icon icon_download"></i>下载
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="layui-row tab_border_radius">
+
+                        <table class=" layui-table"
+                               lay-data="{height: 'full-520', url:'../json/order.json', page:false}"
+                               lay-filter="order">
+                            <thead>
+                            <tr>
+                                <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                                <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                                <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                                <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                                <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                                <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                                <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                                <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                                <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                                <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                                <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                                <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+                                <th lay-data="{field:'time',sort: true,width:100}">保留时间</th>
+                                <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                                <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/order.json', page:false}"
+                       lay-filter="order">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                        <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                        <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                        <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                        <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                        <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                        <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                        <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                        <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                        <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                        <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                        <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+
+                        <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                        <th lay-data="{field:'cardNo',sort: true,width:170}">会员卡号/公司名称</th>
+                        <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="layui-tab-item">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/order.json', page:false}"
+                       lay-filter="order">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                        <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                        <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                        <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                        <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                        <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                        <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                        <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                        <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                        <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                        <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                        <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+
+                        <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                        <th lay-data="{field:'cardNo',sort: true,width:170}">会员卡号/公司名称</th>
+                        <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="layui-tab-item">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/order.json', page:false}"
+                       lay-filter="order">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                        <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                        <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                        <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                        <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                        <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                        <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                        <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                        <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                        <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                        <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                        <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+
+                        <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                        <th lay-data="{field:'cardNo',sort: true,width:170}">会员卡号/公司名称</th>
+                        <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="layui-tab-item">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/order.json', page:false}"
+                       lay-filter="order">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'status',sort: true,width:80}">状态</th>
+                        <th lay-data="{field:'name',sort: true,width:120}">姓名</th>
+                        <th lay-data="{field:'phone',sort: true,width:140}">电话</th>
+                        <th lay-data="{field:'roomType',sort: true,width:160}">房型</th>
+                        <th lay-data="{field:'roomQty',sort: true,width:80}">房数</th>
+                        <th lay-data="{field:'roomNum',sort: true,width:80}">房号</th>
+                        <th lay-data="{field:'roomPrice',sort: true,style:'color:#0DEBAA',width:100}">房价</th>
+                        <th lay-data="{field:'roomDFPrice',sort: true,style:'color:#C84744',width:100}">到付</th>
+                        <th lay-data="{field:'arrivalTime',sort: true,width:120}">到店时间</th>
+                        <th lay-data="{field:'leaveTime',sort: true,width:120}">离店时间</th>
+                        <th lay-data="{field:'roomWNum',sort: true,width:80}">房晚数</th>
+                        <th lay-data="{field:'price',sort: true,width:80}">金额</th>
+
+                        <th lay-data="{field:'kylx',sort: true,width:170}">预定渠道/客源类型</th>
+                        <th lay-data="{field:'cardNo',sort: true,width:170}">会员卡号/公司名称</th>
+                        <th lay-data="{field:'orderNo',width:160}">预订单号</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="popup_box_1">
+    <!---------扫码支付------------>
+    <div id="popup_order" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">姓名：</label>
+                    <div class="layui-input-block flex_row_l"><input type="text" class="layui-input" placeholder="请输入"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">手机号：</label>
+                    <div class="layui-input-block flex_row_l"><input type="text" lay-verify="phone" class="layui-input"
+                                                                     placeholder="请输入"/></div>
+                </div>
+
+            </div>
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">会员卡号：</label>
+                    <div class="layui-input-block flex_row_l"><input type="text" class="layui-input" placeholder="请输入"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">身份证号：</label>
+                    <div class="layui-input-block flex_row_l"><input type="text" lay-verify="identity"
+                                                                     class="layui-input" placeholder="请输入"/></div>
+                </div>
+            </div>
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">预定号：</label>
+                    <div class="layui-input-block flex_row_l"><input type="text" class="layui-input" placeholder="请输入"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">订单类型：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">房号：</label>
+                    <div class="layui-input-block flex_row_l"><input type="text" class="layui-input" placeholder="请输入"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">预订房型：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">账号：</label>
+                    <div class="layui-input-block flex_row_l"><input type="text" class="layui-input" placeholder="请输入"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">客源分类：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">到店时间：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <input type="text" class="layui-input date_item" placeholder="请输入"/>-
+                        <input type="text" class="layui-input date_item" placeholder="请输入"/>
+
+
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">协议公司：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">离店时间：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <input type="text" class="layui-input date_item" placeholder="请输入"/>-
+                        <input type="text" class="layui-input date_item" placeholder="请输入"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">销售员：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row flex_row_l">
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">订单状态：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select></div>
+                </div>
+                <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                    <label class="layui-form-label">订单来源：</label>
+                    <div class="layui-input-block flex_row_l">
+                        <select name="dataJurisdiction" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="行程改变">行程改变</option>
+                            <option value="行程改变2">行程改变2</option>
+                            <option value="行程改变3">行程改变3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item flex_row">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary">取消</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['element', 'laydate', 'form', 'table', 'layer'], function () {
+        var element = layui.element, $ = layui.jquery, form = layui.form, table = layui.table, laydate = layui.laydate;
+        //同时绑定多个
+        lay('.date_item').each(function () {
+            laydate.render({
+                elem: this
+                , value: new Date()
+                , trigger: 'click'
+            });
+        });
+        //日期范围
+        laydate.render({
+            elem: '#test6'
+            , range: true
+            , trigger: 'click'
+        })
+        $("#btn_exportFile").on("click", function () {
+            table.exportFile()
+        })
+        $("#btn_search").on("click", function () {
+            layer.open({
+                type: 1,
+                content: $('#popup_order'),
+                title: "精确查找"
+            });
+        })
+    })
+</script>
+</body>
+</html>

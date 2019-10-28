@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link href="css/left.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="layui-side-scroll">
+    <!-- 左侧导航区域 -->
+    <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item">
+            <a class="flex_row_l" href="javascript:;"><span class="icon yy"></span>运营设置</a>
+            <dl class="layui-nav-child dl_nav_2">
+                <dd>
+                    <a class="nav_2 show" href="javascript:;">
+                        <span class="layui-icon layui-icon-triangle-r"></span>
+                        <span class="line"></span>
+                        <span class="font">用户设置</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a class="nav_2 " href=""><span class="line"></span><span class="font">特殊客人维护</span></a>
+                </dd>
+
+                <dd>
+                    <a class="nav_2 " href=""><span class="line"></span><span class="font">消费账户</span></a>
+                </dd>
+                <dd>
+                    <a class="nav_2 " href=""><span class="line"></span><span class="font">物品租赁</span></a>
+                </dd>
+                <dd>
+                    <a class="nav_2 " href=""><span class="line"></span><span class="font">房价设置</span></a>
+                </dd>
+                <dd>
+                    <a class="nav_2 " href=""><span class="line"></span><span class="font">佣金码</span></a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a class="flex_row_l" href="javascript:;"><span class="icon jd"></span>酒店设置</a>
+            <dl class="layui-nav-child dl_nav_2">
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">楼座</span></a></dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">楼层</span></a></dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">房型</span></a></dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">特征</span></a></dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">房号</span></a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a class="flex_row_l" href="javascript:;"><span class="icon xt"></span>系统设置</a>
+            <dl class="layui-nav-child dl_nav_2">
+                <dd><a class="nav_2 nav_child_2" href="javascript:;"><span class="line"></span><span class="font">代码设置</span></a>
+                    <ul class="ul_nav_3">
+                        <li class="flex_row_l">
+                            <a class="nav_3" href="">费用码</a>
+                        </li>
+                        <li class="flex_row_l">
+                            <a class="nav_3" href="">付款码</a>
+                        </li>
+                        <li class="flex_row_l">
+                            <a class="nav_3" href="">市场码</a>
+                        </li>
+                        <li class="flex_row_l">
+                            <a class="nav_3" href="">渠道吗</a>
+                        </li>
+                    </ul>
+                </dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">换房理由</span></a></dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">优惠理由</span></a></dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">取消预订理由</span></a></dd>
+                <dd><a class="nav_2 " href=""><span class="line"></span><span class="font">打印模板</span></a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a class="flex_row_l" href="../accountManagement/pwdModify.html"><span class="icon zh"></span>账户管理</a>
+        </li>
+    </ul>
+</div>
+<script src="../assets/layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element,$=layui.jquery;
+
+        $(".nav_child_2").bind("click",function () {
+
+            if($(this).parents().find("ul.ul_nav_3").hasClass("hide")){
+                $(this).parents().find("ul.ul_nav_3").removeClass("hide");}
+            else{
+                $(this).parents().find("ul.ul_nav_3").addClass("hide");}
+        })
+    });
+
+</script>
+</body>
+</html>

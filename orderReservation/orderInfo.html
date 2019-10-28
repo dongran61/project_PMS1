@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单信息</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/order.css">
+</head>
+<body>
+
+<form class="layui-form" action="" lay-filter="submitForm">
+    <div class="ctrl_panel">
+        <div class="layui-row flex_row_l">
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3  layui-form-item">
+
+                <label class="layui-form-label">预约人<em class="font_FF0023">*</em></label>
+                <div class="layui-input-block">
+                    <input type="text" name="" lay-verify="required" class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                <label class="layui-form-label">联系电话<em class="font_FF0023">*</em></label>
+                <div class="layui-input-block">
+                    <input type="text" name="" lay-verify="required|phone" class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                <label class="layui-form-label">客源类型<em class="font_FF0023">*</em></label>
+                <div class="layui-input-block">
+                    <select id="ddlMemberType" name="" class="layui-input">
+                        <option value="">请选择</option>
+                        <option value="0">上门</option>
+                        <option value="会员">会员</option>
+                        <option value="2">协议</option>
+                        <option value="">中介</option>
+                        <option value="">免费</option>
+                        <option value="">自用</option>
+                        <option value="">长包</option>
+                        <option value="">时租</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                <label class="layui-form-label">搜索</label>
+                <div class="layui-input-block search_panel">
+                    <input id="txtSearch" type="text" placeholder="手机号/身份证号/会员" class="layui-input ">
+                    <span id="btnMemberType" class="layui-icon layui-icon-search"></span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row flex_row_l">
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+                <label class="layui-form-label">证件类型</label>
+                <div class="layui-input-block">
+                    <select name="IDType" class="layui-input">
+                        <option value="">请选择</option>
+                        <option value="身份证">身份证</option>
+                        <option value="护照">护照</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item ">
+
+                <label class="layui-form-label">证件号码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="IDNumber" lay-verify="identity" class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item ">
+
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                    <select name="sex" class="layui-input">
+                        <option value="">请选择</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                <label class="layui-form-label">生日</label>
+                <div class="layui-input-block">
+                    <input type="text" name="birthday"
+                           class="layui-input">
+                </div>
+
+            </div>
+        </div>
+        <div class="layui-row flex_row_l">
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+
+                <label class="layui-form-label">国籍</label>
+                <div class="layui-input-block">
+                    <input type="text" name="nationality"
+                           autocomplete="off"
+                           class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 ">
+
+                <label class="layui-form-label">地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="address" class="layui-input">
+                </div>
+
+            </div>
+
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="ctrl_panel">
+        <div class="layui-row flex_row_l">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg3 ">
+                <label class="layui-form-label">抵离日期<i class="font_FF0023">*</i></label>
+                <div class="layui-input-block">
+                    <input id="dataFw" type="text" class="layui-input" placeholder="开始日期 - 结束日期">
+                </div>
+            </div>
+
+            <!--
+            <div class="layui-form-item ">
+                <label class="layui-form-label">离店日期<i class="font_FF0023">*</i></label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input date_item" name="starDate"
+                           placeholder="请选择">
+                </div>
+            </div>
+            -->
+            <div class="layui-col-xs2 layui-col-sm2 layui-col-md2 layui-col-lg2 layui-form-item">
+                <label class="layui-form-label">入住天数</label>
+
+                <!--客源类型选择时租是显示-->
+                <!--<label class="layui-form-label">入住小时</label>-->
+                <div class="layui-input-block">
+                    <input type="number" class="layui-input" name="" value="1">
+                </div>
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+                <label class="layui-form-label">保留时间<i class="font_FF0023">*</i></label>
+
+                <!--客源类型选择时租是显示-->
+                <!--<label class="layui-form-label">到店时间<i class="font_FF0023">*</i></label>-->
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="blTime" placeholder="HH:mm">
+                </div>
+            </div>
+            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 layui-form-item">
+                <label class="layui-form-label">渠道来源</label>
+                <div class="layui-input-block">
+                    <select name="">
+                        <option value="">请选择</option>
+                        <option value="">门店预订</option>
+                        <option value="">400预订</option>
+                        <option value="">CRS直连</option>
+                        <option value="">中介直连</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ctrl_panel order_room_panel">
+        <div id="order_room_table">
+            <input type="hidden" id="txtRowIndex" value="0"/>
+            <input type="hidden" id="txtHouseTypeVal"/>
+
+            <div id="0" class="layui-row flex_row_l order_room_list ">
+
+                <div class="layui-col-sm3  layui-col-md3 layui-col-lg3 layui-form-item">
+                    <label class="layui-form-label">房型<em class="font_FF0023">*</em></label>
+                    <div class="layui-input-block ddlHouseType" onclick="houseType(this)">
+                        <input type="text" disabled placeholder="请选择房型"
+                               class=" layui-input houseType"/>
+                    </div>
+
+                </div>
+                <div class="layui-col-sm2  layui-col-md2 layui-col-lg2 flex_row_l layui-form-item">
+
+                    <label class="layui-form-label">房数<em class="font_FF0023">*</em></label>
+                    <div class="layui-input-group  layui-form">
+                        <input id="txtRoomQty_0" type="number" class="layui-input roomQty" name="" value="1">
+                    </div>
+
+
+                </div>
+                <div class="layui-col-sm2  layui-col-md2 layui-col-lg2 layui-form-item">
+
+                    <label class="layui-form-label">房价类型</label>
+                    <div class="layui-input-block layui-form ddlMemberType" lay-filter="ddl_0">
+                        <select id="ddl_fjm_0" name="" class="layui-input housePriceType">
+                            <option value="">请选择</option>
+                            <option value="门市价">门市价</option>
+                            <option value="乐卡会员">乐卡会员</option>
+                            <option value="亿卡会员">亿卡会员</option>
+                            <option value="中介类">中介类</option>
+                            <option value="协议类">协议类</option>
+                            <option value="团队价">团队价</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="layui-col-sm2  layui-col-md2 layui-col-lg2 layui-form-item">
+                    <label class="layui-form-label">房价<em class="font_FF0023">*</em></label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input roomPrice">
+                    </div>
+                </div>
+
+                <div class=" layui-col-sm2  layui-col-md2 layui-col-lg2 layui-form-item">
+                    <label class="layui-form-label">房号</label>
+                    <div class="layui-input-block roomNum_panel">
+                        <input id="roomNum_0" autocomplete="off" type="text" class="layui-input roomNum">
+                    </div>
+                </div>
+                <div class=" layui-col-sm1  layui-col-md1 layui-col-lg1 ">
+
+                    <div class="flex_row div_cbo_rz">
+                        <span>入住</span>
+                        <input id="cboCheckIn_0"  lay-filter="cboCheckIn_0" class="cbo_checkIn" type="checkbox" lay-skin="primary">
+                    </div>
+
+                </div>
+                <span class="icon icon_delete" onclick="delete_row(this)"></span>
+            </div>
+
+        </div>
+
+        <div class="nav_20"></div>
+        <div class="layui-row">
+            <div class="layui-col-sm12 layui-col-md12 layui-col-lg12 flex_row">
+                <button type="button" id="btn_add_row" class="btn_base btn_orange flex_row"
+                ><span class="icon icon_house"></span>添加房型
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="nav_20"></div>
+    <hr class="layui-bg-gray">
+    <div class="nav_20"></div>
+    <div class="layui-row">
+        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">
+            <div class="ctrl_panel">
+
+
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" maxlength="150" placeholder="最多输入150个字符">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4 flex_row_r">
+            <div class="ctrl_panel textarea_panel">
+
+                <div class="layui-input-block">
+                                    <textarea name="desc" placeholder="设置内容显示处详见入住登记（订单信息）页面"
+                                              class="layui-textarea"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav_40"></div>
+    <div class="layui-row flex_row ">
+        <button type="submit" lay-submit="" lay-filter="btn_submit" class="btn_base2 btn_blue">保存
+        </button>
+        <button class="btn_base2 btn_fff_blue">关闭</button>
+
+
+        <!--预订单点击入住后按钮切换为取消入住按钮-->
+        <button class="btn_base2 btn_green">入住</button>
+        <button type="button" id="btn_cancel" class="btn_base2 btn_fff_blue" lay-filter="btn_cancel">
+            取消入住
+        </button>  <!---->
+
+        <span class="span_line"></span>
+        <button type="button" id="btn_print" lay-filter="btn_print" class="btn_base2  btn_blue">打印</button>
+        <button type="button" id="btn_setting" lay-filter="btn_setting" class="btn_base2 btn_blue">设置</button>
+        <button type="button" id="btn_log" lay-filter="btn_log" class="btn_base2 btn_blue">日志</button>
+        <button class="btn_base2 btn_blue">复制预订</button>
+    </div>
+    <div class="nav_20"></div>
+</form>
+
+
+<div class="popup_box_1">
+    <!---------搜索会员弹框------------>
+    <div id="popup_mem" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row flex_row_r"><a href="#" class="font_FF653B a_underline">注册新会员</a></div>
+
+            <div class="layui-row memberInfo">
+
+                <div class="layui-col-sm6 layui-col-md6 layui-col-lg6">
+
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">姓名：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblName">李丽丽</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">性别：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblSex">女</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">证件类型：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblIDType">身份证</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">证件号：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label
+                                id="lblIDNumber">3199923445233422</label></div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">地址：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8"><label id="lblAddress">杭州市下城区朝晖7小区91幢
+                            1单元231室</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6 layui-col-lg6 memberInfo_right">
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">手机号：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">138456374384</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">会员卡号：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">2736453</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">会员类型：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">乐卡</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">会员积分：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">32344</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">储值余额：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">3234.35</div>
+                    </div>
+                    <div class="row list">
+                        <div class="layui-col-sm4 layui-col-md4 layui-col-lg4">制卡酒店：</div>
+                        <div class="layui-col-sm8 layui-col-md8 layui-col-lg8">杭州西湖文化广场布丁臻选酒店</div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav_20"></div>
+            <div class="layui-row flex_row">
+
+                <button type="button" class="btn_base2 btn_fff_blue">非本人消费</button>
+                <button type="submit" lay-submit="" lay-filter="btn_search_ok" class="btn_base2 btn_blue">本人消费</button>
+            </div>
+            <div class="nav_10"></div>
+        </div>
+    </div>
+
+    <!---------搜索协议/中介/团队  等弹框------------>
+    <div id="popup_other" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="searchList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'roomNum'}">公司编号</th>
+                        <th lay-data="{field:'daima'}">公司名称</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!---------会员信息------------>
+
+    <div id="popup_house" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="houseTypeList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'roomNum'}">房型</th>
+                        <th lay-data="{field:'daima'}">可售</th>
+                        <th lay-data="{field:'roomNum'}">VC</th>
+                        <th lay-data="{field:'daima'}">VD</th>
+                        <th lay-data="{field:'roomNum'}">门市价</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!---------打印------------>
+    <div id="popup_print" class="popup" style="display: none">
+      <iframe class="iframe_print" src="print.html"></iframe>
+
+    </div>
+
+    <!---------日志弹框------------>
+    <div id="popup_log" class="popup" style="display: none">
+        <div class="layui-form">
+            <div class="layui-row memberInfo">
+                <table class=" layui-table"
+                       lay-data="{height: 'full', url:'../json/financialProcessing.json', page:false}"
+                       lay-filter="searchList">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'yingyeTime'}">时间</th>
+                        <th lay-data="{field:'price'}">项目</th>
+                        <th lay-data="{field:'roomNum'}">旧值</th>
+                        <th lay-data="{field:'daima'}">新值</th>
+                        <th lay-data="{field:'banci'}">操作人</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup_box_2">
+    <!---------取消入住弹框------------>
+    <div id="popup_cancel" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popupCancel">
+            <div class="layui-form-item">
+                <label class="layui-form-label">取消理由</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction">
+                        <option value="">请选择</option>
+                        <option value="行程改变">行程改变</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+
+</div>
+<div class="popup_box_3">
+    <!---------设置------------>
+    <div id="popup_setting" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_setting">
+            <div class="">
+                <div class="layui-row flex_row_l">
+                    <div class="layui-form-item layui-col-sm6 layui-col-md6 layui-col-lg6">
+                        <label class="layui-form-label">电话叫醒</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-filter="cbo_phoneJX" lay-skin="switch" lay-text="ON|OFF">
+                        </div>
+                    </div>
+                    <div class="layui-col-sm5 layui-col-md5 layui-col-lg5 flex_row phoneJX_child hide">
+                        <input type="text" class="layui-input" id="time_setting" style="width: 90px" placeholder="叫醒时间">
+                    </div>
+                </div>
+                <div class="layui-row flex_row_l phoneJX_child hide">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block flex_row_l" style="width: 330px;">
+                            <input type="radio" name="rdoDate" lay-filter="rdoDate" value="每天" title="每天" checked="">
+                            <input type="radio" name="rdoDate" lay-filter="rdoDate" value="指定日期" title="指定日期">
+                            <input type="text" class="layui-input hide" id="dateSetting" placeholder="选择日期" style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">免打扰</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">保密</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="nav_20"></div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_20"></div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="../assets/jquery/jquery-2.1.1.min.js"></script>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //引入自定义插件
+    layui.config({
+        base: '../assets/layui/' //设置自定义插件路径:根据实际路径进行设置
+    });
+    layui.use(['element', 'laydate', 'form', 'layer', 'table', 'yutons_sug'], function () {
+        var element = layui.element, $ = layui.jquery, form = layui.form, table = layui.table, laydate = layui.laydate,
+            yutons_sug = layui.yutons_sug;
+        //日期范围
+        laydate.render({
+            elem: '#dataFw'
+            , range: true
+            ,trigger: 'click'
+            ,format: 'yyyy/MM/dd'
+        });
+        //时间选择器
+        laydate.render({
+            elem: '#time_setting'
+            ,type: 'time'
+            ,format: 'HH:mm'
+            ,trigger: 'click'
+        });
+        //时间选择器
+        laydate.render({
+            elem: '#blTime'
+            , type: 'time'
+            , min: '09:30:00'
+            , max: '17:30:00'
+            , btns: ['clear', 'confirm']
+            ,format: 'HH:mm'
+            ,trigger: 'click'
+            ,format: 'yyyy/MM/dd'
+        });
+        //日期选择器
+        laydate.render({
+            elem: '#dateSetting'
+            ,trigger: 'click'
+        });
+        //初始化房号号输入提示框
+        sessionStorage.setItem("url", "../json/financialProcessing.json");
+        yutons_sug.render({
+            id: "roomNum_0", //设置容器唯一id
+            name: "roomNum",
+            height: "167",
+            cols: [
+                [{
+                    type: 'checkbox',
+                    title: '房型'
+                }, {
+                    field: 'project',
+                    title: '房型'
+                }, {
+                    field: 'roomNum',
+                    title: '房号'
+                }, {
+                    field: 'caozuoyuan',
+                    title: '状态'
+                }, {
+                    field: 'banci',
+                    title: '特征'
+                }]
+            ], //设置表头
+            page: false,
+            type: 'sugTable', //设置输入框提示类型：sug-下拉框，sugTable-下拉表格
+            url: sessionStorage.getItem("url") + "?params=" //设置异步数据接口,url为必填项
+
+
+        });
+        var active = {
+            search: function () { //获取搜索数据
+                $("#btnStatus").val("0")
+            }
+
+        }
+        $('.ddlitem').on('click', function () {
+            var type = $(this).data('type');
+            $(".form_left").addClass("hide")
+            $(".ddlitem").removeClass("active")
+            active[type] ? active[type].call(this) : '';
+            $(this).addClass("active")
+            $(".ddlSelected label").html($(this).html());
+            $(".itemed").addClass("hide")
+
+            $(this).removeClass("active")
+
+        });
+        table.on('row(searchList)', function (obj) {
+
+            console.log(obj.data) //得到当前行数据
+            form.val('submitForm', {
+                //按照用户设置页面数据行双击赋值 方式进行数据赋值
+            });
+        });
+
+        table.on('row(houseTypeList)', function (obj) {
+
+            //console.log(obj.data) //得到当前行数据
+            var id = $("#txtHouseTypeVal").val();//获取当前行div ID
+            //   console.log("id："+id)
+            //   console.log("roomNum："+obj.data.roomNum)
+            $("#" + id + " .ddlHouseType").find("input").val(obj.data.roomNum)
+            // console.log($("#"+id+" .ddlHouseType").html())
+            layer.close(layer.index);
+        });
+        //监听提交
+
+        form.on('submit(btn_submit)', function (data) {
+          /*  layer.alert(JSON.stringify(data.field), {
+                title: '提交'
+            })
+            return false;*/
+          var strVal="";
+          $(".order_room_list").each(function (i) {
+              strVal+="第"+i+"行：房型："+$(this).find(".houseType").val()
+              strVal+="，房数："+$(this).find(".roomQty").val()
+              strVal+="，房价类型："+$(this).find(".housePriceType").val()
+              strVal+="，房价："+$(this).find(".roomPrice").val()
+              strVal+="，房号："+$(this).find(".roomNum").val()+"；"
+          })
+          console.log(strVal)
+            alert(strVal)
+            return false;
+        });
+
+        //搜索赋值
+        form.on('submit(btn_search_ok)', function (data) {
+
+            //给表单赋值
+            form.val("submitForm", {
+                "IDType": $("#lblIDType").text()
+                , "sex": $("#lblSex").text()
+                //  ,"birthday":  ""
+                , "IDNumber": $("#lblIDNumber").text()
+                , "address": $("#lblAddress").text()
+//                ,"nationality":  $("#lblAddress").text()
+            });
+            return false;
+        });
+        //叫醒开关
+        form.on('switch(cbo_phoneJX)', function(data){
+
+            if(data.elem.checked)
+                $(".phoneJX_child").removeClass("hide")
+          else
+                $(".phoneJX_child").addClass("hide")
+        });
+        form.on('radio(rdoDate)', function(data){
+
+            if(data.value=="指定日期")
+                $("#dateSetting").removeClass("hide")
+            else
+                $("#dateSetting").addClass("hide")
+        });
+        //表单赋值
+        $('#btn_cancel').on('click', function () {
+            layer.open({
+                type: 1,
+                content: $('#popup_cancel') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+        //打印弹框
+        $('#btn_print').on('click', function () {
+            layer.open({
+                type: 1,
+                title:"杭州西湖文化广场地铁站店",
+                content: $('#popup_print') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+        //设置弹框
+        $('#btn_setting').on('click', function () {
+            layer.open({
+                type: 1,
+                title:"设置",
+                content: $('#popup_setting') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+        //日志弹框
+        $('#btn_log').on('click', function () {
+            layer.open({
+                type: 1,
+                title:"日志",
+                content: $('#popup_log') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        });
+//打印
+        $('#btn_print_ok').on('click', function () {
+        //   document.body.innerHTML=document.getElementById('popup_print').innerHTML
+        //    window.print();
+
+         //   layer.close(index);
+        });
+
+        $("#btnMemberType").on("click", function () {
+            if ($.trim($("#txtSearch").val()) != "") {
+                if ($("#ddlMemberType").val() == "会员") {
+                    layer.open({
+                        type: 1,
+                        title: " ",
+                        content: $('#popup_mem') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    });
+                }
+                else {
+                    layer.open({
+                        type: 1,
+                        title: " ",
+                        content: $('#popup_other')
+                    });
+                }
+            }
+        });
+
+
+        $("#btn_add_row").on("click", function () {
+            var $row = $("#order_room_table").find(".order_room_list").eq(0).clone();
+            $("#order_room_table").append($row);
+            var row_id = parseInt($("#txtRowIndex").val()) + 1
+            console.log("row_id：" + row_id)
+            $("#txtRowIndex").val(row_id);
+            console.log("txtRowIndex：" + $("#txtRowIndex").val())
+
+            var rowCount = $("#order_room_table .order_room_list").length
+            console.log("rowCount：" + rowCount)
+            $("#order_room_table .order_room_list").eq(rowCount - 1).attr("id", row_id);
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".ddlMemberType").attr("lay-filter", "ddl_" + row_id);
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".roomNum").attr("id", "roomNum_" + row_id)
+            $("#roomNum_" + row_id).val("")
+
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".housePriceType").attr("id", "ddl_fjm_" + row_id);
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".houseType").val("")
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".roomPrice").val("")
+
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".roomQty").attr("id", "txtRoomQty_" + row_id);
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".cbo_checkIn").attr("id", "cboCheckIn_" + row_id)
+            $("#order_room_table .order_room_list").eq(rowCount - 1).find(".div_cbo_rz").attr("lay-filter", "cboCheckIn_" + row_id);
+
+            $("#txtRoomQty_" + row_id).val("1")
+          //  $("#order_room_table .order_room_list").eq(rowCount - 1).find(".subTable").remove();
+            form.render('select', 'ddl_' + row_id);//重新加载下拉框
+            form.render('checkbox');
+            //新增一行初始化房id号列表
+            //初始化房号号输入提示框
+            //初始化新增行  房号号输入提示框
+            yutons_sug.render({
+                id: "roomNum_" + row_id, //设置容器唯一id
+                name: "roomNumTable",
+                height: "167",
+                cols: [
+                    [{
+                        type: 'checkbox',
+                        title: '房型'
+                    }, {
+                        field: 'project',
+                        title: '房型'
+                    }, {
+                        field: 'roomNum',
+                        title: '房号'
+                    }, {
+                        field: 'caozuoyuan',
+                        title: '状态'
+                    }, {
+                        field: 'banci',
+                        title: '特征'
+                    }]
+                ], //设置表头
+                page: false,
+                type: 'sugTable', //设置输入框提示类型：sug-下拉框，sugTable-下拉表格
+                url: sessionStorage.getItem("url") + "?params=" //设置异步数据接口,url为必填项
+            });
+
+        })
+
+
+    });
+
+    //新增房型
+    /*
+    function addRow() {
+        var $row = $("#order_room_table").find(".order_room_list").eq(0).clone();
+        $("#order_room_table").append($row);
+        var row_id = parseInt($("#txtRowIndex").val()) + 1
+        console.log("row_id：" + row_id)
+        $("#txtRowIndex").val(row_id);
+        console.log("txtRowIndex：" + $("#txtRowIndex").val())
+        $("#order_room_table .layui-input-group").find("input").val('');
+        var rowCount = $("#order_room_table .order_room_list").length
+        console.log("rowCount：" + rowCount)
+        $("#order_room_table .order_room_list").eq(rowCount - 1).attr("id", row_id);
+        console.log($("#order_room_table .order_room_list").eq(rowCount - 1).find(".ddlMemberType").html())
+        $("#order_room_table .order_room_list").eq(rowCount - 1).find(".ddlMemberType").attr("lay-filter", "ddl_" + row_id);
+        $("#order_room_table .order_room_list").eq(rowCount - 1).find(".roomNum").attr("id", "roomNum_" + row_id)
+        form.render('select', "ddl_" + row_id)//重新加载下拉框
+        //新增一行初始化房id号列表
+        //初始化房号号输入提示框
+        //初始化新增行  房号号输入提示框
+        yutons_sug.render({
+            id: "roomNum_" + row_id, //设置容器唯一id
+            name: "roomNumTable",
+            height: "167",
+            cols: [
+                [{
+                    type: 'checkbox',
+                    title: '房型'
+                }, {
+                    field: 'project',
+                    title: '房型'
+                }, {
+                    field: 'roomNum',
+                    title: '房号'
+                }, {
+                    field: 'caozuoyuan',
+                    title: '状态'
+                }, {
+                    field: 'banci',
+                    title: '特征'
+                }]
+            ], //设置表头
+            page: false,
+            type: 'sugTable', //设置输入框提示类型：sug-下拉框，sugTable-下拉表格
+            url: sessionStorage.getItem("url") + "?params=" //设置异步数据接口,url为必填项
+        });
+
+    }
+*/
+    function houseType(e) {
+        $("#txtHouseTypeVal").val($(e).parents().parents().attr("id"))
+        //  console.log("rowIndex："+$(this).parents().parents().attr("id"));
+        layer.open({
+            type: 1,
+            title: "房型",
+            content: $('#popup_house')
+        });
+    }
+
+    //移除新增房型行
+    function delete_row(e) {
+        var count = $("#order_room_table .order_room_list").length
+
+        if (count > 1)
+            $(e).parent().remove()
+        else
+            layer.msg('初始行不能删除');
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>打印模板</title>
+
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/setting.css">
+</head>
+<body>
+<div class="page_panel">
+    <div class="layui-row">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4  layui-col-lg3 setting_left">
+            <form class="layui-form" action="" lay-filter="setting">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">单据</label>
+                    <div class="layui-input-block">
+                        <select name="role" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="管理员">管理员</option>
+                            <option value="值班经理">值班经理</option>
+                            <option value="前台接待">前台接待</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">模板</label>
+                    <div class="layui-input-block">
+                        <select name="role" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="管理员">管理员</option>
+                            <option value="值班经理">值班经理</option>
+                            <option value="前台接待">前台接待</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block layui-input-inline">
+                        <input type="checkbox" value="0" lay-skin="primary" title="默认" checked>
+                        <input type="checkbox" value="0" lay-skin="primary" title="停用" checked>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8  layui-col-lg9 " style="padding: 0">
+            <div class="setting_right">
+                <table class="layui-table" >
+                <thead>
+
+                <tr>
+                    <th>类名</th>
+                    <th>名称</th>
+                    <th>默认</th>
+                    <th>停用</th>
+
+                    <th></th>
+                </tr>
+
+                </thead>
+                    <tbody>
+                    <tr class="title">
+                        <td colspan="4">登记单</td>
+                        <td><span id="1" class="icon icon_arrow"></span></td>
+                    </tr>
+                    <tr class="tr_child tr_ch_1">
+                        <td></td>
+                        <td>登记单</td>
+                        <td>是</td>
+                        <td>停用</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_blue">编辑</a></td>
+                    </tr>
+                    <tr class="tr_child tr_ch_1">
+                        <td></td>
+                        <td>登记单</td>
+                        <td>是</td>
+                        <td>停用</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_blue">编辑</a></td>
+                    </tr>
+                    <tr class="tr_child tr_ch_1">
+                        <td></td>
+                        <td>登记单</td>
+                        <td>是</td>
+                        <td>停用</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_blue">编辑</a></td>
+                    </tr>
+                    <tr class="title">
+                        <td colspan="4">前台账单</td>
+                        <td><span id="2" class="icon icon_arrow"></span></td>
+                    </tr>
+                    <tr class="tr_child tr_ch_2">
+                        <td></td>
+                        <td>登记单</td>
+                        <td>是</td>
+                        <td>停用</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_blue">编辑</a></td>
+                    </tr>
+                    <tr class="tr_child tr_ch_2">
+                        <td></td>
+                        <td>登记单</td>
+                        <td>是</td>
+                        <td>停用</td>
+                        <td><a class="layui-btn  layui-btn-xs btn_blue">编辑</a></td>
+                    </tr>
+                    </tbody>
+            </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barOperation">
+    <a class="layui-btn  layui-btn-xs btn_blue" lay-event="edit">编辑</a>
+</script>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>
+
+
+    layui.use(['table','form','element'], function () {
+        var $ = layui.jquery, form = layui.form,table = layui.table;
+
+        $(".title .icon_arrow").on("click",function () {
+            var id=$(this).attr("id");
+
+            if($(".tr_ch_"+id).hasClass("hide"))
+                $(".tr_ch_"+id).removeClass("hide")
+            else
+                $(".tr_ch_"+id).addClass("hide")
+        })
+        //监听工具条
+        table.on('tool(user)', function (obj) {
+            var data = obj.data;
+            layer.msg('obj.event:' + obj.event);
+            if (obj.event === 'edit') {
+                layer.msg('ID：' + data.name + ' 编辑');
+                console.log(obj.data) //得到当前行数据
+                form.val('setting', {
+                    "account": obj.data.account
+                    ,
+                    "name": obj.data.name
+                    ,
+                    "department": obj.data.department // "name": "value"
+                    ,
+                    "gangwei": obj.data.gangwei
+                    ,
+                    "phone": obj.data.phone
+                    ,
+                    "rdo_ok": $("input[name='rdo_ok'][value='0']").attr("checked", obj.data.status == "启用" ? true : false)
+                    ,
+                    "rdo_ok": $("input[name='rdo_ok'][value='1']").attr("checked", obj.data.status == "停用" ? true : false)
+                    ,
+                    "role": obj.data.role
+                });
+                form.render('radio');
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+            }
+        });
+        
+    });
+</script>
+
+</body>
+</html>
