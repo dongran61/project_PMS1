@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AR财务处理(订单信息)</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link href="css/left.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="left" class="layui-side layui-anim layui-anim-upbit layui-form">
+
+    <div class="layui-side-scroll" style="background-color: #EFF3F6">
+        <div class="room_status flex_row font_fff font_26"><span>I</span>
+        </div>
+        <div class=" flex_col_l left_panel font_16 font_303542 layui-form">
+            <div class=" flex_row_l">
+                <span class="icon icon_money"></span><em>余额：35.02</em>
+            </div>
+            <div class=" flex_row_l">
+                <span class="icon icon_money"></span><em>余额：303.21</em>
+            </div>
+            <div class=" flex_row_l">
+                <span class="icon icon_money"></span><em>余额：5.40</em>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="layui-body" class="layui-body" style="border: none">
+
+    <div class="page_panel relative">
+        <div class="layui-row">
+            <div class="layui-row order_info">
+                <span><em class="font_616F81">类型：</em>公司协议</span>
+                <span><em class="font_616F81">消费等级：</em>有消费限额</span>
+                <span><em class="font_616F81">有效时间：</em>2015/10/01-2019/12/01</span>
+                <span><em class="font_616F81">催帐周期：</em>1个月</span>
+                <span><em class="font_616F81">结账方式：</em>挂AR帐</span>
+                <span><em class="font_616F81">销售员：</em>李某欧</span>
+            </div>
+            <div class="layui-row order_info">
+                <span><em class="font_616F81">公司电话：</em>挂AR帐</span>
+                <span><em class="font_616F81">地址：</em>公司协议</span>
+
+            </div>
+            <div class="layui-row order_info">
+                <span><em class="font_616F81">联系人：</em>李某欧</span>
+                <span><em class="font_616F81">手机号：</em>15201250000</span>
+            </div>
+        </div>
+        <hr/>
+        <div class="layui-row flex_row_l">
+            <div class="order_left">
+                <div class="layui-row layui-form flex_row_l fp_search_panel">
+                    <div class="layui-col-md4 layui-col-lg4">
+                        <div class="layui-form-item fp_dateFz ">
+                            <label class="layui-form-label">日期范围</label>
+                            <div class="layui-input-block">
+                                <input type="text" class="layui-input" id="date" placeholder="开始日期 - 截止日期">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-col-md8 layui-col-lg8 flex_row_r">
+
+
+                        <input type="radio" name="sex" value="0" title="未结账" checked="">
+                        <input type="radio" name="sex" value="1" title="已结账">
+                    </div>
+                </div>
+                <div class="layui-row tab_border_radius">
+                <table class="layui-table"
+                       lay-data="{height: 'full', url:'../json/marketingManagement.json', page:false}"
+                       lay-filter="user">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'facName',width:160}">公司名称</th>
+                        <th lay-data="{field:'effectiveEndDate',style:'color:#858DA2',width:140}">有效截止时间</th>
+                        <th lay-data="{field:'roomCode',style:'color:#858DA2',width:120}">催债周期</th>
+                        <th lay-data="{field:'status', templet: '#barOperation',width:140,align:'center',style:'text-align: center'}">
+                            状态
+                        </th>
+                        <th lay-data="{field:'agreement',width:160}">协议性质</th>
+                        <!--<th lay-data="{fixed: 'status',align:'center', toolbar: '#statusTpl'}">状态</th>-->
+                        <th lay-data="{field:'commissionCode',width:120,style:'color:#858DA2'}">余额</th>
+                        <th lay-data="{field:'commissionCode',width:120}">信用</th>
+                        <th lay-data="{field:'saleName',width:160,style:'color:#858DA2'}">账号</th>
+                    </tr>
+
+                    </thead>
+                </table>
+                </div>
+                <div class="layui-row table_total_panel">
+                    <div class="table_total flex_row">
+                        <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">付款：1</div>
+                        <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">消费：<em class="font_FF653B">300</em>
+                        </div>
+                        <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">信用：<em class="font_FF653B">-200</em>
+                        </div>
+                        <div class="layui-col-sm3 layui-col-md3 layui-col-lg3 flex_row">余额：<em class="font_FF653B">-100</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order_right">
+                <div class="order_btn_panel">
+                    <p>
+                        <button class="btn_base" onclick="popup(1,'popup_jzsz','记账设置')">记账设置</button>
+
+                    </p>
+                    <p>
+                        <button type="button" onclick="popup(1,'popup_yfk','预付款')" class="btn_base">预付款</button>
+                    </p>
+                    <p>
+                        <button class="btn_base" onclick="popup(1,'popup_hx','核销')">核销</button>
+                    </p>
+                    <p>
+                        <button class="btn_base" onclick="popup(1,'popup_cxhx','撤销核销')">撤销核销</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup_box_2">
+    <!-----------核销弹框---------->
+    <div id="popup_yfk" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_yfk">
+            <div class="layui-form-item">
+                <label class="layui-form-label">收退款</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">核销类型</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="现金">现金</option>
+                        <option value="汇款">汇款</option>
+                        <option value="信用卡">信用卡</option>
+                        <option value="储值卡">储值卡</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款人</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">打印</label>
+                <div class="layui-input-block">
+                    <input type="number" class="layui-input" value="1"/>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消
+                    </button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <div id="popup_hx" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_yfk">
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款方式</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">现金</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款人</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">打印</label>
+                <div class="layui-input-block">
+                    <input type="number" class="layui-input" value="1"/>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消
+                    </button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+    <div id="popup_cxhx" class="popup" style="display: none">
+        <form class="layui-form" action="" lay-filter="popup_yfk">
+            <div class="layui-form-item">
+                <label class="layui-form-label">金额</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="0.00"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款方式</label>
+                <div class="layui-input-block">
+                    <select name="dataJurisdiction" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="行程改变">现金</option>
+                        <option value="行程改变2">行程改变2</option>
+                        <option value="行程改变3">行程改变3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款人</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">打印</label>
+                <div class="layui-input-block">
+                    <input type="number" class="layui-input" value="1"/>
+                </div>
+            </div>
+            <div class="nav_30"></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="btn_close" class="layui-btn layui-btn-primary btn_close">取消
+                    </button>
+                    <button class="layui-btn" lay-submit lay-filter="editSubmit">确定</button>
+
+                </div>
+            </div>
+            <div class="nav_10"></div>
+        </form>
+    </div>
+</div>
+<script src="../assets/layui/layui.js" charset="utf-8"></script>
+<script>  //初始赋值
+layui.use(['element', 'laydate', 'form', 'layer', 'table'], function () {
+    var table = layui.table, $ = layui.jquery, laydate = layui.laydate, form = layui.form;
+
+    //日期范围
+    laydate.render({
+        elem: '#date'
+        , range: true
+        , trigger: 'click'
+        ,format: 'yyyy/MM/dd'
+    });
+    window.popup = function (type, content, title) {
+        layer.open({
+            type: type,
+            content: $('#' + content),
+            title: title
+        });
+    }
+});
+</script>
+</body>
+</html>

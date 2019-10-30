@@ -68,7 +68,7 @@
                 <div class="layui-form-item layui-col-sm4 layui-col-md4 layui-col-lg4">
                     <label class="layui-form-label">房型：</label>
                     <div class="layui-input-block flex_row_l">
-                        <select name="dataJurisdiction" lay-verify="required">
+                        <select multiple="multiple" name="dataJurisdiction" >
                             <option value="">请选择</option>
                             <option value="行程改变">行程改变</option>
                             <option value="行程改变2">行程改变2</option>
@@ -82,13 +82,13 @@
                 <div class="layui-row layui-row_item  layui-col-sm12 layui-col-md12 layui-col-lg12 ">
                     <label class="layui-form-label">星期：</label>
                     <div class="layui-input-block flex_row_l">
-                        <input type="checkbox" name="" lay-skin="primary" title="星期一" checked="">
-                        <input type="checkbox" name="" lay-skin="primary" title="星期二" checked="">
-                        <input type="checkbox" name="" lay-skin="primary" title="星期三" checked="">
-                        <input type="checkbox" name="" lay-skin="primary" title="星期四" checked="">
-                        <input type="checkbox" name="" lay-skin="primary" title="星期五" checked="">
-                        <input type="checkbox" name="" lay-skin="primary" title="星期六" checked="">
-                        <input type="checkbox" name="" lay-skin="primary" title="星期日" checked="">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期一">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期二">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期三">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期四">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期五">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期六">
+                        <input type="checkbox" name="" lay-skin="primary" title="星期日">
 
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                 <div class="layui-row layui-row_item  layui-col-sm4 layui-col-md4 layui-col-lg4 ">
                     <label class="layui-form-label">超订数：</label>
                     <div class="layui-input-block flex_row_l">
-                        <input type="number"  value="20" class="layui-input"/>
+                        <input type="number" value="20" class="layui-input"/>
                     </div>
                 </div>
                 <div class="layui-row layui-row_item layui-col-sm5 layui-col-md5 layui-col-lg5 ">
@@ -157,7 +157,7 @@
                 elem: this
                 , value: new Date()
                 , trigger: 'click'
-                ,format:'yyyy/MM/dd'
+                , format: 'yyyy/MM/dd'
             });
         });
 
@@ -170,10 +170,8 @@
             else
                 setDate = getDate - 24 * 60 * 60 * 1000
             var yesday = new Date(setDate)
-            yesday = yesday.getFullYear() + "-" + (yesday.getMonth() > 9 ? (yesday.getMonth() + 1) : "0" + (yesday.getMonth() + 1)) + "-" + (yesday.getDate() > 9 ? (yesday.getDate()) : "0" + (yesday.getDate())); //字符串拼接转格式：例如2018-08-19
-
-            $("#txtdate").val(yesday)
-            //  console.log(yesday)
+            yesday = yesday.getFullYear() + "/" + (yesday.getMonth() > 8 ? (yesday.getMonth() + 1) : "0" + (yesday.getMonth() + 1)) + "/" + (yesday.getDate() > 9 ? (yesday.getDate()) : "0" + (yesday.getDate())); //字符串拼接转格式：例如2018-08-19
+            $("#txtdate").attr("value", yesday);
         }
         window.popup = function (type, content, title) {
             layer.open({
@@ -183,6 +181,25 @@
             });
         }
     });
+</script>
+<script type="text/javascript">
+    layui.config({
+        base: '../assets/layui/',
+    })
+    layui.use(['multiSelect', 'table'], function () {
+        var $ = layui.jquery, form = layui.form, multiSelect = layui.multiSelect, table = layui.table;
+        $('#get-val').click(function () {
+
+            var vals = [],
+                texts = [];
+            $('select[multiple] option:selected').each(function () {
+                vals.push($(this).val());
+
+                texts.push($(this).text());
+            })
+            multiSelect.render();
+        })
+    })
 </script>
 </body>
 </html>
